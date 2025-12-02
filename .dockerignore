@@ -1,0 +1,28 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+README.md
+IMAGE-OPTIMIZATION.md
+
+# Docker files
+docker-compose.yml
+Dockerfile.dev
+
+# Development tools
+.vscode
+.idea
+
+# Optimization scripts (run manually if needed)
+optimize-web.php
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db

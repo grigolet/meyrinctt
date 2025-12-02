@@ -1,0 +1,110 @@
+[
+    {
+        "title": "Entraînements membres",
+        "daysOfWeek": [
+            1
+        ],
+        "startTime": "16:30:00",
+        "endTime": "21:00:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-primary text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Entraînements CERN",
+        "daysOfWeek": [
+            1
+        ],
+        "startTime": "21:00:00",
+        "endTime": "22:30:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-blue-800 text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Jeu libre",
+        "daysOfWeek": [
+            2
+        ],
+        "startTime": "14:00:00",
+        "endTime": "22:30:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-green-500 text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Entraînements membres",
+        "daysOfWeek": [
+            3
+        ],
+        "startTime": "14:00:00",
+        "endTime": "19:15:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-primary text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Sport pour tous (Meyrinois)",
+        "daysOfWeek": [
+            3
+        ],
+        "startTime": "16:30:00",
+        "endTime": "18:00:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-orange-500 text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Club des aînés",
+        "daysOfWeek": [
+            4
+        ],
+        "startTime": "14:00:00",
+        "endTime": "16:00:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-purple-500 text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Entraînements membres",
+        "daysOfWeek": [
+            4
+        ],
+        "startTime": "17:45:00",
+        "endTime": "19:15:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-primary text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Entraînements membres",
+        "daysOfWeek": [
+            5
+        ],
+        "startTime": "16:15:00",
+        "endTime": "20:00:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-primary text-white border-none",
+        "displayEventTime": true
+    },
+    {
+        "title": "Entraînements CERN",
+        "daysOfWeek": [
+            5
+        ],
+        "startTime": "20:00:00",
+        "endTime": "22:30:00",
+        "startRecur": "2025-01-01",
+        "endRecur": "2025-12-31",
+        "className": "bg-blue-800 text-white border-none",
+        "displayEventTime": true
+    }
+]
