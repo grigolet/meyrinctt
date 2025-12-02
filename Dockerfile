@@ -18,9 +18,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
 # Enable Apache modules
 RUN a2enmod rewrite headers
 
-# Configure Apache for Railway
-RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
-
 # Set working directory
 WORKDIR /var/www/html
 
@@ -40,8 +37,16 @@ RUN echo '<IfModule mod_rewrite.c>\n\
     RewriteRule ^(.*)$ index.php [QSA,L]\n\
 </IfModule>' > /var/www/html/.htaccess
 
-# Expose port (Railway will set PORT environment variable)
-EXPOSE ${PORT:-80}
+# Create a startup script to configure Apache with Railway's PORT
+RUN echo '#!/bin/bash\n\
+PORT=${PORT:-8080}\n\
+sed -i "s/Listen 80/Listen $PORT/g" /etc/apache2/ports.conf\n\
+sed -i "s/:80/:$PORT/g" /etc/apache2/sites-available/000-default.conf\n\
+echo "ServerName localhost" >> /etc/apache2/apache2.conf\n\
+apache2-foreground' > /start.sh && chmod +x /start.sh
 
-# Start Apache in foreground
-CMD ["apache2-foreground"]
+# Expose port
+EXPOSE 8080
+
+# Start Apache with our custom script
+CMD ["/start.sh"]
