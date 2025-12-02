@@ -6,15 +6,25 @@ $hero_subtitle = "Suivez la vie du club et les résultats de nos équipes.";
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/includes/hero.php';
 
-// Scan for news posts
+// Scan for posts in posts/ directory
 $posts = [];
-$news_dir = __DIR__ . '/content/news';
-if (is_dir($news_dir)) {
-    $files = glob($news_dir . '/*.php');
+$posts_dir = __DIR__ . '/posts';
+if (is_dir($posts_dir)) {
+    $files = glob($posts_dir . '/*.php');
     foreach ($files as $file) {
-        $post = include $file;
-        $post['slug'] = basename($file, '.php');
-        $posts[] = $post;
+        // Skip README and other non-post files
+        if (basename($file) === 'README.md') continue;
+
+        // Include the file to get metadata only
+        $metadata_only = true;
+        $post_metadata = null;
+        include $file;
+
+        if ($post_metadata) {
+            $post_metadata['slug'] = basename($file, '.php');
+            $posts[] = $post_metadata;
+        }
+        unset($metadata_only, $post_metadata);
     }
     // Sort by date desc
     usort($posts, function($a, $b) {
@@ -34,7 +44,7 @@ if (is_dir($news_dir)) {
                     <span class="block text-sm font-bold text-primary uppercase mb-2"><?php echo date('d M Y', strtotime($post['date'])); ?></span>
                     <h3 class="text-xl font-extrabold mb-3 leading-tight"><?php echo $post['title']; ?></h3>
                     <p class="mb-4 text-gray-700 text-sm flex-1"><?php echo $post['excerpt']; ?></p>
-                    <a href="news-post.php?slug=<?php echo $post['slug']; ?>" class="inline-block font-bold text-text border-b-2 border-accent uppercase text-sm hover:text-primary hover:border-primary transition-colors self-start">Lire la suite</a>
+                    <a href="posts/<?php echo $post['slug']; ?>.php" class="inline-block font-bold text-text border-b-2 border-accent uppercase text-sm hover:text-primary hover:border-primary transition-colors self-start">Lire la suite</a>
                 </div>
             </article>
             <?php endforeach; ?>

@@ -82,10 +82,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 50px;
             z-index: 9997;
             pointer-events: none;
+            overflow: visible;
         }
 
         /* Custom utility for the ball animation delays/positions */
@@ -97,15 +98,15 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </style>
 </head>
 
-<body class="font-sans bg-bg text-text leading-relaxed overflow-x-hidden antialiased">
+<body class="font-sans bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
 
     <!-- Announcement Banner -->
-    <div id="announcement-banner" class="bg-accent text-white py-2 px-4 relative z-[60] hidden">
+    /* <div id="announcement-banner" class="bg-accent text-white py-2 px-4 relative z-[60] hidden">
         <div class="max-w-[1200px] mx-auto flex justify-between items-center">
             <p class="text-sm font-bold text-center w-full">🚨 Info: Le gymnase sera fermé le 25 Décembre.</p>
             <button id="close-banner" class="text-white hover:text-white/80 font-bold ml-4" aria-label="Fermer">&times;</button>
         </div>
-    </div>
+    </div> */
 
     <header class="py-4 bg-bg/95 border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
         <div class="max-w-[1200px] mx-auto px-4 flex justify-between items-center relative z-10">
@@ -125,49 +126,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <?php if ($config['holiday_decorations']): ?>
     <!-- Christmas Decorations -->
     <div class="christmas-decorations">
-        <!-- Light String SVG -->
-        <svg class="light-string" viewBox="0 0 1200 50" xmlns="http://www.w3.org/2000/svg">
-            <!-- Wire -->
-            <path d="M0,10 Q100,25 200,10 T400,10 T600,10 T800,10 T1000,10 T1200,10" 
-                  stroke="#2d3748" stroke-width="2" fill="none" opacity="0.3"/>
-            
-            <!-- Lights -->
-            <circle cx="50" cy="10" r="6" fill="#ef4444" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="150" cy="25" r="6" fill="#3b82f6" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="250" cy="10" r="6" fill="#fbbf24" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="350" cy="25" r="6" fill="#10b981" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="450" cy="10" r="6" fill="#8b5cf6" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.6s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="550" cy="25" r="6" fill="#ef4444" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2.1s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="650" cy="10" r="6" fill="#3b82f6" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.9s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="750" cy="25" r="6" fill="#fbbf24" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2.3s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="850" cy="10" r="6" fill="#10b981" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.7s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="950" cy="25" r="6" fill="#8b5cf6" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="1050" cy="10" r="6" fill="#ef4444" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="1150" cy="25" r="6" fill="#3b82f6" opacity="0.8">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
-            </circle>
+        <!-- Light String Container -->
+        <svg id="light-string-svg" class="light-string" xmlns="http://www.w3.org/2000/svg">
+            <!-- Wire path - will be dynamically generated -->
+            <path id="light-wire" d="" stroke="#2d3748" stroke-width="2" fill="none" opacity="0.3"/>
+            <!-- Lights container - will be dynamically populated -->
+            <g id="lights-container"></g>
         </svg>
 
         <!-- Snowflakes -->
@@ -175,11 +139,77 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </div>
 
     <script>
-        // Generate snowflakes
+        // Christmas Lights Dynamic Generation
         if (<?php echo $config['holiday_decorations'] ? 'true' : 'false'; ?>) {
-            const container = document.getElementById('snowflakes-container');
+            function generateChristmasLights() {
+                const svg = document.getElementById('light-string-svg');
+                const wire = document.getElementById('light-wire');
+                const container = document.getElementById('lights-container');
+
+                // Get viewport width
+                const width = window.innerWidth;
+                const height = 50;
+
+                // Update SVG viewBox to match viewport
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+                // Generate wire path (curved string)
+                const numSegments = Math.ceil(width / 200);
+                let pathData = 'M0,10';
+                for (let i = 1; i <= numSegments; i++) {
+                    const x = i * 200;
+                    pathData += ` Q${x - 100},25 ${x},10`;
+                }
+                pathData += ` T${width},10`;
+                wire.setAttribute('d', pathData);
+
+                // Clear existing lights
+                container.innerHTML = '';
+
+                // Generate lights based on viewport width
+                const lightSpacing = 100; // Space between lights
+                const numLights = Math.floor(width / lightSpacing);
+                const colors = ['#ef4444', '#3b82f6', '#fbbf24', '#10b981', '#8b5cf6'];
+
+                for (let i = 0; i < numLights; i++) {
+                    const x = 50 + (i * lightSpacing);
+                    const y = (i % 2 === 0) ? 10 : 25; // Alternate heights
+                    const color = colors[i % colors.length];
+                    const animDuration = (1.5 + (Math.random() * 1)).toFixed(1); // 1.5s - 2.5s
+
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', x);
+                    circle.setAttribute('cy', y);
+                    circle.setAttribute('r', 6);
+                    circle.setAttribute('fill', color);
+                    circle.setAttribute('opacity', 0.8);
+
+                    // Add animation
+                    const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+                    animate.setAttribute('attributeName', 'opacity');
+                    animate.setAttribute('values', '0.3;1;0.3');
+                    animate.setAttribute('dur', `${animDuration}s`);
+                    animate.setAttribute('repeatCount', 'indefinite');
+
+                    circle.appendChild(animate);
+                    container.appendChild(circle);
+                }
+            }
+
+            // Generate lights on load
+            generateChristmasLights();
+
+            // Regenerate on window resize (debounced)
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(generateChristmasLights, 250);
+            });
+
+            // Generate snowflakes
+            const snowContainer = document.getElementById('snowflakes-container');
             const snowflakeCount = 30;
-            
+
             const snowflakeSVG = (size) => `
                 <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L12 22M12 2L9 5M12 2L15 5M12 22L9 19M12 22L15 19" stroke="#e0f2fe" stroke-width="1.5" stroke-linecap="round"/>
@@ -188,7 +218,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <circle cx="12" cy="12" r="2" fill="#e0f2fe"/>
                 </svg>
             `;
-            
+
             for (let i = 0; i < snowflakeCount; i++) {
                 const snowflake = document.createElement('div');
                 snowflake.className = 'snowflake';
@@ -198,7 +228,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 snowflake.style.animationDuration = (Math.random() * 10 + 10) + 's'; // 10-20s
                 snowflake.style.animationDelay = Math.random() * 5 + 's';
                 snowflake.style.opacity = Math.random() * 0.6 + 0.4; // 0.4-1
-                container.appendChild(snowflake);
+                snowContainer.appendChild(snowflake);
             }
         }
     </script>
@@ -215,4 +245,4 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </aside>
     -->
 
-    <main>
+    <main class="flex-grow">

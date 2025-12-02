@@ -2,15 +2,25 @@
 $config = require __DIR__ . '/config.php';
 $page_title = "Accueil - " . $config['site_name'];
 
-// Load recent news posts
+// Load recent news posts from posts/ directory
 $posts = [];
-$news_dir = __DIR__ . '/content/news';
-if (is_dir($news_dir)) {
-    $files = glob($news_dir . '/*.php');
+$posts_dir = __DIR__ . '/posts';
+if (is_dir($posts_dir)) {
+    $files = glob($posts_dir . '/*.php');
     foreach ($files as $file) {
-        $post = include $file;
-        $post['slug'] = basename($file, '.php');
-        $posts[] = $post;
+        // Skip README and other non-post files
+        if (basename($file) === 'README.md') continue;
+
+        // Include the file to get metadata only
+        $metadata_only = true;
+        $post_metadata = null;
+        include $file;
+
+        if ($post_metadata) {
+            $post_metadata['slug'] = basename($file, '.php');
+            $posts[] = $post_metadata;
+        }
+        unset($metadata_only, $post_metadata);
     }
     // Sort by date desc
     usort($posts, function($a, $b) {
@@ -62,7 +72,7 @@ include __DIR__ . '/includes/header.php';
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <?php foreach ($posts as $post): ?>
-                <a href="news-post.php?slug=<?php echo urlencode($post['slug']); ?>" class="block bg-surface border-2 border-border rounded-xl shadow-soft transition-transform hover:-translate-y-1.5 hover:shadow-hover overflow-hidden relative group">
+                <a href="posts/<?php echo $post['slug']; ?>.php" class="block bg-surface border-2 border-border rounded-xl shadow-soft transition-transform hover:-translate-y-1.5 hover:shadow-hover overflow-hidden relative group">
                     <div class="absolute top-2.5 right-2.5 w-[30px] h-[30px] bg-[url('assets/paddle-illustration.png')] bg-contain bg-no-repeat opacity-10 z-0">
                     </div>
                     <div class="h-[240px] border-b-2 border-border bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($post['image']); ?>');"></div>
