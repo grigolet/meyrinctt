@@ -6,6 +6,11 @@ return [
     'optimize_images' => true, // Enable/disable image optimization
     'replace_originals' => true, // Replace original images with optimized versions
     'holiday_decorations' => true, // Enable/disable winter holiday decorations
+    'announcement_banner' => [
+        'enabled' => false, // Enable/disable the announcement banner
+        'text' => '🚨 Info: Le gymnase sera fermé le 25 Décembre.', // Banner text content
+        'icon' => '🚨', // Optional: emoji or icon (leave empty if not needed)
+    ],
     'contact' => [
         'email_to' => 'helferjoan@hotmail.com', // Email address to receive contact form submissions
         'email_from' => 'noreply@meyrinctt.ch', // From email address

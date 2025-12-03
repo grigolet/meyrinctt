@@ -101,12 +101,14 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <body class="font-sans bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
 
     <!-- Announcement Banner -->
-    /* <div id="announcement-banner" class="bg-accent text-white py-2 px-4 relative z-[60] hidden">
+    <?php if ($config['announcement_banner']['enabled']): ?>
+    <div id="announcement-banner" class="bg-accent text-white py-2 px-4 relative z-[60]">
         <div class="max-w-[1200px] mx-auto flex justify-between items-center">
-            <p class="text-sm font-bold text-center w-full">🚨 Info: Le gymnase sera fermé le 25 Décembre.</p>
+            <p class="text-sm font-bold text-center w-full"><?php echo htmlspecialchars($config['announcement_banner']['text']); ?></p>
             <button id="close-banner" class="text-white hover:text-white/80 font-bold ml-4" aria-label="Fermer">&times;</button>
         </div>
-    </div> */
+    </div>
+    <?php endif; ?>
 
     <header class="py-4 bg-bg/95 border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
         <div class="max-w-[1200px] mx-auto px-4 flex justify-between items-center relative z-10">
