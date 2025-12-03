@@ -1,110 +1,110 @@
 [
     {
-        "title": "Entraînements membres",
-        "daysOfWeek": [
-            1
-        ],
-        "startTime": "16:30:00",
-        "endTime": "21:00:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-primary text-white border-none",
-        "displayEventTime": true
-    },
-    {
-        "title": "Entraînements CERN",
-        "daysOfWeek": [
-            1
-        ],
-        "startTime": "21:00:00",
-        "endTime": "22:30:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-blue-800 text-white border-none",
-        "displayEventTime": true
-    },
-    {
-        "title": "Jeu libre",
-        "daysOfWeek": [
-            2
-        ],
-        "startTime": "14:00:00",
-        "endTime": "22:30:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-green-500 text-white border-none",
-        "displayEventTime": true
-    },
-    {
-        "title": "Entraînements membres",
-        "daysOfWeek": [
-            3
-        ],
-        "startTime": "14:00:00",
-        "endTime": "19:15:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-primary text-white border-none",
-        "displayEventTime": true
-    },
-    {
-        "title": "Sport pour tous (Meyrinois)",
-        "daysOfWeek": [
-            3
-        ],
+        "title": "Ecole de tennis de table, tous niveaux (Giacomo + Sacha)",
+        "daysOfWeek": [1],
         "startTime": "16:30:00",
         "endTime": "18:00:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-orange-500 text-white border-none",
-        "displayEventTime": true
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-green-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table, <span class=\"text-green-600 font-semibold\">tous niveaux</span>",
+        "trainer": "Giacomo + Sacha"
     },
     {
-        "title": "Club des aînés",
-        "daysOfWeek": [
-            4
-        ],
+        "title": "Adultes (Nenad + Sacha)",
+        "daysOfWeek": [1],
+        "startTime": "18:00:00",
+        "endTime": "19:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-blue-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Adultes",
+        "trainer": "Nenad + Sacha"
+    },
+    {
+        "title": "BabyPing, de 4 à 7 ans (Giacomo)",
+        "daysOfWeek": [3],
+        "startTime": "13:00:00",
+        "endTime": "14:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-yellow-500 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "BabyPing, de <span class=\"text-blue-600 font-semibold\">4 à 7 ans</span>",
+        "trainer": "Giacomo"
+    },
+    {
+        "title": "Jeunes licenciés (Giacomo)",
+        "daysOfWeek": [3],
         "startTime": "14:00:00",
-        "endTime": "16:00:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-purple-500 text-white border-none",
-        "displayEventTime": true
+        "endTime": "15:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-red-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Jeunes <span class=\"text-red-600 font-semibold\">licenciés</span>",
+        "trainer": "Giacomo"
     },
     {
-        "title": "Entraînements membres",
-        "daysOfWeek": [
-            4
-        ],
+        "title": "GE Découvre, Sports pour tous (Wilfried)",
+        "daysOfWeek": [3],
+        "startTime": "16:00:00",
+        "endTime": "17:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-purple-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "GE Découvre (Initiation) Sports pour tous",
+        "trainer": "Wilfried"
+    },
+    {
+        "title": "Ecole de tennis de table, tous niveaux et Adultes loisirs (Wilfried)",
+        "daysOfWeek": [3],
+        "startTime": "17:30:00",
+        "endTime": "19:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-indigo-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table, tous niveaux et Adultes loisirs",
+        "trainer": "Wilfried"
+    },
+    {
+        "title": "Ecole de tennis de table licenciés (Nenad)",
+        "daysOfWeek": [4],
         "startTime": "17:45:00",
         "endTime": "19:15:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-primary text-white border-none",
-        "displayEventTime": true
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-red-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table <span class=\"text-red-600 font-semibold\">licenciés</span>",
+        "trainer": "Nenad"
     },
     {
-        "title": "Entraînements membres",
-        "daysOfWeek": [
-            5
-        ],
-        "startTime": "16:15:00",
-        "endTime": "20:00:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-primary text-white border-none",
-        "displayEventTime": true
+        "title": "Ecole de tennis de table, tous niveaux (Wilfried + Giacomo)",
+        "daysOfWeek": [5],
+        "startTime": "16:30:00",
+        "endTime": "18:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-green-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table, <span class=\"text-green-600 font-semibold\">tous niveaux</span>",
+        "trainer": "Wilfried + Giacomo"
     },
     {
-        "title": "Entraînements CERN",
-        "daysOfWeek": [
-            5
-        ],
-        "startTime": "20:00:00",
-        "endTime": "22:30:00",
-        "startRecur": "2025-01-01",
-        "endRecur": "2025-12-31",
-        "className": "bg-blue-800 text-white border-none",
-        "displayEventTime": true
+        "title": "Jeunes licenciés (Wilfried + Giacomo)",
+        "daysOfWeek": [5],
+        "startTime": "18:00:00",
+        "endTime": "19:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-red-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Jeunes <span class=\"text-red-600 font-semibold\">licenciés</span>",
+        "trainer": "Wilfried + Giacomo"
     }
 ]
