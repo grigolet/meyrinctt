@@ -117,7 +117,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <span class="text-3xl font-black text-primary uppercase tracking-tighter"><?php echo $config['site_name']; ?></span>
             </a>
 
-            <button class="mobile-menu-toggle md:hidden p-2 border-2 border-border rounded-xl cursor-pointer bg-transparent" aria-label="Menu">
+            <button class="mobile-menu-toggle md:hidden p-2 cursor-pointer bg-transparent" aria-label="Menu">
                 <span class="block w-6 h-[3px] bg-text relative before:content-[''] before:absolute before:w-full before:h-[3px] before:bg-text before:left-0 before:-top-2 after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-text after:left-0 after:-bottom-2"></span>
             </button>
 

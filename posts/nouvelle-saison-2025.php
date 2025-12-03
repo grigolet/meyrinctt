@@ -3,7 +3,7 @@
 $post_metadata = [
     'title' => 'Début de la Nouvelle Saison 2025-2026',
     'date' => '2025-09-01',
-    'image' => 'assets/photo-3.jpg',
+    'image' => 'assets/posts/banner-1.jpg',
     'excerpt' => 'La nouvelle saison commence début septembre avec de nombreuses nouveautés et objectifs ambitieux pour toutes nos équipes.'
 ];
 

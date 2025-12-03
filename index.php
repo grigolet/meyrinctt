@@ -50,7 +50,7 @@ include __DIR__ . '/includes/header.php';
                 Tennis de Table Meyrin</h1>
             <p class="text-xl md:text-2xl font-bold text-white mb-16 max-w-[700px] mx-auto drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] text-shadow-lg/30">Passion, Compétition
                 et Convivialité.</p>
-            <div class="flex gap-4 justify-center">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="contact.php" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer hover:bg-primary-dark">Rejoignez-nous</a>
                 <a href="horaires.php" class="inline-block px-8 py-4 bg-white text-primary border-2 border-white rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer hover:bg-gray-100">Voir
                     les horaires</a>
