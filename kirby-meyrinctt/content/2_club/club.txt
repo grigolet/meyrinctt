@@ -1,0 +1,154 @@
+Title: Le Club
+
+----
+
+Hero-title: Le Club
+
+----
+
+Hero-subtitle: Découvrez l'équipe du Meyrin CTT.
+
+----
+
+Stat-members: 160
+
+----
+
+Stat-licensed: 60
+
+----
+
+Stat-min-age: 6
+
+----
+
+About-text: [{"content":{"text":"<p>Le Meyrin CTT est une association sportive de tennis de table dynamique, comptant plus de 160 membres dont environ 60 joueurs licenciés. Notre club offre un environnement convivial pour les joueurs de tous niveaux, du débutant au compétiteur confirmé.\n\nNous proposons une **école de jeunesse** accueillant les enfants dès l'âge de 6 ans, avec un encadrement professionnel et des installations de qualité. Nos équipes participent activement aux ligues suisses, représentant fièrement Meyrin dans les compétitions régionales et nationales.\n\nLe club organise régulièrement des **tournois internes et stages**, et met également ses installations à disposition pour la location d'événements.</p>"},"id":"00918954-9b9f-4a10-a130-782decfc1807","isHidden":false,"type":"text"}]
+
+----
+
+History-title: Histoire du Club
+
+----
+
+History-timeline:
+
+- 
+  year: "1977"
+  title: Les Origines au BIT
+  description: >
+    Le club de tennis de table trouve ses
+    origines au Bureau International du
+    Travail en 1977, établi grâce aux
+    efforts de Jean Lambert, son président
+    fondateur. Les membres provenaient
+    principalement des organisations
+    internationales.
+- 
+  year: Années 80
+  title: Premiers Succès
+  description: "Dès la première année, le club inscrit des équipes dans les ligues genevoises. L'équipe masculine première est finalement promue en Ligue Nationale A."
+- 
+  year: Fusion
+  title: Union avec Meyrin CTT
+  description: "Pour résoudre les limitations logistiques, le club du BIT fusionne avec Meyrin CTT. Cette consolidation s'avère fructueuse et perdure aujourd'hui."
+
+----
+
+Committee-title: Le Comité
+
+----
+
+Committee-members:
+
+- 
+  photo: [ ]
+  role: Présidente
+  name: Joan Helfer
+  email: helferjoan@hotmail.com
+- 
+  photo: [ ]
+  role: Vice-Président
+  name: Jean-Pierre Revol
+  email: jean-pierre.revol@cern.ch
+- 
+  photo:
+    - file://s9md4k8zzik6jk11
+  role: Vice-Président
+  name: Gianluca Rigoletti
+  email: gianluca.rigoletti@gmail.com
+- 
+  photo: [ ]
+  role: Trésorier
+  name: Alain Reynier
+  email: alain-reynier@hotmail.com
+- 
+  photo: [ ]
+  role: Secrétaire
+  name: Reynald Schmid
+  email: reynald.schmid@bluewin.ch
+- 
+  photo: [ ]
+  role: Informatique
+  name: Alan Lumley
+  email: alan@lumley.ch
+- 
+  photo: [ ]
+  role: 'Salle & Bar'
+  name: Carsten Neubauer
+  email: carsten.neubauer@web.de
+- 
+  photo: [ ]
+  role: Webmaster
+  name: Dominique Schneider
+  email: schneiderdom@bluewin.ch
+- 
+  photo: [ ]
+  role: Techniques
+  name: Bugra Bilin
+  email: bbilin1986@gmail.com
+
+----
+
+Coaches-title: Nos Entraîneurs
+
+----
+
+Coaches-members:
+
+- 
+  photo: [ ]
+  specialty: Niveau B
+  name: Giacomo Sorrentino
+  email: ""
+- 
+  photo: [ ]
+  specialty: Niveau A
+  name: Nenad Stevanovic
+  email: ""
+
+----
+
+Notable-players:
+
+- 
+  name: Jean Lambert
+  achievement: >
+    Médaille de bronze en double aux
+    championnats du monde seniors (1996)
+  icon: 🥉
+- 
+  name: Jacky Versang
+  achievement: Champion du monde vétérans (1996)
+  icon: 🥇
+- 
+  name: Herbert Neubauer
+  achievement: "Sept fois champion du monde vétérans avec 60 médailles d'or suisses"
+  icon: 🏆
+- 
+  name: Wei Zheng
+  achievement: Champion de Chine jeunesse
+  icon: 🌟
+
+----
+
+Uuid: x4gaupacg9qxbbsy

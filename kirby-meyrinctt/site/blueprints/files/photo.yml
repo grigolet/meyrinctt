@@ -1,0 +1,13 @@
+title: Photo
+accept: image/*
+
+fields:
+  alt:
+    label: Texte alternatif
+    type: text
+    help: Description de l'image pour l'accessibilité
+    
+  caption:
+    label: Légende
+    type: text
+    help: Légende affichée sous l'image

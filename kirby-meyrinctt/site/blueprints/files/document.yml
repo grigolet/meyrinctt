@@ -1,0 +1,11 @@
+title: Document
+accept:
+  - application/pdf
+  - application/msword
+  - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+
+fields:
+  description:
+    label: Description
+    type: text
+    help: Description du document

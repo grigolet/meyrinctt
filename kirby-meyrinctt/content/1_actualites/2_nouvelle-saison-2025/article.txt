@@ -1,0 +1,21 @@
+Title: Début de la Nouvelle Saison 2025-2026
+
+----
+
+Date: 2025-09-01
+
+----
+
+Author: Gianluca
+
+----
+
+Excerpt: La nouvelle saison commence début septembre avec de nombreuses nouveautés et objectifs ambitieux pour toutes nos équipes.
+
+----
+
+Text: [{"content":{"text":""},"id":"3c24d7e1-181e-43f3-b469-d57e1c3a9e4b","isHidden":false,"type":"text"},{"content":{"text":"C'est avec beaucoup d'enthousiasme que nous entamons la nouvelle saison 2025-2026! Le club compte cette année plus de 160 membres et aligne 8 équipes dans les différentes ligues suisses.  \n## Nouveautés de la saison  - Nouveau créneau d'entraînement le mercredi soir pour les juniors - Installation de 2 nouvelles tables professionnelles - Programme de formation pour les entraîneurs - Partenariat avec l'école primaire de Meyrin  \n## Nos objectifs  Cette saison, nos équipes visent plusieurs objectifs ambitieux:  \n- 🎯 Maintien en LNB pour notre équipe première \n- 🎯 Promotion en 2ème ligue pour notre équipe réserve \n- 🎯 Développer l'école de jeunesse avec 20 nouveaux juniors \n- 🎯 Organiser 3 tournois majeurs dans nos installations  Nous comptons sur le soutien de tous nos membres et partenaires pour atteindre ces objectifs. Bonne saison à tous!"},"id":"d739631f-42e5-4b87-a7bb-2939f223c629","isHidden":false,"type":"markdown"}]
+
+----
+
+Uuid: bwgcckly9ucz4r92

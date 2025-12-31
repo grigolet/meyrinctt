@@ -1,0 +1,110 @@
+# Horaires page blueprint
+title: Horaires
+icon: 📅
+
+tabs:
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      - width: 2/3
+        sections:
+          hero:
+            type: fields
+            fields:
+              hero_title:
+                type: text
+                label: Titre de la page
+                default: "Horaires"
+                
+              hero_subtitle:
+                type: text
+                label: Sous-titre
+                default: "Entraînements et Compétitions."
+                
+          schedule:
+            type: fields
+            fields:
+              schedule_headline:
+                type: headline
+                label: Planning des cours
+                
+              schedule_title:
+                type: text
+                label: Titre du planning
+                default: "PLANNING des cours 2025/2026"
+                
+              schedule_notice:
+                type: text
+                label: Notice importante
+                default: "Les cours de tennis de table débute le 25 AOÛT 2025"
+                
+              schedule_pdf:
+                type: url
+                label: Lien PDF du planning
+                
+      - width: 1/3
+        sections:
+          files:
+            type: files
+            label: Fichiers
+            layout: list
+
+  courses:
+    label: Cours
+    icon: list
+    fields:
+      courses:
+        type: structure
+        label: Cours hebdomadaires
+        fields:
+          day:
+            type: select
+            label: Jour
+            width: 1/4
+            options:
+              lundi: Lundi
+              mardi: Mardi
+              mercredi: Mercredi
+              jeudi: Jeudi
+              vendredi: Vendredi
+              samedi: Samedi
+              dimanche: Dimanche
+          course_description:
+            type: text
+            label: Description J+S
+            width: 1/4
+          start_time:
+            type: time
+            label: Début
+            width: 1/6
+          end_time:
+            type: time
+            label: Fin
+            width: 1/6
+          trainer:
+            type: text
+            label: Entraîneur
+            width: 1/4
+
+  holidays:
+    label: Vacances
+    icon: calendar
+    fields:
+      holidays_title:
+        type: text
+        label: Titre section vacances
+        default: "Sauf Vacances scolaires 2025-2026"
+        
+      holidays:
+        type: structure
+        label: Dates de vacances
+        fields:
+          name:
+            type: text
+            label: Nom
+            width: 1/2
+          dates:
+            type: text
+            label: Dates
+            width: 1/2

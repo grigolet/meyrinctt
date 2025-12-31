@@ -1,0 +1,124 @@
+# Inscription page blueprint
+title: Inscription
+icon: 📝
+
+tabs:
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      - width: 2/3
+        sections:
+          hero:
+            type: fields
+            fields:
+              hero_title:
+                type: text
+                label: Titre de la page
+                default: "Inscription"
+                
+              hero_subtitle:
+                type: text
+                label: Sous-titre
+                default: "Rejoignez le Meyrin CTT pour la saison 2025 - 2026."
+                
+          fees_section:
+            type: fields
+            fields:
+              fees_headline:
+                type: headline
+                label: Tarifs
+                
+              fees_title:
+                type: text
+                label: Titre section tarifs
+                default: "Tarifs d'adhésion 2025-2026"
+                
+              fees_note:
+                type: text
+                label: Note sur les tarifs
+                default: "Rabais par enfant si plusieurs membres de la famille: 40.- CHF"
+                
+      - width: 1/3
+        sections:
+          files:
+            type: files
+            label: Documents
+            layout: list
+
+  fees:
+    label: Tarifs
+    icon: money
+    fields:
+      fees:
+        type: structure
+        label: Grille tarifaire
+        fields:
+          category:
+            type: text
+            label: Catégorie
+            width: 1/3
+          cotisation:
+            type: text
+            label: Cotisation
+            width: 1/5
+            placeholder: "CHF 210.00"
+          licence:
+            type: text
+            label: Licence AGTT
+            width: 1/5
+            placeholder: "CHF 150.00"
+          total:
+            type: text
+            label: Total
+            width: 1/5
+            placeholder: "CHF 360.00"
+
+  forms:
+    label: Formulaires
+    icon: file
+    fields:
+      adhesion_headline:
+        type: headline
+        label: Demande d'adhésion
+        
+      adhesion_description:
+        type: textarea
+        label: Description
+        default: "Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club."
+        
+      adhesion_forms:
+        type: structure
+        label: Formulaires d'adhésion
+        fields:
+          title:
+            type: text
+            label: Titre
+          url:
+            type: url
+            label: Lien du PDF
+            
+      licence_headline:
+        type: headline
+        label: Demande de licence
+        
+      licence_description:
+        type: textarea
+        label: Description
+        default: "Pour les joueurs désirant rejoindre une équipe pour la compétition, veuillez remplir les documents suivants."
+        
+      licence_forms:
+        type: structure
+        label: Formulaires de licence
+        fields:
+          title:
+            type: text
+            label: Titre
+          url:
+            type: url
+            label: Lien du PDF
+            
+      payment_info:
+        type: text
+        label: Info paiement (CCP)
+        default: "12-19447-4"

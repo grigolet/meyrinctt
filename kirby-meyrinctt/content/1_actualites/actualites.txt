@@ -1,0 +1,17 @@
+Title: Actualités
+
+----
+
+Hero-title: Actualités
+
+----
+
+Hero-subtitle: Suivez la vie du club et les résultats de nos équipes.
+
+----
+
+Per-page: 9
+
+----
+
+Uuid: vz7mprtlvlskvtcx

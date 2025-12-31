@@ -1,0 +1,99 @@
+Title: Horaires
+
+----
+
+Hero-title: Horaires
+
+----
+
+Hero-subtitle: Entraînements et Compétitions.
+
+----
+
+Schedule-title: PLANNING des cours 2025/2026
+
+----
+
+Schedule-notice: Les cours de tennis de table débute le 25 AOÛT 2025
+
+----
+
+Schedule-pdf: https://www.meyrinctt.ch/docs/PLANNING%20des%20cours%202025-2026.pdf
+
+----
+
+Courses:
+
+- 
+  day: lundi
+  course_description: Adultes
+  start_time: 20:00:00
+  end_time: 22:00:00
+  trainer: Giacomo
+- 
+  day: mardi
+  course_description: Juniors J+S
+  start_time: 18:00:00
+  end_time: 20:00:00
+  trainer: Nenad
+- 
+  day: mercredi
+  course_description: Baby Ping
+  start_time: 14:00:00
+  end_time: 15:30:00
+  trainer: Nenad
+- 
+  day: mercredi
+  course_description: Juniors J+S
+  start_time: 15:30:00
+  end_time: 17:30:00
+  trainer: Joan
+- 
+  day: jeudi
+  course_description: Adultes
+  start_time: 20:00:00
+  end_time: 22:00:00
+  trainer: Alain
+- 
+  day: samedi
+  course_description: Libre
+  start_time: 10:00:00
+  end_time: 12:00:00
+  trainer: ""
+
+----
+
+Holidays-title: Sauf Vacances scolaires 2025-2026
+
+----
+
+Holidays:
+
+- 
+  name: Jeune genevois
+  dates: 11 septembre 2025
+- 
+  name: Automne
+  dates: 20 au 24 octobre 2025
+- 
+  name: Noël
+  dates: 22 décembre au 2 janvier 2026
+- 
+  name: Février
+  dates: 23 au 27 février 2026
+- 
+  name: Pâques
+  dates: 3 au 17 avril 2026
+- 
+  name: Fête du travail
+  dates: 1er mai 2026
+- 
+  name: Ascension
+  dates: 14 et 15 mai 2026
+- 
+  name: Pentecôte
+  dates: 25 mai 2026
+
+----
+
+Uuid: fswqdfedvpsuwghy

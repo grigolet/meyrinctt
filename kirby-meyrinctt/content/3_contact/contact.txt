@@ -1,0 +1,33 @@
+Title: Contact
+
+----
+
+Hero-title: Contact
+
+----
+
+Hero-subtitle: Une question ? Envie de nous rejoindre ?
+
+----
+
+Form-title: Envoyez un message
+
+----
+
+Success-message: Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+
+----
+
+Info-title: Coordonnées
+
+----
+
+Map-embed: 
+
+----
+
+Directions: 
+
+----
+
+Uuid: k6myjohuxvfg7pfi

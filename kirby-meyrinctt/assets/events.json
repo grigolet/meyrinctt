@@ -1,0 +1,110 @@
+[
+    {
+        "title": "Ecole de tennis de table, tous niveaux (Giacomo + Sacha)",
+        "daysOfWeek": [1],
+        "startTime": "16:30:00",
+        "endTime": "18:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-green-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table, <span class=\"text-green-600 font-semibold\">tous niveaux</span>",
+        "trainer": "Giacomo + Sacha"
+    },
+    {
+        "title": "Adultes (Nenad + Sacha)",
+        "daysOfWeek": [1],
+        "startTime": "18:00:00",
+        "endTime": "19:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-blue-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Adultes",
+        "trainer": "Nenad + Sacha"
+    },
+    {
+        "title": "BabyPing, de 4 à 7 ans (Giacomo)",
+        "daysOfWeek": [3],
+        "startTime": "13:00:00",
+        "endTime": "14:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-yellow-500 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "BabyPing, de <span class=\"text-blue-600 font-semibold\">4 à 7 ans</span>",
+        "trainer": "Giacomo"
+    },
+    {
+        "title": "Jeunes licenciés (Giacomo)",
+        "daysOfWeek": [3],
+        "startTime": "14:00:00",
+        "endTime": "15:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-red-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Jeunes <span class=\"text-red-600 font-semibold\">licenciés</span>",
+        "trainer": "Giacomo"
+    },
+    {
+        "title": "GE Découvre, Sports pour tous (Wilfried)",
+        "daysOfWeek": [3],
+        "startTime": "16:00:00",
+        "endTime": "17:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-purple-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "GE Découvre (Initiation) Sports pour tous",
+        "trainer": "Wilfried"
+    },
+    {
+        "title": "Ecole de tennis de table, tous niveaux et Adultes loisirs (Wilfried)",
+        "daysOfWeek": [3],
+        "startTime": "17:30:00",
+        "endTime": "19:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-indigo-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table, tous niveaux et Adultes loisirs",
+        "trainer": "Wilfried"
+    },
+    {
+        "title": "Ecole de tennis de table licenciés (Nenad)",
+        "daysOfWeek": [4],
+        "startTime": "17:45:00",
+        "endTime": "19:15:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-red-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table <span class=\"text-red-600 font-semibold\">licenciés</span>",
+        "trainer": "Nenad"
+    },
+    {
+        "title": "Ecole de tennis de table, tous niveaux (Wilfried + Giacomo)",
+        "daysOfWeek": [5],
+        "startTime": "16:30:00",
+        "endTime": "18:00:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-green-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Ecole de tennis de table, <span class=\"text-green-600 font-semibold\">tous niveaux</span>",
+        "trainer": "Wilfried + Giacomo"
+    },
+    {
+        "title": "Jeunes licenciés (Wilfried + Giacomo)",
+        "daysOfWeek": [5],
+        "startTime": "18:00:00",
+        "endTime": "19:30:00",
+        "startRecur": "2025-08-25",
+        "endRecur": "2026-06-30",
+        "className": "bg-red-600 text-white border-none",
+        "displayEventTime": true,
+        "courseDescription": "Jeunes <span class=\"text-red-600 font-semibold\">licenciés</span>",
+        "trainer": "Wilfried + Giacomo"
+    }
+]

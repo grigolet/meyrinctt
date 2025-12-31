@@ -1,0 +1,114 @@
+# Home page blueprint - Accueil
+title: Accueil
+icon: 🏠
+
+# Prevent status changes - homepage should always be visible
+options:
+  changeStatus: false
+  changeSlug: false
+  delete: false
+
+tabs:
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      - width: 2/3
+        sections:
+          hero:
+            type: fields
+            fields:
+              hero_headline:
+                type: headline
+                label: Section Hero
+                
+              hero_title:
+                type: text
+                label: Titre principal
+                default: "Tennis de Table Meyrin"
+                required: true
+                
+              hero_subtitle:
+                type: text
+                label: Sous-titre
+                default: "Passion, Compétition et Convivialité."
+                
+              hero_cta_primary:
+                type: text
+                label: Bouton principal (texte)
+                default: "Rejoignez-nous"
+                
+              hero_cta_primary_link:
+                type: link
+                label: Bouton principal (lien)
+                
+              hero_cta_secondary:
+                type: text
+                label: Bouton secondaire (texte)
+                default: "Voir les horaires"
+                
+              hero_cta_secondary_link:
+                type: link
+                label: Bouton secondaire (lien)
+                
+          club_section:
+            type: fields
+            fields:
+              club_headline:
+                type: headline
+                label: Section Club
+                
+              club_title:
+                type: text
+                label: Titre section club
+                default: "Pourquoi rejoindre le Meyrin CTT ?"
+                
+              club_description:
+                type: textarea
+                label: Description
+                
+              club_features:
+                type: structure
+                label: Points forts du club
+                fields:
+                  feature:
+                    type: text
+                    label: Point fort
+                    
+      - width: 1/3
+        sections:
+          hero_image:
+            type: files
+            label: Image Hero
+            layout: cards
+            template: hero
+            max: 1
+            
+          sidebar_info:
+            type: info
+            label: Actualités
+            text: Les 3 dernières actualités sont automatiquement affichées sur la page d'accueil.
+            theme: info
+
+  cards:
+    label: Cartes
+    icon: grid
+    fields:
+      cards:
+        type: structure
+        label: Cartes de présentation
+        fields:
+          title:
+            type: text
+            label: Titre
+            required: true
+          description:
+            type: textarea
+            label: Description
+          link:
+            type: link
+            label: Lien
+          link_text:
+            type: text
+            label: Texte du lien
+            default: "En savoir plus"

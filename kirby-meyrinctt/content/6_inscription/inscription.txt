@@ -1,0 +1,85 @@
+Title: Inscription
+
+----
+
+Hero-title: Inscription
+
+----
+
+Hero-subtitle: Rejoignez le Meyrin CTT pour la saison 2025 - 2026.
+
+----
+
+Fees-title: Tarifs d'adhésion 2025-2026
+
+----
+
+Fees-note: Rabais par enfant si plusieurs membres de la famille: 40.- CHF
+
+----
+
+Fees:
+
+- 
+  category: Adultes (dès 18 ans)
+  cotisation: CHF 210.00
+  licence: CHF 150.00
+  total: CHF 360.00
+- 
+  category: Juniors (moins de 18 ans) avec cours
+  cotisation: CHF 220.00
+  licence: CHF 100.00
+  total: CHF 320.00
+- 
+  category: Conjoints
+  cotisation: CHF 100.00
+  licence: CHF 160.00
+  total: CHF 260.00
+- 
+  category: Membres externes sans cours
+  cotisation: CHF 100.00
+  licence: ""
+  total: CHF 100.00
+- 
+  category: Baby Ping
+  cotisation: CHF 120.00
+  licence: ""
+  total: CHF 50.00
+
+----
+
+Adhesion-description: Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club.
+
+----
+
+Adhesion-forms:
+
+- 
+  title: Formulaire (Français)
+  url: https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_fr.pdf
+- 
+  title: Formulaire (English)
+  url: https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_en.pdf
+
+----
+
+Licence-description: Pour les joueurs désirant rejoindre une équipe pour la compétition, veuillez remplir les documents suivants.
+
+----
+
+Licence-forms:
+
+- 
+  title: Demande de licence
+  url: https://www.meyrinctt.ch/docs/Demande%20de%20licence%20saison%202025-2026.pdf
+- 
+  title: Formulaire dopage
+  url: https://www.meyrinctt.ch/docs/Formulaire%20dopage.pdf
+
+----
+
+Payment-info: 12-19447-4
+
+----
+
+Uuid: i7hgc7hn3bdpeqgf

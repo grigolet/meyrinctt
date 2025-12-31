@@ -1,0 +1,52 @@
+# News listing page blueprint
+title: Actualités
+icon: 📰
+
+options:
+  changeSlug: false
+
+tabs:
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      - width: 1/2
+        sections:
+          hero:
+            type: fields
+            fields:
+              hero_title:
+                type: text
+                label: Titre de la page
+                default: "Actualités"
+                
+              hero_subtitle:
+                type: text
+                label: Sous-titre
+                default: "Suivez la vie du club et les résultats de nos équipes."
+                
+      - width: 1/2
+        sections:
+          settings:
+            type: fields
+            fields:
+              per_page:
+                type: number
+                label: Articles par page
+                default: 9
+                min: 3
+                max: 24
+
+  articles:
+    label: Articles
+    icon: newspaper
+    sections:
+      articles:
+        type: pages
+        label: Articles
+        status: all
+        layout: cards
+        template: article
+        sortBy: date desc
+        image:
+          cover: true

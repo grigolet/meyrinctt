@@ -1,0 +1,21 @@
+Title: Test page
+
+----
+
+Date: 2025-12-24
+
+----
+
+Author: Gianluca
+
+----
+
+Excerpt: Some content
+
+----
+
+Text: [{"content":{"file":["file://27fe2j3xuweyrqlz"],"caption":"PDF test","link":"true"},"id":"bd2dc082-e41b-4c13-a7cf-9833f7ad6f28","isHidden":false,"type":"file"}]
+
+----
+
+Uuid: fnpvk7hoo5rjurry

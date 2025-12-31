@@ -1,0 +1,21 @@
+Title: Tournoi Interne Novembre 2025
+
+----
+
+Date: 2025-11-15
+
+----
+
+Author: Gianluca Rigoletti
+
+----
+
+Excerpt: Le tournoi interne d'automne aura lieu le 15 novembre. Inscriptions ouvertes à tous les membres du club.
+
+----
+
+Text: [{"content":{"text":"Le traditionnel tournoi interne d'automne approche! Comme chaque année, cet événement convivial permet à tous les membres du club de se rencontrer dans une ambiance sportive et détendue.  \n## Informations pratiques  \n- **Date:** Samedi 15 novembre 2025 \n- **Lieu:** Salle de tennis de table, Rue de Livron 2 \n- **Horaires:** 9h00 - 18h00 \n- **Inscription:** Gratuite pour les membres  \n## Format du tournoi  \nLe tournoi se déroulera en plusieurs phases:  \n1. Poules de qualification le matin \n2. Phases finales l'après-midi \n3. Remise des prix et apéritif  Des catégories séparées sont prévues pour les juniors et les seniors. Venez nombreux!"},"id":"d1ac8a26-0dc9-4080-911b-4153777f9334","isHidden":false,"type":"markdown"}]
+
+----
+
+Uuid: m4l55y5ju57k1p4y

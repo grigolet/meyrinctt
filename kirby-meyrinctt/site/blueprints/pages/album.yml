@@ -1,0 +1,40 @@
+# Album page blueprint
+title: Album
+icon: 🖼️
+
+tabs:
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      - width: 1/2
+        fields:
+          description:
+            type: textarea
+            label: Description de l'album
+            
+          date:
+            type: date
+            label: Date de l'événement
+            
+      - width: 1/2
+        sections:
+          cover:
+            type: files
+            label: Image de couverture
+            layout: cards
+            max: 1
+            template: cover
+
+  photos:
+    label: Photos
+    icon: images
+    sections:
+      photos:
+        type: files
+        label: Photos
+        layout: cardlets
+        template: photo
+        sortable: true
+        image:
+          cover: true

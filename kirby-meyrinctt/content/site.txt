@@ -1,0 +1,125 @@
+Title: Meyrin CTT
+
+----
+
+Color-primary: #0056b3
+
+----
+
+Color-primary-light: #e3f2fd
+
+----
+
+Color-bg: #f8f9fa
+
+----
+
+Color-surface: #ffffff
+
+----
+
+Color-text: #1a1a1a
+
+----
+
+Color-border: #004494
+
+----
+
+Color-accent: #d32f2f
+
+----
+
+Font-sans: 'Inter', sans-serif
+
+----
+
+Site-description: Club de Tennis de Table Meyrin - Passion, Compétition et Convivialité depuis 1977.
+
+----
+
+Optimize-images: true
+
+----
+
+Replace-originals: true
+
+----
+
+Holiday-decorations: false
+
+----
+
+Announcement-enabled: false
+
+----
+
+Announcement-text: 🚨 Info: Le gymnase sera fermé le 25 Décembre.
+
+----
+
+Announcement-icon: 🚨
+
+----
+
+Email-to: gianluca.rigoletti@gmail.com
+
+----
+
+Email-from: noreply@meyrinctt.ch
+
+----
+
+Email-subject: Nouveau message depuis le site Meyrin CTT
+
+----
+
+Enable-notifications: true
+
+----
+
+Club-address:
+
+Meyrin CTT
+Rue de Livron 2
+1217 Meyrin
+
+----
+
+Club-email: info@meyrinctt.ch
+
+----
+
+Club-location-note: Local en-dessous de la Piscine
+
+----
+
+Copyright: © 2025 Meyrin CTT
+
+----
+
+Social-links:
+
+- 
+  platform: instagram
+  icon: instagram
+  url: https://www.instagram.com/meyrinctt
+
+----
+
+Sponsors-title: Nos partneaires
+
+----
+
+Sponsors-list:
+
+- 
+  name: CERN Staff Association
+  url: https://staff-association.cern/
+  logo:
+    - file://7us8kmbrew4cfeec
+- 
+  name: VIlle de Meyrin
+  url: https://www.meyrin.ch/
+  logo:
+    - file://nlcu6qianqfbuyvn

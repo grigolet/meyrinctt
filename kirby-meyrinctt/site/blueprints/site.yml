@@ -1,0 +1,312 @@
+# Site Blueprint - Meyrin CTT
+# This blueprint defines the Panel layout for the site settings (Dashboard)
+# All configuration variables from config.php are now editable in the Panel
+
+title: Paramètres du site
+
+tabs:
+  # Main content tab
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      # Pages section - shows main pages
+      - width: 1/2
+        sections:
+          pages:
+            type: pages
+            label: Pages principales
+            status: all
+            templates:
+              - accueil
+              - club
+              - horaires
+              - inscription
+              - galerie
+              - actualites
+              - contact
+              - default
+            
+      # Quick access to news and albums
+      - width: 1/2
+        sections:
+          actualites:
+            type: pages
+            label: Dernières actualités
+            parent: site.find('actualites')
+            status: all
+            templates:
+              - article
+            limit: 5
+            
+          albums:
+            type: pages
+            label: Albums photos
+            parent: site.find('galerie')
+            status: all
+            templates:
+              - album
+            limit: 5
+
+  # Theme & appearance settings
+  theme:
+    label: Thème
+    icon: palette
+    columns:
+      - width: 1/2
+        fields:
+          theme_headline:
+            type: headline
+            label: Couleurs du thème
+            
+          color_primary:
+            type: color
+            label: Couleur primaire
+            help: Couleur principale du site (ex. #0056b3)
+            default: "#0056b3"
+            format: hex
+            
+          color_primary_light:
+            type: color
+            label: Couleur primaire claire
+            help: Version claire de la couleur primaire (ex. #e3f2fd)
+            default: "#e3f2fd"
+            format: hex
+            
+          color_bg:
+            type: color
+            label: Couleur de fond
+            help: Couleur d'arrière-plan (ex. #f8f9fa)
+            default: "#f8f9fa"
+            format: hex
+            
+          color_surface:
+            type: color
+            label: Couleur des surfaces
+            help: Couleur des cartes et conteneurs (ex. #ffffff)
+            default: "#ffffff"
+            format: hex
+            
+      - width: 1/2
+        fields:
+          color_text:
+            type: color
+            label: Couleur du texte
+            help: Couleur principale du texte (ex. #1a1a1a)
+            default: "#1a1a1a"
+            format: hex
+            
+          color_border:
+            type: color
+            label: Couleur des bordures
+            help: Couleur des bordures (ex. #004494)
+            default: "#004494"
+            format: hex
+            
+          color_accent:
+            type: color
+            label: Couleur d'accent
+            help: Couleur d'accentuation (ex. #d32f2f)
+            default: "#d32f2f"
+            format: hex
+            
+          font_sans:
+            type: text
+            label: Police de caractères
+            help: Police principale du site
+            default: "'Inter', sans-serif"
+
+  # Site settings
+  settings:
+    label: Paramètres
+    icon: settings
+    columns:
+      - width: 1/2
+        fields:
+          settings_headline:
+            type: headline
+            label: Paramètres généraux
+            
+          site_description:
+            type: textarea
+            label: Description du site
+            help: Description pour le SEO (meta description)
+            
+          optimize_images:
+            type: toggle
+            label: Optimiser les images
+            help: Activer/désactiver l'optimisation automatique des images
+            default: true
+            
+          replace_originals:
+            type: toggle
+            label: Remplacer les originaux
+            help: Remplacer les images originales par les versions optimisées
+            default: true
+            
+          holiday_decorations:
+            type: toggle
+            label: Décorations de fêtes
+            help: Activer/désactiver les décorations hivernales
+            default: true
+            
+      - width: 1/2
+        fields:
+          banner_headline:
+            type: headline
+            label: Bandeau d'annonce
+            
+          announcement_enabled:
+            type: toggle
+            label: Activer le bandeau
+            help: Afficher un bandeau d'annonce en haut du site
+            default: false
+            
+          announcement_text:
+            type: text
+            label: Texte du bandeau
+            help: Contenu du message d'annonce
+            placeholder: "🚨 Info: Le gymnase sera fermé le 25 Décembre."
+            when:
+              announcement_enabled: true
+              
+          announcement_icon:
+            type: text
+            label: Icône du bandeau
+            help: Emoji ou icône pour le bandeau (optionnel)
+            placeholder: "🚨"
+            when:
+              announcement_enabled: true
+
+  # Contact settings
+  contact:
+    label: Contact
+    icon: email
+    fields:
+      contact_headline:
+        type: headline
+        label: Configuration email
+        
+      email_to:
+        type: email
+        label: Email de réception
+        help: Adresse email qui recevra les messages du formulaire de contact
+        default: "info@meyrinctt.ch"
+        
+      email_from:
+        type: email
+        label: Email d'envoi
+        help: Adresse email utilisée comme expéditeur
+        default: "noreply@meyrinctt.ch"
+        
+      email_subject:
+        type: text
+        label: Sujet des emails
+        help: Sujet par défaut des emails de contact
+        default: "Nouveau message depuis le site Meyrin CTT"
+        
+      enable_notifications:
+        type: toggle
+        label: Activer les notifications
+        help: Envoyer des emails lors de nouveaux messages
+        default: true
+        
+      address_headline:
+        type: headline
+        label: Coordonnées du club
+        
+      club_address:
+        type: textarea
+        label: Adresse du club
+        default: |
+          Meyrin CTT
+          Rue de Livron 2
+          1217 Meyrin
+          
+      club_email:
+        type: email
+        label: Email public
+        default: "info@meyrinctt.ch"
+        
+      club_location_note:
+        type: text
+        label: Note sur l'emplacement
+        default: "Local en-dessous de la Piscine"
+
+  # Social & footer
+  footer:
+    label: Pied de page
+    icon: grid-bottom
+    fields:
+      footer_headline:
+        type: headline
+        label: Informations du pied de page
+        
+      copyright:
+        type: text
+        label: Copyright
+        help: Texte de copyright affiché dans le pied de page
+        default: "© 2025 Meyrin CTT"
+        
+      social_headline:
+        type: headline
+        label: Réseaux sociaux
+        
+      social_links:
+        type: structure
+        label: Liens réseaux sociaux
+        fields:
+          platform:
+            type: select
+            label: Plateforme
+            options:
+              facebook: Facebook
+              instagram: Instagram
+              twitter: Twitter
+              youtube: YouTube
+              linkedin: LinkedIn
+          url:
+            type: url
+            label: URL du profil
+
+  # Sponsors
+  sponsors:
+    label: Partenaires
+    icon: bookmark
+    columns:
+      - width: 2/3
+        fields:
+          sponsors_headline:
+            type: headline
+            label: Nos partenaires et sponsors
+            
+          sponsors_title:
+            type: text
+            label: Titre de la section
+            default: "Nos Partenaires"
+            
+          sponsors_list:
+            type: structure
+            label: Liste des partenaires
+            fields:
+              name:
+                type: text
+                label: Nom du partenaire
+                width: 1/2
+              url:
+                type: url
+                label: Site web
+                width: 1/2
+              logo:
+                type: files
+                label: Logo
+                max: 1
+                layout: cards
+                query: site.files
+                
+      - width: 1/3
+        sections:
+          files:
+            type: files
+            label: Logos des partenaires
+            layout: cards

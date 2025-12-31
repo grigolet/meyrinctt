@@ -1,0 +1,70 @@
+Title: Accueil
+
+----
+
+Hero-title: Tennis de Table Meyrin
+
+----
+
+Hero-subtitle: Passion, Compétition et Convivialité.
+
+----
+
+Hero-cta-primary: Rejoignez-nous
+
+----
+
+Hero-cta-primary-link: /contact
+
+----
+
+Hero-cta-secondary: Voir les horaires
+
+----
+
+Hero-cta-secondary-link: /horaires
+
+----
+
+Club-title: Pourquoi rejoindre le Meyrin CTT ?
+
+----
+
+Club-description: Plus qu'un simple club de tennis de table, le Meyrin CTT est une véritable communauté où la passion du sport se mêle à la convivialité. Avec plus de 160 membres et une soixantaine de licenciés, nous offrons un environnement accueillant pour tous les âges et tous les niveaux.
+
+----
+
+Club-features:
+
+- 
+  feature: Entraîneurs qualifiés et expérimentés
+- 
+  feature: Installations modernes et bien équipées
+- 
+  feature: Ambiance chaleureuse et familiale
+- 
+  feature: Participation aux championnats suisses
+
+----
+
+Cards:
+
+- 
+  title: Entraînements
+  description: Des créneaux pour tous les niveaux, du débutant au compétiteur confirmé. Consultez nos horaires d'entraînement hebdomadaires.
+  link: /horaires
+  link_text: Voir les horaires
+- 
+  title: Compétition
+  description: Plusieurs équipes engagées dans les championnats régionaux et nationaux. Rejoignez nos compétiteurs passionnés.
+  link: /club
+  link_text: En savoir plus
+- 
+  title: École de Jeunes
+  description: Une école de tennis de table pour les enfants dès 6 ans, encadrée par des entraîneurs diplômés et passionnés.
+  link: /club
+  link_text: Découvrir l'école
+
+----
+
+Uuid: fmuffgix2jwoho17

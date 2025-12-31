@@ -1,0 +1,48 @@
+# Gallery page blueprint
+title: Galerie
+icon: 📷
+
+options:
+  changeSlug: false
+
+tabs:
+  content:
+    label: Contenu
+    icon: text
+    columns:
+      - width: 1/2
+        sections:
+          hero:
+            type: fields
+            fields:
+              hero_title:
+                type: text
+                label: Titre de la page
+                default: "Galerie"
+                
+              hero_subtitle:
+                type: text
+                label: Sous-titre
+                default: "Retrouvez les photos et vidéos de nos événements."
+                
+      - width: 1/2
+        sections:
+          info:
+            type: info
+            label: Albums
+            text: Les albums sont gérés comme des sous-pages. Chaque album est une page enfant de la galerie.
+            theme: info
+
+  albums:
+    label: Albums
+    icon: images
+    sections:
+      albums:
+        type: pages
+        label: Albums photos
+        status: all
+        layout: cards
+        image:
+          cover: true
+        template: album
+        sortBy: date desc
