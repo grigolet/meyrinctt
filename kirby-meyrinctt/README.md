@@ -1,43 +1,187 @@
-<img src="http://getkirby.com/assets/images/github/starterkit.jpg" width="300">
+# Meyrin CTT - Kirby 5 Theme
 
-**Kirby: the CMS that adapts to any project, loved by developers and editors alike.**
-The Starterkit is a full-blown Kirby installation with a lot of example content, blueprints, templates and more.
-It is ideal for new users to explore many of Kirby's options and get to know the Panel.
+A custom Kirby CMS theme for Meyrin CTT (Club de Tennis de Table Meyrin), converted from a static PHP website.
 
-You can learn more about Kirby at [getkirby.com](https://getkirby.com).
+## Features
 
-<img src="http://getkirby.com/assets/images/github/starterkit-screen.png" />
+- 🎨 **Customizable Theme** - All colors and fonts configurable via the Panel
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- 📰 **News Management** - Blog-style news/articles system
+- 📷 **Photo Gallery** - Album management with lightbox
+- 📧 **Contact Form** - Built-in contact form with email notifications
+- ⚙️ **Panel Settings** - All site configuration editable in the Panel
+- 🎄 **Holiday Decorations** - Optional winter holiday decorations
 
-### Try Kirby for free
+## Installation
 
-You can try Kirby and the Starterkit on your local machine or on a test server as long as you need to make sure it is the right tool for your next project. … and when you’re convinced, [buy your license](https://getkirby.com/buy).
+### Requirements
 
-The Starterkit is a demo of basic Kirby features. It's not recommended to be used "as is" in production. Please, follow our documentation closely for more features and guides on how to build secure, high-quality websites with Kirby.
+- PHP 8.2+
+- Kirby 5.x
+- Web server (Apache, Nginx, etc.)
 
-While Kirby as the CMS software itself requires you to purchase a license, we consider the files primarily connected to this Starterkit (assets, templates, snippets...) free to use under the MIT license. Feel free to start building your own project with them.
+### Setup
 
-### Get going
+1. **Copy the Kirby core:**
+   ```bash
+   # Copy the kirby folder from the starterkit
+   cp -r ../starterkit-main/kirby ./kirby
+   ```
 
-Read our guide on [how to get started with Kirby](https://getkirby.com/docs/guide/quickstart).
+2. **Set up your web server** to point to this directory
 
-You can download the latest version of the Starterkit from https://download.getkirby.com/.
-If you are familiar with Git, you can clone Kirby's Starterkit repository from Github.
+3. **Access the Panel:**
+   - Go to `yoursite.com/panel`
+   - Create an admin account on first visit
 
-    git clone https://github.com/getkirby/starterkit.git
+4. **Configure your site:**
+   - Go to Site Settings in the Panel
+   - Configure theme colors, contact settings, etc.
 
-## What's Kirby?
+## Directory Structure
 
--   **[getkirby.com](https://getkirby.com)** – Get to know the CMS.
--   **[Try it](https://getkirby.com/try)** – Take a test ride with our online demo. Or download one of our kits to get started.
--   **[Documentation](https://getkirby.com/docs/guide)** – Read the official guide, reference and cookbook recipes.
--   **[Issues](https://github.com/getkirby/kirby/issues)** – Report bugs and other problems.
--   **[Feedback](https://feedback.getkirby.com)** – You have an idea for Kirby? Share it.
--   **[Forum](https://forum.getkirby.com)** – Whenever you get stuck, don't hesitate to reach out for questions and support.
--   **[Discord](https://chat.getkirby.com)** – Hang out and meet the community.
--   **[YouTube](https://youtube.com/kirbyCasts)** - Watch the latest video tutorials visually with Bastian.
--   **[Mastodon](https://mastodon.social/@getkirby)** – Spread the word.
--   **[Bluesky](https://bsky.app/profile/getkirby.com)** – Tell a friend.
----
+```
+kirby-meyrinctt/
+├── assets/
+│   ├── css/
+│   │   └── index.css       # Custom styles
+│   └── js/
+│       └── index.js        # Custom JavaScript
+├── content/
+│   ├── site.txt            # Site settings
+│   ├── accueil/            # Home page
+│   ├── club/               # Club page
+│   ├── horaires/           # Schedule page
+│   ├── inscription/        # Registration page
+│   ├── galerie/            # Gallery page
+│   ├── actualites/         # News listing
+│   └── contact/            # Contact page
+├── site/
+│   ├── blueprints/
+│   │   ├── site.yml        # Site settings blueprint
+│   │   └── pages/          # Page blueprints
+│   ├── config/
+│   │   └── config.php      # Kirby configuration
+│   ├── snippets/           # Reusable components
+│   │   ├── header.php
+│   │   ├── footer.php
+│   │   ├── nav.php
+│   │   ├── hero.php
+│   │   └── ...
+│   └── templates/          # Page templates
+│       ├── accueil.php
+│       ├── club.php
+│       ├── horaires.php
+│       └── ...
+├── .htaccess               # Apache rewrite rules
+├── index.php               # Main entry point
+└── README.md               # This file
+```
 
-© 2009 Bastian Allgeier
-[getkirby.com](https://getkirby.com) · [License agreement](https://getkirby.com/license)
+## Configuration
+
+### Site Settings (Panel)
+
+All site configuration is managed through the Panel under "Site Settings":
+
+| Tab | Settings |
+|-----|----------|
+| **Thème** | Colors, fonts |
+| **Paramètres** | General settings, announcement banner |
+| **Contact** | Email configuration, club address |
+| **Pied de page** | Footer content, social links |
+
+### Theme Colors
+
+Configure in Panel → Site Settings → Thème:
+
+- `color_primary` - Main brand color (#0056b3)
+- `color_primary_light` - Light variant (#e3f2fd)
+- `color_bg` - Background color (#f8f9fa)
+- `color_surface` - Card/surface color (#ffffff)
+- `color_text` - Text color (#1a1a1a)
+- `color_border` - Border color (#004494)
+- `color_accent` - Accent color (#d32f2f)
+
+### Contact Settings
+
+Configure in Panel → Site Settings → Contact:
+
+- `email_to` - Recipient email for contact form
+- `email_from` - Sender email address
+- `email_subject` - Default email subject
+- `enable_notifications` - Toggle email notifications
+
+## Page Types
+
+| Template | Description |
+|----------|-------------|
+| `accueil` | Home page with hero, news, and club sections |
+| `club` | Club info, history, committee, notable players |
+| `horaires` | Training schedule with timetable |
+| `inscription` | Registration info and fee tables |
+| `galerie` | Photo gallery listing |
+| `album` | Individual photo album |
+| `actualites` | News listing with pagination |
+| `article` | Single news article |
+| `contact` | Contact form and info |
+| `default` | Generic page with text content |
+
+## Adding Content
+
+### News Articles
+
+1. Go to Panel → Actualités → Add
+2. Fill in title, date, excerpt
+3. Add content using the block editor
+4. Upload a cover image
+
+### Photo Albums
+
+1. Go to Panel → Galerie → Add
+2. Enter album title and description
+3. Upload photos to the album
+
+### Pages
+
+Each page can be edited in the Panel with appropriate fields for that page type.
+
+## Customization
+
+### Adding New Templates
+
+1. Create blueprint in `site/blueprints/pages/`
+2. Create template in `site/templates/`
+3. Create content folder in `content/`
+
+### Modifying Snippets
+
+Edit files in `site/snippets/` to change:
+- Header/footer layout
+- Navigation structure
+- Hero sections
+- Card components
+
+### Custom CSS
+
+Add styles to `assets/css/index.css` or use Tailwind classes directly in templates.
+
+## Migration from Original Site
+
+The original static PHP site has been converted to Kirby:
+
+| Original | Kirby |
+|----------|-------|
+| `config.php` | Panel settings (site.yml blueprint) |
+| `includes/*.php` | `site/snippets/` |
+| `*.php` pages | `site/templates/` + `content/` |
+| `posts/*.php` | `content/actualites/*/article.txt` |
+| `assets/albums/` | `content/galerie/*/` |
+
+## Support
+
+For issues or questions about this theme, contact the Meyrin CTT webmaster.
+
+## License
+
+This theme is custom-made for Meyrin CTT. Kirby CMS requires a license for production use - see [getkirby.com](https://getkirby.com).

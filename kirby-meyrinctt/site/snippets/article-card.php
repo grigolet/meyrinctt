@@ -10,37 +10,19 @@
 
 $article = $article ?? $page;
 $cover = $article->cover()->toFile() ?? $article->images()->first();
+$coverUrl = $cover ? $cover->url() : url('assets/placeholder.jpg');
 $date = $article->date()->toDate('d M Y');
 ?>
 
-<a href="<?= $article->url() ?>" class="flex flex-col h-full bg-surface border-2 border-border rounded-xl shadow-soft transition-transform hover:-translate-y-1.5 hover:shadow-hover overflow-hidden group">
-    <?php if ($cover): ?>
-    <div class="h-[240px] shrink-0 border-b-2 border-border relative overflow-hidden">
-        <?php snippet('responsive-image', [
-            'image' => $cover,
-            'alt' => $article->title()->esc(),
-            'preset' => 'card',
-            'sizes' => '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-            'class' => 'w-full h-full object-cover',
-            'lazy' => true,
-            'width' => 800,
-            'height' => 240
-        ]) ?>
-    </div>
-    <?php else: ?>
-    <div class="h-[240px] shrink-0 border-b-2 border-border bg-gray-200"></div>
-    <?php endif ?>
-    <div class="flex flex-col grow p-8">
-        <div class="mb-4">
-            <span class="block text-sm font-bold text-primary uppercase mb-2"><?= $date ?></span>
-            <h3 class="text-2xl font-extrabold mb-2 leading-tight"><?= $article->title()->esc() ?></h3>
-            <?php if ($article->excerpt()->isNotEmpty()): ?>
-            <p><?= $article->excerpt()->esc() ?></p>
-            <?php endif ?>
-        </div>
-        <div class="mt-auto flex items-center justify-between">
-            <small class="font-extrabold"><?= $article->author()->esc() ?></small>
-            <span class="font-bold text-text border-b-2 border-accent uppercase text-sm">Lire la suite...</span>
-        </div>
+<a href="<?= $article->url() ?>" class="block bg-surface border-2 border-border rounded-xl shadow-soft transition-transform hover:-translate-y-1.5 hover:shadow-hover overflow-hidden relative group">
+    <div class="absolute top-2.5 right-2.5 w-[30px] h-[30px] bg-[url('<?= url('assets/paddle-illustration.png') ?>')] bg-contain bg-no-repeat opacity-10 z-0"></div>
+    <div class="h-[240px] border-b-2 border-border bg-cover bg-center" style="background-image: url('<?= $coverUrl ?>');"></div>
+    <div class="p-8 relative z-10">
+        <span class="block text-sm font-bold text-primary uppercase mb-2"><?= $date ?></span>
+        <h3 class="text-2xl font-extrabold mb-2 leading-tight"><?= $article->title()->esc() ?></h3>
+        <?php if ($article->excerpt()->isNotEmpty()): ?>
+        <p class="mb-4"><?= $article->excerpt()->esc() ?></p>
+        <?php endif ?>
+        <span class="inline-block mt-4 font-bold text-text border-b-2 border-accent uppercase text-sm">Lire la suite</span>
     </div>
 </a>

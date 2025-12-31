@@ -15,23 +15,6 @@
     
     <title><?= $page->title()->esc() ?> | <?= $site->title()->esc() ?></title>
     <meta name="description" content="<?= $page->metaDescription()->or($site->site_description())->esc() ?>">
-
-    <meta property="og:site_name" content="<?= $site->title()->html() ?>">
-    <meta property="og:url" content="<?= $page->url() ?>">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="<?= $page->title()->html() ?>">
-    <meta property="og:description" content="<?= $page->description()->html() ?>">
-    <meta property="og:image:type" content="image/png">
-
-    <!-- Use og:image for your template or a fallback image -->
-    <?php 
-    $ogImage = url('assets/hero.webp'); // default fallback
-    if ($page->template()->name() === 'article' && $coverImage = $page->files()->template('cover')->first()) {
-        $ogImage = $coverImage->url();
-    }
-    ?>
-    <meta property="og:image" content="<?= $ogImage ?>">
-
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,18 +120,9 @@
         <div class="max-w-[1200px] mx-auto px-4 flex justify-between items-center relative z-10">
             <a href="<?= $site->url() ?>" class="flex items-center gap-3">
                 <?php if ($logo = $site->logo()->toFile()): ?>
-                <picture>
-                    <source srcset="<?= $logo->srcset([48, 96, 144]) ?>" type="image/webp">
-                    <img 
-                        src="<?= $logo->url() ?>" 
-                        alt="<?= $site->title()->esc() ?> Logo" 
-                        class="h-12 w-auto"
-                        width="<?= $logo->width() ?>"
-                        height="48"
-                    >
-                </picture>
+                    <img src="<?= $logo->url() ?>" alt="<?= $site->title()->esc() ?> Logo" class="h-12 w-auto">
                 <?php else: ?>
-                    <img src="<?= url('assets/logo.png') ?>" alt="<?= $site->title()->esc() ?> Logo" class="h-12 w-auto" width="48" height="48">
+                    <img src="<?= url('assets/logo.png') ?>" alt="<?= $site->title()->esc() ?> Logo" class="h-12 w-auto">
                 <?php endif ?>
                 <span class="text-3xl font-black text-primary uppercase tracking-tighter"><?= $site->title()->esc() ?></span>
             </a>

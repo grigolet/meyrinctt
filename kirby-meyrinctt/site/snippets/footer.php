@@ -10,40 +10,6 @@
 
     <footer class="py-16 bg-primary text-white mt-16">
         <div class="max-w-[1200px] mx-auto px-4">
-            <!-- Sponsors Section -->
-            <?php if ($site->sponsors_list()->isNotEmpty()): ?>
-            <div class="mb-12 pb-8 border-b border-white/20">
-                <h4 class="mb-6 text-primary-light font-extrabold uppercase text-center"><?= $site->sponsors_title()->or('Nos Partenaires')->esc() ?></h4>
-                <div class="flex flex-wrap justify-center items-stretch gap-6">
-                    <?php foreach ($site->sponsors_list()->toStructure() as $sponsor): ?>
-                        <?php if ($sponsor->logo()->toFile()): ?>
-                        <a href="<?= $sponsor->url()->esc() ?>" target="_blank" rel="noopener" class="w-32 bg-white rounded-lg p-4 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex flex-col items-center justify-between max-w-[180px]" title="<?= $sponsor->name()->esc() ?>">
-                            <div class="flex items-center justify-center mb-3 flex-1">
-                                <?php $sponsorLogo = $sponsor->logo()->toFile(); ?>
-                                <?php if ($sponsorLogo): ?>
-                                <picture>
-                                    <source srcset="<?= $sponsorLogo->srcset([150, 300, 450]) ?>" type="image/webp">
-                                    <img 
-                                        src="<?= $sponsorLogo->resize(150, 80)->url() ?>" 
-                                        alt="<?= $sponsor->name()->esc() ?>" 
-                                        class="max-h-16 w-auto object-contain"
-                                        width="150"
-                                        height="80"
-                                        loading="lazy"
-                                    >
-                                </picture>
-                                <?php endif ?>
-                            </div>
-                            <div class="text-center text-sm font-bold text-primary leading-tight">
-                                <?= $sponsor->name()->esc() ?>
-                            </div>
-                        </a>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                </div>
-            </div>
-            <?php endif ?>
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div>
                     <h4 class="mb-4 text-primary-light font-extrabold uppercase"><?= $site->title()->esc() ?></h4>

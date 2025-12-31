@@ -105,58 +105,18 @@ tabs:
         type: structure
         label: Membres du comité
         fields:
-          photo:
-            type: files
-            label: Photo de profil
-            max: 1
-            layout: cards
-            query: page.images
-            width: 1/2
           role:
             type: text
             label: Rôle
-            width: 1/2
+            width: 1/3
           name:
             type: text
             label: Nom
-            width: 1/2
+            width: 1/3
           email:
             type: email
             label: Email
-            width: 1/2
-
-  coaches:
-    label: Entraîneurs
-    icon: account
-    fields:
-      coaches_title:
-        type: text
-        label: Titre section entraîneurs
-        default: "Nos Entraîneurs"
-        
-      coaches_members:
-        type: structure
-        label: Entraîneurs
-        fields:
-          photo:
-            type: files
-            label: Photo de profil
-            max: 1
-            layout: cards
-            query: page.images
-            width: 1/2
-          specialty:
-            type: text
-            label: Spécialité
-            width: 1/2
-          name:
-            type: text
-            label: Nom
-            width: 1/2
-          email:
-            type: email
-            label: Email
-            width: 1/2
+            width: 1/3
 
   players:
     label: Joueurs remarquables

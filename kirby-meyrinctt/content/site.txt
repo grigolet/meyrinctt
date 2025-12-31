@@ -2,83 +2,83 @@ Title: Meyrin CTT
 
 ----
 
-Color-primary: #0056b3
+Site_description: Club de Tennis de Table Meyrin - Passion, Compétition et Convivialité depuis 1977.
 
 ----
 
-Color-primary-light: #e3f2fd
+Color_primary: #0056b3
 
 ----
 
-Color-bg: #f8f9fa
+Color_primary_light: #e3f2fd
 
 ----
 
-Color-surface: #ffffff
+Color_bg: #f8f9fa
 
 ----
 
-Color-text: #1a1a1a
+Color_surface: #ffffff
 
 ----
 
-Color-border: #004494
+Color_text: #1a1a1a
 
 ----
 
-Color-accent: #d32f2f
+Color_border: #004494
 
 ----
 
-Font-sans: 'Inter', sans-serif
+Color_accent: #d32f2f
 
 ----
 
-Site-description: Club de Tennis de Table Meyrin - Passion, Compétition et Convivialité depuis 1977.
+Font_sans: 'Inter', sans-serif
 
 ----
 
-Optimize-images: true
+Optimize_images: true
 
 ----
 
-Replace-originals: true
+Replace_originals: true
 
 ----
 
-Holiday-decorations: false
+Holiday_decorations: true
 
 ----
 
-Announcement-enabled: false
+Announcement_enabled: false
 
 ----
 
-Announcement-text: 🚨 Info: Le gymnase sera fermé le 25 Décembre.
+Announcement_text: 🚨 Info: Le gymnase sera fermé le 25 Décembre.
 
 ----
 
-Announcement-icon: 🚨
+Announcement_icon: 🚨
 
 ----
 
-Email-to: gianluca.rigoletti@gmail.com
+Email_to: helferjoan@hotmail.com
 
 ----
 
-Email-from: noreply@meyrinctt.ch
+Email_from: noreply@meyrinctt.ch
 
 ----
 
-Email-subject: Nouveau message depuis le site Meyrin CTT
+Email_subject: Nouveau message depuis le site Meyrin CTT
 
 ----
 
-Enable-notifications: true
+Enable_notifications: true
 
 ----
 
-Club-address:
+Club_address:
 
 Meyrin CTT
 Rue de Livron 2
@@ -86,11 +86,11 @@ Rue de Livron 2
 
 ----
 
-Club-email: info@meyrinctt.ch
+Club_email: info@meyrinctt.ch
 
 ----
 
-Club-location-note: Local en-dessous de la Piscine
+Club_location_note: Local en-dessous de la Piscine
 
 ----
 
@@ -98,28 +98,4 @@ Copyright: © 2025 Meyrin CTT
 
 ----
 
-Social-links:
-
-- 
-  platform: instagram
-  icon: instagram
-  url: https://www.instagram.com/meyrinctt
-
-----
-
-Sponsors-title: Nos partneaires
-
-----
-
-Sponsors-list:
-
-- 
-  name: CERN Staff Association
-  url: https://staff-association.cern/
-  logo:
-    - file://7us8kmbrew4cfeec
-- 
-  name: VIlle de Meyrin
-  url: https://www.meyrin.ch/
-  logo:
-    - file://nlcu6qianqfbuyvn
+Social_links: 

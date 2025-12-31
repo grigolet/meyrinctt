@@ -118,16 +118,7 @@ snippet('header');
             </div>
             <div class="hidden lg:block">
                 <?php if ($heroImage = $page->images()->first()): ?>
-                <?php snippet('responsive-image', [
-                    'image' => $heroImage,
-                    'alt' => $site->title()->esc(),
-                    'preset' => 'default',
-                    'sizes' => '(max-width: 1200px) 50vw, 600px',
-                    'class' => 'rounded-xl shadow-soft border-2 border-border',
-                    'lazy' => true,
-                    'width' => 600,
-                    'height' => 400
-                ]) ?>
+                <img src="<?= $heroImage->resize(600)->url() ?>" alt="<?= $site->title()->esc() ?>" class="rounded-xl shadow-soft border-2 border-border">
                 <?php endif ?>
             </div>
         </div>

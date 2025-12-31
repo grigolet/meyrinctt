@@ -37,7 +37,7 @@ function formatTimeKirby($time) {
 
 <section class="py-16">
     <div class="max-w-[1200px] mx-auto px-4">
-        <h2 class="text-4xl font-black text-primary uppercase mb-4 text-center"><?= $page->schedule_title()->or('PLANNING des cours 2025/2026')->esc() ?></h2>
+        <h2 class="text-4xl font-black uppercase mb-4 text-center"><?= $page->schedule_title()->or('PLANNING des cours 2025/2026')->esc() ?></h2>
         
         <?php if ($page->schedule_notice()->isNotEmpty()): ?>
         <p class="text-center text-red-600 font-bold mb-8"><?= $page->schedule_notice()->esc() ?></p>

@@ -8,6 +8,7 @@
 $title = $title ?? $page->hero_title()->or($page->title());
 $subtitle = $subtitle ?? $page->hero_subtitle()->value();
 $bgImage = $image ?? ($page->hasImages() ? $page->images()->first() : null);
+$bgUrl = $bgImage ? $bgImage->url() : url('assets/hero.webp');
 
 $ctaPrimaryText = $page->hero_cta_primary()->or('Rejoignez-nous');
 $ctaPrimaryLink = $page->hero_cta_primary_link()->toUrl() ?: page('contact')?->url() ?: '#';
@@ -16,20 +17,7 @@ $ctaSecondaryLink = $page->hero_cta_secondary_link()->toUrl() ?: page('horaires'
 ?>
 
 <section class="py-32 bg-bg border-b-2 border-border relative overflow-hidden">
-    <?php if ($bgImage): ?>
-    <div class="absolute top-0 left-0 w-full h-full z-0">
-        <?php snippet('responsive-image', [
-            'image' => $bgImage,
-            'alt' => Str::esc($title),
-            'preset' => 'cover',
-            'sizes' => '100vw',
-            'class' => 'w-full h-full object-cover',
-            'lazy' => false,
-            'width' => 1920,
-            'height' => 600
-        ]) ?>
-    </div>
-    <?php endif ?>
+    <div class="absolute top-0 left-0 w-full h-full bg-[url('<?= $bgUrl ?>')] bg-cover bg-center z-0"></div>
     <div class="absolute top-0 left-0 w-full h-full bg-black/30 z-0 pointer-events-none"></div>
 
     <div class="absolute top-0 left-0 w-full pointer-events-none z-0">

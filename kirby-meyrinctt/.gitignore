@@ -1,51 +1,35 @@
-# System files
-# ------------
+# Kirby
+/kirby
 
-Icon
-.DS_Store
-
-# Temporary files
-# ---------------
-
-/media/*
-!/media/index.html
-
-# Lock files
-# ---------------
-
-.lock
-
-# Editors
-# (sensitive workspace files)
-# ---------------------------
-*.sublime-workspace
-/.vscode
-/.idea
-
-# -------------SECURITY-------------
-# NEVER publish these files via Git!
-# -------------SECURITY-------------
-
-# Cache Files
-# ---------------
-
+# Cache
 /site/cache/*
-!/site/cache/index.html
-
-# Accounts
-# ---------------
-
-/site/accounts/*
-!/site/accounts/index.html
+!/site/cache/.gitkeep
 
 # Sessions
-# ---------------
-
 /site/sessions/*
-!/site/sessions/index.html
+!/site/sessions/.gitkeep
 
-# License
-# ---------------
+# Accounts (user data)
+/site/accounts/*
+!/site/accounts/.gitkeep
 
-/site/config/.license
-/site/config/config.starterkit.test.php
+# Logs
+/site/logs/*
+
+# Composer
+/vendor
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea
+.vscode
+*.sublime-*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~

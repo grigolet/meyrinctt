@@ -26,20 +26,11 @@ $images = $page->images();
         <?php endif ?>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <?php $index = 0; foreach ($images as $image): ?>
+            <?php foreach ($images as $index => $image): ?>
             <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all hover:scale-[1.02]" onclick="openLightbox(<?= $index ?>)">
-                <?php snippet('responsive-image', [
-                    'image' => $image,
-                    'alt' => $image->alt()->or('Photo ' . ($index + 1))->esc(),
-                    'preset' => 'thumbnail',
-                    'sizes' => '(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw',
-                    'class' => 'w-full h-full object-cover',
-                    'lazy' => true,
-                    'width' => 400,
-                    'height' => 400
-                ]) ?>
+                <img src="<?= $image->resize(400)->url() ?>" alt="<?= $image->alt()->or('Photo ' . ($index + 1))->esc() ?>" class="w-full h-full object-cover" loading="lazy">
             </div>
-            <?php $index++; endforeach ?>
+            <?php endforeach ?>
         </div>
     </div>
 </section>

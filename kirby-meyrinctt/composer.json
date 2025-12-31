@@ -1,40 +1,14 @@
 {
-  "name": "getkirby/starterkit",
-  "description": "Kirby Starterkit",
-  "type": "project",
-  "keywords": [
-    "kirby",
-    "cms",
-    "starterkit"
-  ],
-  "authors": [
-    {
-      "name": "Bastian Allgeier",
-      "email": "bastian@getkirby.com",
-      "homepage": "https://getkirby.com"
-    }
-  ],
-  "homepage": "https://getkirby.com",
-  "support": {
-    "email": "support@getkirby.com",
-    "issues": "https://github.com/getkirby/starterkit/issues",
-    "forum": "https://forum.getkirby.com",
-    "source": "https://github.com/getkirby/starterkit"
-  },
-  "require": {
-    "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-    "getkirby/cms": "^5.2"
-  },
-  "config": {
-    "allow-plugins": {
-      "getkirby/composer-installer": true
+    "name": "meyrinctt/kirby-theme",
+    "description": "Kirby CMS theme for Meyrin CTT",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "getkirby/cms": "^5.0"
     },
-    "optimize-autoloader": true
-  },
-  "scripts": {
-    "start": [
-      "Composer\\Config::disableProcessTimeout",
-      "@php -S localhost:8000 kirby/router.php"
-    ]
-  }
+    "config": {
+        "optimize-autoloader": true
+    }
 }

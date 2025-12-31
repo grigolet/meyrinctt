@@ -10,15 +10,12 @@
 
 $images = $images ?? [];
 $imageUrls = [];
-$imageThumbUrls = [];
 
 foreach ($images as $image) {
     if (is_object($image) && method_exists($image, 'url')) {
         $imageUrls[] = $image->url();
-        $imageThumbUrls[] = $image->resize(100)->url();
     } elseif (is_string($image)) {
         $imageUrls[] = $image;
-        $imageThumbUrls[] = $image;
     }
 }
 ?>
@@ -47,8 +44,7 @@ foreach ($images as $image) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCounter = document.getElementById('lightbox-counter');
-    const lightboxImages = <?= json_encode($imageUrls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES) ?>;
-    const lightboxThumbs = <?= json_encode($imageThumbUrls, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES) ?>;
+    const lightboxImages = <?= json_encode($imageUrls) ?>;
     let currentIndex = 0;
 
     function openLightbox(index) {
@@ -67,26 +63,8 @@ foreach ($images as $image) {
 
     function updateLightbox() {
         if (lightboxImages.length > 0) {
-            // Progressive loading: show thumbnail first, then full image
-            lightboxImg.style.opacity = '0.5';
-            lightboxImg.src = lightboxThumbs[currentIndex];
-            
-            const fullImg = new Image();
-            fullImg.onload = function() {
-                lightboxImg.src = fullImg.src;
-                lightboxImg.style.opacity = '1';
-            };
-            fullImg.src = lightboxImages[currentIndex];
-            
+            lightboxImg.src = lightboxImages[currentIndex];
             lightboxCounter.textContent = `${currentIndex + 1} / ${lightboxImages.length}`;
-            
-            // Preload next and previous images
-            if (lightboxImages[currentIndex + 1]) {
-                new Image().src = lightboxImages[currentIndex + 1];
-            }
-            if (currentIndex > 0 && lightboxImages[currentIndex - 1]) {
-                new Image().src = lightboxImages[currentIndex - 1];
-            }
         }
     }
 
