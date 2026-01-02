@@ -3,11 +3,6 @@ FROM php:8.2-apache
 # Install required PHP extensions
 RUN docker-php-ext-install pdo
 
-# Fix MPM conflict - remove all MPM load configs and keep only prefork
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load \
-    && ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/ \
-    && ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/
-
 # Enable Apache modules
 RUN a2enmod rewrite
 
@@ -21,4 +16,5 @@ RUN chown -R www-data:www-data /var/www/html \
 # Expose port
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+# Fix Railway MPM conflict at startup and run Apache
+CMD ["sh", "-c", "a2dismod mpm_event mpm_worker || true && a2enmod mpm_prefork && apache2-foreground"]
