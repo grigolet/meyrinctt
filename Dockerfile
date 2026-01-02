@@ -3,6 +3,9 @@ FROM php:8.2-apache
 # Install required PHP extensions
 RUN docker-php-ext-install pdo
 
+# Fix MPM conflict - disable mpm_event and enable mpm_prefork
+RUN a2dismod mpm_event && a2enmod mpm_prefork
+
 # Enable Apache modules
 RUN a2enmod rewrite
 
