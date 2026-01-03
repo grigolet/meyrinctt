@@ -1,11 +1,12 @@
 FROM php:8.2-apache
 
-# Install dependencies for GD extension
+# Install dependencies for GD extension and Composer
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
     libwebp-dev \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install required PHP extensions
