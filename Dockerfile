@@ -25,7 +25,8 @@ COPY . /var/www/html/
 # Install PHP dependencies (kirby + vendor)
 WORKDIR /var/www/html
 ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN composer install --no-dev --optimize-autoloader
+RUN composer config --no-plugins allow-plugins.getkirby/composer-installer true \
+    && composer install --no-dev --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
