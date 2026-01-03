@@ -10,6 +10,9 @@
 return [
     'debug' => true,
 
+    // Force HTTPS for Railway (behind proxy)
+    'url' => 'https://' . ($_SERVER['HTTP_HOST'] ?? 'localhost'),
+
     // Turnstile captcha settings (testing keys)
     // See: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
     'turnstile' => [
