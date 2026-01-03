@@ -3,11 +3,18 @@ FROM php:8.2-apache
 # Install required PHP extensions
 RUN docker-php-ext-install pdo
 
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 # Enable Apache modules
 RUN a2enmod rewrite
 
 # Copy application files
 COPY . /var/www/html/
+
+# Install PHP dependencies (kirby + vendor)
+WORKDIR /var/www/html
+RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
