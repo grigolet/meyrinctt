@@ -33,7 +33,7 @@ snippet('header');
         </div>
         
         <div class="text-center mt-12">
-            <a href="<?= $newsPage->url() ?>" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-y-1 hover:shadow-hover hover:bg-primary-dark active:translate-0 active:shadow-none cursor-pointer">
+            <a href="<?= $newsPage->url() ?>" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
                 Voir plus d'actualités
             </a>
         </div>
@@ -112,13 +112,22 @@ snippet('header');
                 </ul>
                 <?php endif ?>
                 
-                <a href="<?= page('inscription')?->url() ?>" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-y-1 hover:shadow-hover hover:bg-primary-dark active:translate-0 active:shadow-none cursor-pointer">
+                <a href="<?= page('inscription')?->url() ?>" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
                     Inscription
                 </a>
             </div>
             <div class="hidden lg:block">
                 <?php if ($heroImage = $page->images()->first()): ?>
-                <img src="<?= $heroImage->resize(600)->url() ?>" alt="<?= $site->title()->esc() ?>" class="rounded-xl shadow-soft border-2 border-border">
+                <?php snippet('responsive-image', [
+                    'image' => $heroImage,
+                    'alt' => $site->title()->esc(),
+                    'preset' => 'default',
+                    'sizes' => '(max-width: 1200px) 50vw, 600px',
+                    'class' => 'rounded-xl shadow-soft border-2 border-border',
+                    'lazy' => true,
+                    'width' => 600,
+                    'height' => 400
+                ]) ?>
                 <?php endif ?>
             </div>
         </div>

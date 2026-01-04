@@ -6,7 +6,7 @@
  */
 snippet('header');
 
-$cover = $page->cover()->toFile() ?? $page->images()->first();
+$cover = $page->files()->template('cover')->first() ?? $page->images()->first();
 ?>
 
 <?php snippet('hero', [

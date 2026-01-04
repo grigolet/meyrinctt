@@ -1,76 +1,12 @@
 <?php
 /**
  * Contact page template
- * 
- * Contact form and club information.
+ *
+ * Contact form with Turnstile captcha and club information.
+ * Form logic is handled by the controller (site/controllers/contact.php)
  */
 snippet('header');
 snippet('hero');
-
-// Form handling
-$alert = null;
-
-if ($kirby->request()->is('POST') && get('submit_contact')) {
-    $data = [
-        'name' => get('name'),
-        'email' => get('email'),
-        'message' => get('message')
-    ];
-    
-    $rules = [
-        'name' => ['required', 'minLength' => 2],
-        'email' => ['required', 'email'],
-        'message' => ['required', 'minLength' => 10]
-    ];
-    
-    $messages = [
-        'name' => 'Le nom est requis (minimum 2 caractères)',
-        'email' => "L'adresse email n'est pas valide",
-        'message' => 'Le message est requis (minimum 10 caractères)'
-    ];
-    
-    if ($invalid = invalid($data, $rules, $messages)) {
-        $alert = [
-            'type' => 'error',
-            'message' => implode('<br>', $invalid)
-        ];
-    } else {
-        // Send email if notifications are enabled
-        if ($site->enable_notifications()->toBool()) {
-            try {
-                $kirby->email([
-                    'from' => $site->email_from()->or('noreply@meyrinctt.ch')->value(),
-                    'replyTo' => $data['email'],
-                    'to' => $site->email_to()->or('info@meyrinctt.ch')->value(),
-                    'subject' => $site->email_subject()->or('Nouveau message depuis le site Meyrin CTT')->value(),
-                    'body' => "Nouveau message de contact depuis le site web\n\n" .
-                              "Nom: " . $data['name'] . "\n" .
-                              "Email: " . $data['email'] . "\n\n" .
-                              "Message:\n" . $data['message']
-                ]);
-                
-                $alert = [
-                    'type' => 'success',
-                    'message' => $page->success_message()->or('Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.')->value()
-                ];
-                $data = ['name' => '', 'email' => '', 'message' => ''];
-            } catch (Exception $e) {
-                $alert = [
-                    'type' => 'error',
-                    'message' => "Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer."
-                ];
-            }
-        } else {
-            $alert = [
-                'type' => 'success',
-                'message' => 'Votre message a été reçu (notifications désactivées).'
-            ];
-            $data = ['name' => '', 'email' => '', 'message' => ''];
-        }
-    }
-}
-
-$data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
 ?>
 
 <section class="py-16">
@@ -80,19 +16,20 @@ $data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
             <!-- Form -->
             <div class="bg-white border-2 border-border rounded-xl p-8 shadow-soft">
                 <h2 class="text-2xl font-black uppercase mb-6"><?= $page->form_title()->or('Envoyez un message')->esc() ?></h2>
-                
+
                 <?php if ($alert): ?>
                 <div class="mb-6 p-4 <?= $alert['type'] === 'success' ? 'bg-green-50 border-2 border-green-500 text-green-800' : 'bg-red-50 border-2 border-red-500 text-red-800' ?> rounded-lg">
-                    <strong><?= $alert['type'] === 'success' ? '✓ Succès !' : '✗ Erreur' ?></strong><br>
+                    <strong><?= $alert['type'] === 'success' ? '&#10003; Succes !' : '&#10007; Erreur' ?></strong><br>
                     <?= $alert['message'] ?>
                 </div>
                 <?php endif ?>
-                
+
                 <form action="<?= $page->url() ?>" method="POST">
+                    <input type="hidden" name="submit_contact" value="1">
                     <div class="mb-6">
                         <label class="block font-bold mb-2" for="name">Nom <span class="text-red-500">*</span></label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             id="name"
                             name="name"
                             value="<?= Str::esc($data['name']) ?>"
@@ -102,8 +39,8 @@ $data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
                     </div>
                     <div class="mb-6">
                         <label class="block font-bold mb-2" for="email">Email <span class="text-red-500">*</span></label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             id="email"
                             name="email"
                             value="<?= Str::esc($data['email']) ?>"
@@ -112,17 +49,34 @@ $data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
                             placeholder="votre.email@exemple.com">
                     </div>
                     <div class="mb-6">
+                        <label class="block font-bold mb-2" for="subject">Sujet <span class="text-red-500">*</span></label>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            value="<?= Str::esc($data['subject']) ?>"
+                            required
+                            class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
+                            placeholder="Sujet de votre message">
+                    </div>
+                    <div class="mb-6">
                         <label class="block font-bold mb-2" for="message">Message <span class="text-red-500">*</span></label>
-                        <textarea 
+                        <textarea
                             id="message"
                             name="message"
                             required
                             class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans h-[150px] focus:border-primary focus:outline-none transition-colors"
                             placeholder="Votre message..."><?= Str::esc($data['message']) ?></textarea>
                     </div>
-                    <button 
-                        type="submit" 
-                        name="submit_contact"
+
+                    <?php if ($turnstileEnabled): ?>
+                    <div class="mb-6">
+                        <div class="cf-turnstile" data-sitekey="<?= $turnstileSiteKey ?>"></div>
+                    </div>
+                    <?php endif ?>
+
+                    <button
+                        type="submit"
                         class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
                         Envoyer
                     </button>
@@ -132,7 +86,7 @@ $data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
 
             <!-- Info -->
             <div>
-                <h2 class="text-2xl font-black uppercase mb-6"><?= $page->info_title()->or('Coordonnées')->esc() ?></h2>
+                <h2 class="text-2xl font-black uppercase mb-6"><?= $page->info_title()->or('Coordonnees')->esc() ?></h2>
                 <div class="bg-white border-2 border-border rounded-xl p-8 shadow-soft mb-8">
                     <p class="text-lg leading-relaxed mb-4">
                         <strong><?= $site->title()->esc() ?></strong><br>
@@ -147,13 +101,13 @@ $data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
                     </p>
                     <p class="text-lg leading-relaxed"><?= $site->club_email()->or('info@meyrinctt.ch')->esc() ?></p>
                 </div>
-                
+
                 <?php if ($page->map_embed()->isNotEmpty()): ?>
                 <div class="bg-white border-2 border-border rounded-xl overflow-hidden shadow-soft">
                     <?= $page->map_embed()->value() ?>
                 </div>
                 <?php endif ?>
-                
+
                 <?php if ($page->directions()->isNotEmpty()): ?>
                 <div class="mt-8 bg-white border-2 border-border rounded-xl p-8 shadow-soft">
                     <h3 class="font-black uppercase mb-4">Comment nous trouver</h3>
@@ -165,5 +119,51 @@ $data = $data ?? ['name' => '', 'email' => '', 'message' => ''];
         </div>
     </div>
 </section>
+
+<!-- Error Modal Dialog -->
+<dialog id="error-modal" class="fixed inset-0 z-[100] p-0 m-0 bg-transparent backdrop:bg-black/50 open:flex items-center justify-center">
+    <div class="bg-white border-2 border-red-500 rounded-xl p-8 shadow-lg max-w-md mx-4">
+        <div class="flex items-center gap-3 mb-4">
+            <span class="text-red-500 text-3xl">&#9888;</span>
+            <h3 id="error-modal-title" class="text-xl font-black uppercase text-red-700">Erreur</h3>
+        </div>
+        <p id="error-modal-message" class="text-gray-700 mb-4">Une erreur s'est produite.</p>
+        <details id="error-modal-details" class="mb-6 hidden">
+            <summary class="cursor-pointer text-sm text-gray-500 hover:text-gray-700">Details techniques</summary>
+            <pre id="error-modal-details-text" class="mt-2 p-3 bg-gray-100 rounded text-xs overflow-auto max-h-32 text-gray-600"></pre>
+        </details>
+        <button
+            onclick="document.getElementById('error-modal').close()"
+            class="inline-block px-6 py-3 bg-red-500 text-white border-2 border-red-500 rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
+            Fermer
+        </button>
+    </div>
+</dialog>
+
+<?php if ($turnstileEnabled): ?>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<?php endif ?>
+
+<?php if ($errorModal): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('error-modal');
+        const title = document.getElementById('error-modal-title');
+        const message = document.getElementById('error-modal-message');
+        const details = document.getElementById('error-modal-details');
+        const detailsText = document.getElementById('error-modal-details-text');
+
+        title.textContent = <?= json_encode($errorModal['title']) ?>;
+        message.textContent = <?= json_encode($errorModal['message']) ?>;
+
+        <?php if (!empty($errorModal['details'])): ?>
+        details.classList.remove('hidden');
+        detailsText.textContent = <?= json_encode($errorModal['details']) ?>;
+        <?php endif ?>
+
+        modal.showModal();
+    });
+</script>
+<?php endif ?>
 
 <?php snippet('footer') ?>
