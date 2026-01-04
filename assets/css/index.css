@@ -16,6 +16,15 @@ html {
   max-width: 65ch;
 }
 
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-heading);
+}
+
 .prose h1 {
   font-weight: 800;
   text-transform: none;
@@ -48,6 +57,7 @@ html {
 }
 
 .prose p {
+  font-family: var(--font-body);
   margin-bottom: 1em;
   line-height: 1.75;
 }

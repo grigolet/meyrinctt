@@ -117,11 +117,21 @@ tabs:
             default: "#d32f2f"
             format: hex
             
-          font_sans:
+          font_headline:
+            type: headline
+            label: Polices de caractères
+
+          font_heading:
             type: text
-            label: Police de caractères
-            help: Police principale du site
+            label: Police des titres
+            help: Police pour les titres et navigation (ex. 'Space Grotesk')
             default: "'Space Grotesk', sans-serif"
+
+          font_body:
+            type: text
+            label: Police du texte
+            help: Police pour le contenu et paragraphes (ex. 'DM Sans')
+            default: "'DM Sans', sans-serif"
 
   # Site settings
   settings:

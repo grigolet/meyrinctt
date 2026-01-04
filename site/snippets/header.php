@@ -18,7 +18,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -34,12 +34,26 @@
             --color-border: <?= $site->color_border()->or('#004494') ?>;
             --color-accent: <?= $site->color_accent()->or('#d32f2f') ?>;
 
-            --font-sans: <?= $site->font_sans()->or("'Space Grotesk', sans-serif") ?>;
+            --font-heading: <?= $site->font_heading()->or("'Space Grotesk', sans-serif") ?>;
+            --font-body: <?= $site->font_body()->or("'DM Sans', sans-serif") ?>;
 
             --shadow-soft: 4px 4px 0px rgba(0, 86, 179, 0.15);
             --shadow-hover: 6px 6px 0px rgba(0, 86, 179, 0.25);
 
             --animate-float: float 20s infinite linear;
+        }
+
+        /* Font pairing: Space Grotesk for headings, DM Sans for body */
+        body {
+            font-family: var(--font-body);
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .font-heading,
+        nav a,
+        button,
+        .btn-primary {
+            font-family: var(--font-heading);
         }
 
         @keyframes float {
@@ -100,7 +114,7 @@
     </style>
 </head>
 
-<body class="font-sans bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
+<body class="bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
 
     <!-- Announcement Banner -->
     <?php if ($site->announcement_enabled()->toBool()): ?>
