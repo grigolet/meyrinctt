@@ -27,17 +27,18 @@
         @theme {
             --color-primary: <?= $site->color_primary()->or('#0056b3') ?>;
             --color-primary-light: <?= $site->color_primary_light()->or('#e3f2fd') ?>;
+            --color-primary-dark: <?= $site->color_primary_dark()->or('#003d82') ?>;
             --color-bg: <?= $site->color_bg()->or('#f8f9fa') ?>;
             --color-surface: <?= $site->color_surface()->or('#ffffff') ?>;
             --color-text: <?= $site->color_text()->or('#1a1a1a') ?>;
             --color-border: <?= $site->color_border()->or('#004494') ?>;
             --color-accent: <?= $site->color_accent()->or('#d32f2f') ?>;
-            
+
             --font-sans: <?= $site->font_sans()->or("'Inter', sans-serif") ?>;
-            
-            --shadow-soft: 4px 4px 0px rgba(0, 86, 179, 0.15);
-            --shadow-hover: 6px 6px 0px rgba(0, 86, 179, 0.25);
-            
+
+            --shadow-soft: 0 4px 12px rgba(0, 70, 148, 0.15);
+            --shadow-hover: 0 8px 24px rgba(0, 70, 148, 0.25);
+
             --animate-float: float 20s infinite linear;
         }
 

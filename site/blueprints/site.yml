@@ -72,7 +72,14 @@ tabs:
             help: Version claire de la couleur primaire (ex. #e3f2fd)
             default: "#e3f2fd"
             format: hex
-            
+
+          color_primary_dark:
+            type: color
+            label: Couleur primaire foncée
+            help: Version foncée pour les survols et accents (ex. #003d82)
+            default: "#003d82"
+            format: hex
+
           color_bg:
             type: color
             label: Couleur de fond

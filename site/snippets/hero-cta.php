@@ -18,7 +18,7 @@ $ctaSecondaryLink = $page->hero_cta_secondary_link()->toUrl() ?: page('horaires'
 
 <section class="py-32 bg-bg border-b-2 border-border relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full bg-[url('<?= $bgUrl ?>')] bg-cover bg-center z-0"></div>
-    <div class="absolute top-0 left-0 w-full h-full bg-black/30 z-0 pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-0 pointer-events-none"></div>
 
     <div class="absolute top-0 left-0 w-full pointer-events-none z-0">
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>
@@ -29,7 +29,7 @@ $ctaSecondaryLink = $page->hero_cta_secondary_link()->toUrl() ?: page('horaires'
     </div>
 
     <div class="max-w-[900px] mx-auto px-4 text-center relative z-10">
-        <h1 class="text-5xl md:text-7xl font-black mb-4 text-white leading-none uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] text-shadow-lg/30">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-white leading-none normal-case tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] text-shadow-lg/30">
             <?= Str::esc($title) ?>
         </h1>
         <?php if ($subtitle): ?>
@@ -39,10 +39,10 @@ $ctaSecondaryLink = $page->hero_cta_secondary_link()->toUrl() ?: page('horaires'
         <?php endif ?>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="<?= $ctaPrimaryLink ?>" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer hover:bg-primary-dark">
+            <a href="<?= $ctaPrimaryLink ?>" class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-y-1 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer hover:bg-primary-dark">
                 <?= Str::esc($ctaPrimaryText) ?>
             </a>
-            <a href="<?= $ctaSecondaryLink ?>" class="inline-block px-8 py-4 bg-white text-primary border-2 border-white rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer hover:bg-gray-100">
+            <a href="<?= $ctaSecondaryLink ?>" class="inline-block px-8 py-4 bg-white text-primary border-2 border-white rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-y-1 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer hover:bg-gray-50">
                 <?= Str::esc($ctaSecondaryText) ?>
             </a>
         </div>

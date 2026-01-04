@@ -16,20 +16,35 @@ html {
   max-width: 65ch;
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4 {
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
+.prose h1 {
+  font-weight: 800;
+  text-transform: none;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
 }
 
 .prose h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
   border-bottom: 4px solid var(--color-primary);
   padding-bottom: 0.5rem;
   display: inline-block;
+}
+
+.prose h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.prose h4 {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 .prose p {
@@ -96,8 +111,9 @@ html {
 }
 
 .btn-primary:hover {
-  transform: translate(-2px, -2px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
+  background-color: var(--color-primary-dark);
 }
 
 .btn-primary:active {

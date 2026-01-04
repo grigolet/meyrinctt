@@ -12,8 +12,8 @@ $menuItems = $site->children()->listed();
     <ul class="flex flex-col md:flex-row gap-4 md:gap-8 list-none">
         <?php foreach ($menuItems as $item): ?>
         <li>
-            <a href="<?= $item->url() ?>" 
-               class="font-bold uppercase text-sm relative hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-[3px] after:bottom-[-4px] after:left-0 after:bg-primary after:transition-[width] after:duration-300 <?= $item->isActive() ? 'after:w-full' : '' ?>">
+            <a href="<?= $item->url() ?>"
+               class="font-bold uppercase text-sm text-text hover:text-primary transition-colors relative hover:after:w-full after:content-[''] after:absolute after:w-0 after:h-[3px] after:bottom-[-4px] after:left-0 after:bg-primary after:transition-[width] after:duration-300 <?= $item->isActive() ? 'after:w-full text-primary' : '' ?>">
                 <?= $item->title()->esc() ?>
             </a>
         </li>
