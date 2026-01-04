@@ -121,7 +121,7 @@ tabs:
             type: text
             label: Police de caractères
             help: Police principale du site
-            default: "'Inter', sans-serif"
+            default: "'Space Grotesk', sans-serif"
 
   # Site settings
   settings:

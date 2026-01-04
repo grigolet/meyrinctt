@@ -18,7 +18,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -34,10 +34,10 @@
             --color-border: <?= $site->color_border()->or('#004494') ?>;
             --color-accent: <?= $site->color_accent()->or('#d32f2f') ?>;
 
-            --font-sans: <?= $site->font_sans()->or("'Inter', sans-serif") ?>;
+            --font-sans: <?= $site->font_sans()->or("'Space Grotesk', sans-serif") ?>;
 
-            --shadow-soft: 0 4px 12px rgba(0, 70, 148, 0.15);
-            --shadow-hover: 0 8px 24px rgba(0, 70, 148, 0.25);
+            --shadow-soft: 4px 4px 0px rgba(0, 86, 179, 0.15);
+            --shadow-hover: 6px 6px 0px rgba(0, 86, 179, 0.25);
 
             --animate-float: float 20s infinite linear;
         }
