@@ -10,6 +10,21 @@
 
 $article = $article ?? $page;
 $cover = $article->cover()->toFile() ?? $article->images()->first();
+
+// Fallback to random cover from covers folder if no cover exists
+if (!$cover) {
+    $coversPage = site()->find('covers');
+    if ($coversPage) {
+        $coverImages = $coversPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']);
+        if ($coverImages->count() > 0) {
+            // Use article ID to seed random selection for consistency
+            $seed = crc32($article->id());
+            $index = $seed % $coverImages->count();
+            $cover = $coverImages->nth($index);
+        }
+    }
+}
+
 $coverUrl = $cover ? $cover->url() : url('assets/placeholder.jpg');
 $date = $article->date()->toDate('d M Y');
 ?>

@@ -1,0 +1,5 @@
+Title: Cover Images
+
+----
+
+Uuid: covers-library-001

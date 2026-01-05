@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebSearch",
+      "Bash(find:*)",
+      "Bash(dir:*)",
+      "mcp__canva__generate-design",
+      "mcp__canva__export-design",
+      "Bash(curl:*)",
+      "Bash(copy:*)",
+      "Bash(cp:*)",
+      "mcp__canva__create-design-from-candidate"
+    ]
+  }
+}

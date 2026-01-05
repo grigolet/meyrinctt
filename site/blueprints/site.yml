@@ -25,8 +25,9 @@ tabs:
               - galerie
               - actualites
               - contact
+              - covers
               - default
-            
+
       # Quick access to news and albums
       - width: 1/2
         sections:
@@ -38,7 +39,7 @@ tabs:
             templates:
               - article
             limit: 5
-            
+
           albums:
             type: pages
             label: Albums photos
@@ -47,6 +48,18 @@ tabs:
             templates:
               - album
             limit: 5
+
+          covers:
+            type: pages
+            label: Images de couverture
+            parent: site.find('covers')
+            status: all
+            templates:
+              - covers
+            info: "{{ page.images.count }} images"
+            image:
+              query: page.images.first
+              cover: true
 
   # Theme & appearance settings
   theme:

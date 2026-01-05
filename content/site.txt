@@ -2,83 +2,87 @@ Title: Meyrin CTT
 
 ----
 
-Site_description: Club de Tennis de Table Meyrin - Passion, Compétition et Convivialité depuis 1977.
+Color-primary: #0056b3
 
 ----
 
-Color_primary: #0056b3
+Color-primary-light: #e3f2fd
 
 ----
 
-Color_primary_light: #e3f2fd
+Color-primary-dark: 
 
 ----
 
-Color_bg: #f8f9fa
+Color-bg: #f8f9fa
 
 ----
 
-Color_surface: #ffffff
+Color-surface: #ffffff
 
 ----
 
-Color_text: #1a1a1a
+Color-text: #1a1a1a
 
 ----
 
-Color_border: #004494
+Color-border: #004494
 
 ----
 
-Color_accent: #d32f2f
+Color-accent: #d32f2f
 
 ----
 
-Font_sans: 'Inter', sans-serif
+Font-sans: 'Inter', sans-serif
 
 ----
 
-Optimize_images: true
+Site-description: Club de Tennis de Table Meyrin - Passion, Compétition et Convivialité depuis 1977.
 
 ----
 
-Replace_originals: true
+Optimize-images: true
 
 ----
 
-Holiday_decorations: true
+Replace-originals: true
 
 ----
 
-Announcement_enabled: false
+Holiday-decorations: false
 
 ----
 
-Announcement_text: 🚨 Info: Le gymnase sera fermé le 25 Décembre.
+Announcement-enabled: false
 
 ----
 
-Announcement_icon: 🚨
+Announcement-text: 🚨 Info: Le gymnase sera fermé le 25 Décembre.
 
 ----
 
-Email_to: helferjoan@hotmail.com
+Announcement-icon: 🚨
 
 ----
 
-Email_from: noreply@meyrinctt.ch
+Email-to: helferjoan@hotmail.com
 
 ----
 
-Email_subject: Nouveau message depuis le site Meyrin CTT
+Email-from: noreply@meyrinctt.ch
 
 ----
 
-Enable_notifications: true
+Email-subject: Nouveau message depuis le site Meyrin CTT
 
 ----
 
-Club_address:
+Enable-notifications: true
+
+----
+
+Club-address:
 
 Meyrin CTT
 Rue de Livron 2
@@ -86,11 +90,11 @@ Rue de Livron 2
 
 ----
 
-Club_email: info@meyrinctt.ch
+Club-email: info@meyrinctt.ch
 
 ----
 
-Club_location_note: Local en-dessous de la Piscine
+Club-location-note: Local en-dessous de la Piscine
 
 ----
 
@@ -98,4 +102,12 @@ Copyright: © 2025 Meyrin CTT
 
 ----
 
-Social_links: 
+Social-links: 
+
+----
+
+Sponsors-title: 
+
+----
+
+Sponsors-list: 

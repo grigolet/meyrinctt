@@ -1,0 +1,15 @@
+# Covers library blueprint
+title: Cover Images Library
+icon: 🖼️
+
+tabs:
+  files:
+    label: Cover Images
+    icon: image
+    sections:
+      files:
+        type: files
+        label: Cover Images
+        layout: cards
+        template: cover
+        help: Default cover images for articles without specific covers

@@ -1,0 +1,26 @@
+name: Fichier
+icon: file-document
+preview: fields
+
+fields:
+  file:
+    type: files
+    label: Fichier
+    max: 1
+    uploads:
+      accept:
+        - application/pdf
+        - application/msword
+        - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        - application/vnd.ms-excel
+        - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        - application/zip
+        - text/plain
+  caption:
+    type: text
+    label: Légende
+    placeholder: Description du fichier
+  link:
+    type: toggle
+    label: Afficher comme lien de téléchargement
+    default: true
