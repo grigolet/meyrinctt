@@ -72,7 +72,7 @@ Committee-members:
   email: jean-pierre.revol@cern.ch
 - 
   photo:
-    - file://s9md4k8zzik6jk11
+    - file://bsyhpdaelcaxwrza
   role: Vice-Président
   name: Gianluca Rigoletti
   email: gianluca.rigoletti@gmail.com

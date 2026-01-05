@@ -34,7 +34,11 @@ Color-accent: #d32f2f
 
 ----
 
-Font-sans: 'Inter', sans-serif
+Font-heading: 
+
+----
+
+Font-body: 
 
 ----
 
@@ -98,11 +102,21 @@ Club-location-note: Local en-dessous de la Piscine
 
 ----
 
-Copyright: © 2025 Meyrin CTT
+Copyright: © 2026 Meyrin CTT
 
 ----
 
-Social-links: 
+Social-links:
+
+- 
+  platform: instagram
+  account: @meyrinctt
+  url: https://www.instagram.com/meyrinctt
+- 
+  platform: facebook
+  account: Meyrin-CTT
+  url: >
+    https://www.facebook.com/p/Meyrin-CTT-100057522935004/
 
 ----
 
@@ -110,4 +124,23 @@ Sponsors-title:
 
 ----
 
-Sponsors-list: 
+Sponsors-list:
+
+- 
+  name: Commune de Meyrin
+  url: https://www.meyrin.ch/
+  logo:
+    - file://nlcu6qianqfbuyvn
+- 
+  name: ""
+  url: ""
+  logo: [ ]
+- 
+  name: CERN Staff Association
+  url: https://staff-association.cern/
+  logo:
+    - file://7us8kmbrew4cfeec
+
+----
+
+Font-sans: 'Inter', sans-serif

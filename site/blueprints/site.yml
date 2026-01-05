@@ -295,6 +295,10 @@ tabs:
               twitter: Twitter
               youtube: YouTube
               linkedin: LinkedIn
+          account:
+            type: text
+            label: Nom du compte
+            help: "Ex: @meyrinctt ou Meyrin CTT"
           url:
             type: url
             label: URL du profil
