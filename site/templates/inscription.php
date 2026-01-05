@@ -57,18 +57,15 @@ snippet('hero');
                 <?php if ($page->adhesion_forms()->isNotEmpty()): ?>
                 <div class="flex flex-col gap-4">
                     <?php foreach ($page->adhesion_forms()->toStructure() as $form): ?>
-                    <a href="<?= $form->url()->esc() ?>" target="_blank" class="flex items-center justify-between p-4 border-2 border-border rounded-lg hover:bg-gray-50 transition-colors group">
-                        <span class="font-bold"><?= $form->title()->esc() ?></span>
-                        <span class="text-primary group-hover:translate-x-1 transition-transform">&rarr;</span>
-                    </a>
+                        <?php if ($file = $form->file()->toFile()): ?>
+                        <a href="<?= $file->url() ?>" target="_blank" class="flex items-center justify-between p-4 border-2 border-border rounded-lg hover:bg-gray-50 transition-colors group">
+                            <span class="font-bold"><?= $form->title()->esc() ?></span>
+                            <span class="text-primary group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        </a>
+                        <?php endif ?>
                     <?php endforeach ?>
                 </div>
                 <?php endif ?>
-
-                <div class="mt-8 pt-6 border-t-2 border-gray-100">
-                    <h3 class="font-bold uppercase text-sm text-gray-500 mb-2">Adresse Postale</h3>
-                    <p class="font-medium">MEYRIN CTT<br>2, rue De-Livron<br>1217 Meyrin</p>
-                </div>
             </div>
 
             <!-- Licence -->
@@ -82,23 +79,35 @@ snippet('hero');
                 <?php if ($page->licence_forms()->isNotEmpty()): ?>
                 <div class="flex flex-col gap-4">
                     <?php foreach ($page->licence_forms()->toStructure() as $form): ?>
-                    <a href="<?= $form->url()->esc() ?>" target="_blank" class="flex items-center justify-between p-4 border-2 border-border rounded-lg hover:bg-gray-50 transition-colors group">
-                        <span class="font-bold"><?= $form->title()->esc() ?></span>
-                        <span class="text-primary group-hover:translate-x-1 transition-transform">&rarr;</span>
-                    </a>
+                        <?php if ($file = $form->file()->toFile()): ?>
+                        <a href="<?= $file->url() ?>" target="_blank" class="flex items-center justify-between p-4 border-2 border-border rounded-lg hover:bg-gray-50 transition-colors group">
+                            <span class="font-bold"><?= $form->title()->esc() ?></span>
+                            <span class="text-primary group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        </a>
+                        <?php endif ?>
                     <?php endforeach ?>
                 </div>
                 <?php endif ?>
 
-                <?php if ($page->payment_info()->isNotEmpty()): ?>
-                <div class="mt-8 pt-6 border-t-2 border-gray-100">
-                    <h3 class="font-bold uppercase text-sm text-gray-500 mb-2">Paiements</h3>
-                    <p class="font-medium">CCP du Club: <span class="font-mono bg-gray-100 px-2 py-1 rounded"><?= $page->payment_info()->esc() ?></span></p>
-                </div>
-                <?php endif ?>
+                
             </div>
         </div>
 
+        <!-- Adresse Postale et CCP -->
+        <div class="mt-8 pt-6 border-t-2 border-gray-100 mb-16">
+            <h1 class="text-3xl font-black uppercase my-8">
+                Addresse postale et informations de paiement
+            </h1>
+            <h3 class="font-bold uppercase text-sm text-gray-500 mb-2">Adresse Postale</h3>
+            <p class="font-medium">MEYRIN CTT<br>2, rue De-Livron<br>1217 Meyrin</p>
+            <?php if ($page->payment_info()->isNotEmpty()): ?>
+                <h3 class="font-bold uppercase text-sm text-gray-500 my-2">Paiements</h3>
+                <p class="font-medium">CCP du Club: <span class="font-mono bg-gray-100 px-2 py-1 rounded"><?= $page->payment_info()->esc() ?></span></p>
+            <?php endif ?>
+        </div>
+
+
+        <!-- Help Box -->
         <div class="text-center bg-primary/5 rounded-xl p-8 border-2 border-primary/20">
             <h3 class="text-xl font-black uppercase mb-4">Besoin d'aide ?</h3>
             <p class="mb-6">Pour plus d'informations, vous pouvez contacter la présidente du Meyrin CTT.</p>

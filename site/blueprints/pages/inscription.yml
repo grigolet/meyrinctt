@@ -94,9 +94,15 @@ tabs:
           title:
             type: text
             label: Titre
-          url:
-            type: url
-            label: Lien du PDF
+          file:
+            type: files
+            label: Fichier PDF
+            max: 1
+            uploads:
+              accept:
+                - application/pdf
+                - application/msword
+                - application/vnd.openxmlformats-officedocument.wordprocessingml.document
             
       licence_headline:
         type: headline
@@ -114,9 +120,15 @@ tabs:
           title:
             type: text
             label: Titre
-          url:
-            type: url
-            label: Lien du PDF
+          file:
+            type: files
+            label: Fichier PDF
+            max: 1
+            uploads:
+              accept:
+                - application/pdf
+                - application/msword
+                - application/vnd.openxmlformats-officedocument.wordprocessingml.document
             
       payment_info:
         type: text

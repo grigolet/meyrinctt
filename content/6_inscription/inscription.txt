@@ -56,10 +56,14 @@ Adhesion-forms:
 
 - 
   title: Formulaire (Français)
-  url: https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_fr.pdf
+  file:
+    - file://y15mhgkqoccvsjp6
+  url: 'https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_fr.pdf'
 - 
   title: Formulaire (English)
-  url: https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_en.pdf
+  file:
+    - file://aghpkflvoohnxdnz
+  url: 'https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_en.pdf'
 
 ----
 
@@ -71,10 +75,14 @@ Licence-forms:
 
 - 
   title: Demande de licence
-  url: https://www.meyrinctt.ch/docs/Demande%20de%20licence%20saison%202025-2026.pdf
+  file:
+    - file://ncpcettlks2z4peb
+  url: 'https://www.meyrinctt.ch/docs/Demande%20de%20licence%20saison%202025-2026.pdf'
 - 
   title: Formulaire dopage
-  url: https://www.meyrinctt.ch/docs/Formulaire%20dopage.pdf
+  file:
+    - file://nwoyl0csk6rmm7vf
+  url: 'https://www.meyrinctt.ch/docs/Formulaire%20dopage.pdf'
 
 ----
 
