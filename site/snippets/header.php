@@ -23,6 +23,9 @@
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= url('assets/css/index.css') ?>">
+    
     <style type="text/tailwindcss">
         @theme {
             --color-primary: <?= $site->color_primary()->or('#0056b3') ?>;

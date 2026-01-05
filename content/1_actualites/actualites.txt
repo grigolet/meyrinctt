@@ -1,4 +1,4 @@
-Title: Actualités
+Title: Actualites
 
 ----
 
@@ -14,4 +14,20 @@ Per-page: 9
 
 ----
 
-Uuid: vz7mprtlvlskvtcx
+Uuid: lxp2xykhkmlm2nmy
+
+----
+
+Date: 2025-12-24 00:00:00
+
+----
+
+Author: 
+
+----
+
+Excerpt: Joyeux Noel et Bonne Année de la part du Meyrin CTT!
+
+----
+
+Text: 

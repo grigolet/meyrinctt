@@ -1,9 +1,0 @@
-Sort: 1
-
-----
-
-Uuid: ttcover001youth
-
-----
-
-Template: cover

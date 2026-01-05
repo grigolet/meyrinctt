@@ -1,0 +1,13 @@
+Sort: 1
+
+----
+
+Uuid: vzvqjngovtfx0gfh
+
+----
+
+Template: cover
+
+----
+
+Focus: 50.2% 42.8%

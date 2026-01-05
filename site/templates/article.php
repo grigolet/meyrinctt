@@ -30,14 +30,14 @@ if (!$cover) {
 ]) ?>
 
 <section class="py-16">
-    <div class="max-w-[800px] mx-auto px-4 prose lg:prose-xl">
+    <div class="max-w-[800px] mx-auto px-4">
 
         <?php if ($page->excerpt()->isNotEmpty()): ?>
-        <p class="lead text-xl font-medium text-gray-600 mb-8"><?= $page->excerpt()->esc() ?></p>
+        <p class="lead text-xl font-medium text-gray-600 mb-8 prose"><?= $page->excerpt()->esc() ?></p>
         <?php endif ?>
 
         <?php if ($page->text()->isNotEmpty()): ?>
-        <div class="article-content">
+        <div class="article-content prose lg:prose-xl">
             <?= $page->text()->toBlocks() ?>
         </div>
         <?php endif ?>
