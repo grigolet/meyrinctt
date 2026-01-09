@@ -14,78 +14,79 @@ snippet('hero');
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
             <!-- Form -->
-            <div class="bg-white border-2 border-border rounded-xl p-8 shadow-soft">
+            <div>
                 <h2 class="text-2xl font-black uppercase mb-6"><?= $page->form_title()->or('Envoyez un message')->esc() ?></h2>
-
-                <?php if ($alert): ?>
-                <div class="mb-6 p-4 <?= $alert['type'] === 'success' ? 'bg-green-50 border-2 border-green-500 text-green-800' : 'bg-red-50 border-2 border-red-500 text-red-800' ?> rounded-lg">
-                    <strong><?= $alert['type'] === 'success' ? '&#10003; Succes !' : '&#10007; Erreur' ?></strong><br>
-                    <?= $alert['message'] ?>
-                </div>
-                <?php endif ?>
-
-                <form action="<?= $page->url() ?>" method="POST">
-                    <input type="hidden" name="submit_contact" value="1">
-                    <div class="mb-6">
-                        <label class="block font-bold mb-2" for="name">Nom <span class="text-red-500">*</span></label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value="<?= Str::esc($data['name']) ?>"
-                            required
-                            class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
-                            placeholder="Votre nom complet">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block font-bold mb-2" for="email">Email <span class="text-red-500">*</span></label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value="<?= Str::esc($data['email']) ?>"
-                            required
-                            class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
-                            placeholder="votre.email@exemple.com">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block font-bold mb-2" for="subject">Sujet <span class="text-red-500">*</span></label>
-                        <input
-                            type="text"
-                            id="subject"
-                            name="subject"
-                            value="<?= Str::esc($data['subject']) ?>"
-                            required
-                            class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
-                            placeholder="Sujet de votre message">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block font-bold mb-2" for="message">Message <span class="text-red-500">*</span></label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            required
-                            class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans h-[150px] focus:border-primary focus:outline-none transition-colors"
-                            placeholder="Votre message..."><?= Str::esc($data['message']) ?></textarea>
-                    </div>
-
-                    <?php if ($turnstileEnabled): ?>
-                    <div class="mb-6">
-                        <div class="cf-turnstile" data-sitekey="<?= $turnstileSiteKey ?>"></div>
+                <div class="bg-white border-2 border-border rounded-xl p-8 shadow-soft">
+                    <?php if ($alert): ?>
+                    <div class="mb-6 p-4 <?= $alert['type'] === 'success' ? 'bg-green-50 border-2 border-green-500 text-green-800' : 'bg-red-50 border-2 border-red-500 text-red-800' ?> rounded-lg">
+                        <strong><?= $alert['type'] === 'success' ? '&#10003; Succes !' : '&#10007; Erreur' ?></strong><br>
+                        <?= $alert['message'] ?>
                     </div>
                     <?php endif ?>
 
-                    <button
-                        type="submit"
-                        class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
-                        Envoyer
-                    </button>
-                    <p class="mt-4 text-sm text-gray-600"><span class="text-red-500">*</span> Champs obligatoires</p>
-                </form>
+                    <form action="<?= $page->url() ?>" method="POST">
+                        <input type="hidden" name="submit_contact" value="1">
+                        <div class="mb-6">
+                            <label class="block font-bold mb-2" for="name">Nom <span class="text-red-500">*</span></label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value="<?= Str::esc($data['name']) ?>"
+                                required
+                                class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
+                                placeholder="Votre nom complet">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block font-bold mb-2" for="email">Email <span class="text-red-500">*</span></label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value="<?= Str::esc($data['email']) ?>"
+                                required
+                                class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
+                                placeholder="votre.email@exemple.com">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block font-bold mb-2" for="subject">Sujet <span class="text-red-500">*</span></label>
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                value="<?= Str::esc($data['subject']) ?>"
+                                required
+                                class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans focus:border-primary focus:outline-none transition-colors"
+                                placeholder="Sujet de votre message">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block font-bold mb-2" for="message">Message <span class="text-red-500">*</span></label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                required
+                                class="w-full p-3 border-2 border-[#ddd] rounded-md font-sans h-[150px] focus:border-primary focus:outline-none transition-colors"
+                                placeholder="Votre message..."><?= Str::esc($data['message']) ?></textarea>
+                        </div>
+
+                        <?php if ($turnstileEnabled): ?>
+                        <div class="mb-6">
+                            <div class="cf-turnstile" data-sitekey="<?= $turnstileSiteKey ?>"></div>
+                        </div>
+                        <?php endif ?>
+
+                        <button
+                            type="submit"
+                            class="inline-block px-8 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
+                            Envoyer
+                        </button>
+                        <p class="mt-4 text-sm text-gray-600"><span class="text-red-500">*</span> Champs obligatoires</p>
+                    </form>
+                </div>
             </div>
 
             <!-- Info -->
-            <div>
+            <section>
                 <h2 class="text-2xl font-black uppercase mb-6"><?= $page->info_title()->or('Coordonnees')->esc() ?></h2>
                 <div class="bg-white border-2 border-border rounded-xl p-8 shadow-soft mb-8">
                     <p class="text-lg leading-relaxed mb-4">
@@ -114,7 +115,7 @@ snippet('hero');
                     <?= $page->directions()->kt() ?>
                 </div>
                 <?php endif ?>
-            </div>
+            </section>
 
         </div>
     </div>
