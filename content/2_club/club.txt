@@ -26,6 +26,22 @@ About-text: [{"content":{"text":"<p>Le Meyrin CTT est une association sportive d
 
 ----
 
+Carousel-title: Photos du club
+
+----
+
+Carousel-subtitle: Quelques photos du local
+
+----
+
+Carousel-autoplay: true
+
+----
+
+Carousel-delay: 3000
+
+----
+
 History-title: Histoire du Club
 
 ----

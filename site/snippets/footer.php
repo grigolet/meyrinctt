@@ -152,6 +152,45 @@
                     sessionStorage.setItem('bannerDismissed', 'true');
                 });
             }
+
+            // Club Carousel Initialization
+            const clubCarousel = document.querySelector('.club-carousel');
+            if (clubCarousel && typeof Swiper !== 'undefined') {
+                <?php if ($page->intendedTemplate() == 'club'): ?>
+                const autoplayEnabled = <?= $page->carousel_autoplay()->toBool() ? 'true' : 'false' ?>;
+                const autoplayDelay = <?= $page->carousel_delay()->or(5000)->toInt() ?>;
+                <?php else: ?>
+                const autoplayEnabled = true;
+                const autoplayDelay = 5000;
+                <?php endif ?>
+
+                new Swiper('.club-carousel', {
+                    loop: true,
+                    autoplay: autoplayEnabled ? {
+                        delay: autoplayDelay,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                    } : false,
+                    speed: 800,
+                    effect: 'slide',
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true,
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true,
+                    },
+                    a11y: {
+                        enabled: true,
+                    },
+                });
+            }
         });
     </script>
 </body>

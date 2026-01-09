@@ -132,10 +132,6 @@ Sponsors-list:
   logo:
     - file://nlcu6qianqfbuyvn
 - 
-  name: ""
-  url: ""
-  logo: [ ]
-- 
   name: CERN Staff Association
   url: https://staff-association.cern/
   logo:

@@ -67,6 +67,49 @@ tabs:
             label: Images
             layout: cards
 
+  carousel:
+    label: Carrousel Photos
+    icon: images
+    columns:
+      - width: 2/3
+        sections:
+          carousel_settings:
+            type: fields
+            fields:
+              carousel_title:
+                type: text
+                label: Titre de la section carrousel
+                default: "Notre Club en Images"
+                
+              carousel_subtitle:
+                type: textarea
+                label: Sous-titre/Description (optionnel)
+                maxlength: 200
+                
+              carousel_autoplay:
+                type: toggle
+                label: Défilement automatique
+                default: true
+                help: Active le défilement automatique des images
+                
+              carousel_delay:
+                type: number
+                label: Délai de défilement (ms)
+                default: 5000
+                min: 2000
+                max: 10000
+                step: 500
+                help: Temps d'affichage de chaque image en millisecondes
+                
+      - width: 1/3
+        sections:
+          carousel_images:
+            type: files
+            label: Photos du carrousel
+            layout: cards
+            template: carousel-image
+            help: Ajoutez des photos qui seront affichées dans le carrousel avant l'histoire du club
+
   history:
     label: Histoire
     icon: clock

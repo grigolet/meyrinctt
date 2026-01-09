@@ -45,6 +45,62 @@ snippet('hero');
             </div>
         </div>
 
+        <!-- Club Carousel Section -->
+        <?php if ($page->images()->template('carousel-image')->count() > 0): ?>
+        <div class="mb-16 mt-32">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-black uppercase mb-4 text-center pb-4 border-b-4 border-primary inline-block">
+                    <?= $page->carousel_title()->or('Notre Club en Images')->esc() ?>
+                </h2>
+                <?php if ($page->carousel_subtitle()->isNotEmpty()): ?>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                    <?= $page->carousel_subtitle()->esc() ?>
+                </p>
+                <?php endif ?>
+            </div>
+
+            <div class="max-w-[1100px] mx-auto">
+                <div class="club-carousel swiper border-2 border-border rounded-xl overflow-hidden shadow-soft">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($page->images()->template('carousel-image') as $image): ?>
+                        <div class="swiper-slide">
+                            <div class="relative aspect-[16/9] bg-gray-100">
+                                <picture>
+                                    <source 
+                                        srcset="<?= $image->srcset([800, 1200, 1600]) ?>" 
+                                        type="image/webp"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
+                                    >
+                                    <img 
+                                        src="<?= $image->resize(1200)->url() ?>" 
+                                        alt="<?= $image->alt()->or($page->carousel_title())->esc() ?>" 
+                                        class="w-full h-full object-cover"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                                <?php if ($image->caption()->isNotEmpty()): ?>
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                                    <p class="text-white text-lg font-semibold">
+                                        <?= $image->caption()->esc() ?>
+                                    </p>
+                                </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                    </div>
+                    
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-prev !text-primary !w-12 !h-12 after:!text-2xl !bg-white/90 hover:!bg-white !rounded-full !left-4 !shadow-lg"></div>
+                    <div class="swiper-button-next !text-primary !w-12 !h-12 after:!text-2xl !bg-white/90 hover:!bg-white !rounded-full !right-4 !shadow-lg"></div>
+                    
+                    <!-- Pagination -->
+                    <div class="swiper-pagination !bottom-6"></div>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
         <!-- Club History Section -->
         <?php if ($page->history_timeline()->isNotEmpty()): ?>
         <div class="mb-16 mt-32 text-center">

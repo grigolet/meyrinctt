@@ -1,0 +1,25 @@
+# Carousel Image blueprint
+title: Image Carrousel
+accept:
+  mime: image/jpeg, image/png, image/gif, image/webp
+
+fields:
+  alt:
+    type: text
+    label: Texte alternatif
+    help: Description de l'image pour l'accessibilité (important pour le SEO)
+    placeholder: Ex. Membres du club lors du tournoi 2024
+    
+  caption:
+    type: text
+    label: Légende (optionnel)
+    help: Texte affiché en bas de l'image dans le carrousel
+    placeholder: Ex. Équipe gagnante du tournoi interne 2024
+    maxlength: 120
+    
+  sort:
+    type: number
+    label: Ordre d'affichage
+    help: Définit l'ordre des images dans le carrousel (1 = première)
+    default: 1
+    min: 1
