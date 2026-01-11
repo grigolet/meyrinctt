@@ -1,0 +1,20 @@
+title: Video
+accept: video/*
+
+fields:
+  alt:
+    label: Texte alternatif
+    type: text
+    help: Description de la vidéo pour l'accessibilité
+    
+  caption:
+    label: Légende
+    type: text
+    help: Légende affichée sous la vidéo
+    
+  poster:
+    label: Image de prévisualisation (miniature)
+    type: files
+    max: 1
+    query: page.files.template("photo")
+    help: Sélectionnez une photo de l'album comme miniature pour cette vidéo

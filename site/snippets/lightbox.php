@@ -2,20 +2,58 @@
 /**
  * Lightbox snippet
  * 
- * A modal lightbox for viewing images in full screen.
+ * A modal lightbox for viewing images and videos in full screen.
  * Include this snippet once on pages that need it (albums, galleries).
  * 
- * Usage: snippet('lightbox', ['images' => $imageCollection])
+ * Usage: snippet('lightbox', ['files' => $fileCollection]) or snippet('lightbox', ['images' => $imageCollection])
  */
 
-$images = $images ?? [];
-$imageUrls = [];
+// Support both 'files' and 'images' parameters for backwards compatibility
+$files = $files ?? $images ?? [];
+$youtubeVideos = $youtubeVideos ?? [];
+$mediaItems = [];
 
-foreach ($images as $image) {
-    if (is_object($image) && method_exists($image, 'url')) {
-        $imageUrls[] = $image->url();
-    } elseif (is_string($image)) {
-        $imageUrls[] = $image;
+// Add uploaded files (photos and videos)
+foreach ($files as $file) {
+    if (is_object($file) && method_exists($file, 'url')) {
+        // Better video detection for uploaded videos
+        $isVideo = $file->type() === 'video' || 
+                   in_array($file->extension(), ['mp4', 'webm', 'mov', 'avi', 'mkv', 'ogg']);
+        
+        $mediaItems[] = [
+            'url' => $file->url(),
+            'type' => $isVideo ? 'video' : 'image',
+            'mime' => $file->mime(),
+            'alt' => $file->alt()->or('Media')->esc()
+        ];
+    } elseif (is_string($file)) {
+        // Fallback for string URLs (assumes image)
+        $mediaItems[] = [
+            'url' => $file,
+            'type' => 'image',
+            'mime' => 'image/jpeg',
+            'alt' => 'Media'
+        ];
+    }
+}
+
+// Add YouTube videos from structure field
+foreach ($youtubeVideos as $ytVideo) {
+    if ($ytVideo->youtube_url()->isNotEmpty()) {
+        // Extract YouTube video ID
+        $youtubeUrl = $ytVideo->youtube_url()->value();
+        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $youtubeUrl, $matches);
+        $videoId = $matches[1] ?? '';
+        $embedUrl = $videoId ? "https://www.youtube.com/embed/{$videoId}?autoplay=1" : '';
+        
+        if ($embedUrl) {
+            $mediaItems[] = [
+                'url' => $embedUrl,
+                'type' => 'youtube',
+                'mime' => '',
+                'alt' => $ytVideo->title()->or('Vidéo YouTube')->esc()
+            ];
+        }
     }
 }
 ?>
@@ -30,12 +68,16 @@ foreach ($images as $image) {
     </div>
 
     <!-- Navigation Buttons -->
-    <button onclick="prevImage()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 z-[110] focus:outline-none hidden md:block">&lsaquo;</button>
-    <button onclick="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 z-[110] focus:outline-none hidden md:block">&rsaquo;</button>
+    <button onclick="prevMedia()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 z-[110] focus:outline-none hidden md:block">&lsaquo;</button>
+    <button onclick="nextMedia()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 z-[110] focus:outline-none hidden md:block">&rsaquo;</button>
 
-    <!-- Image Container -->
-    <div class="w-full h-full flex items-center justify-center p-4 md:p-12" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" alt="Full screen" class="max-w-full max-h-full object-contain shadow-2xl transition-opacity duration-300" onclick="event.stopPropagation()">
+    <!-- Media Container -->
+    <div class="w-full h-full flex items-center justify-center p-4 md:p-12" onclick="event.target === this && closeLightbox()">
+        <img id="lightbox-img" src="" alt="Full screen" class="max-w-full max-h-full object-contain shadow-2xl transition-opacity duration-300 hidden" onclick="event.stopPropagation()">
+        <video id="lightbox-video" controls preload="auto" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300 hidden" onclick="event.stopPropagation()" style="background: black;">
+            Your browser does not support the video element.
+        </video>
+        <iframe id="lightbox-youtube" class="max-w-full max-h-full shadow-2xl hidden" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen onclick="event.stopPropagation()" style="aspect-ratio: 16/9; max-width: 90vw; max-height: 90vh;"></iframe>
     </div>
 
 </dialog>
@@ -43,11 +85,18 @@ foreach ($images as $image) {
 <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const lightboxYoutube = document.getElementById('lightbox-youtube');
     const lightboxCounter = document.getElementById('lightbox-counter');
-    const lightboxImages = <?= json_encode($imageUrls) ?>;
+    const lightboxMedia = <?= json_encode($mediaItems) ?>;
     let currentIndex = 0;
+    
+    // Debug: log all media items
+    console.log('Lightbox media items:', lightboxMedia);
+    console.log('Total items:', lightboxMedia.length);
 
     function openLightbox(index) {
+        console.log('Opening lightbox with index:', index);
         currentIndex = index;
         updateLightbox();
         lightbox.classList.remove('hidden');
@@ -56,34 +105,99 @@ foreach ($images as $image) {
     }
 
     function closeLightbox() {
+        // Pause video if playing
+        if (!lightboxVideo.classList.contains('hidden')) {
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+        }
+        // Stop YouTube video
+        if (!lightboxYoutube.classList.contains('hidden')) {
+            lightboxYoutube.src = '';
+        }
         lightbox.close();
         lightbox.classList.add('hidden');
         document.body.style.overflow = '';
     }
 
     function updateLightbox() {
-        if (lightboxImages.length > 0) {
-            lightboxImg.src = lightboxImages[currentIndex];
-            lightboxCounter.textContent = `${currentIndex + 1} / ${lightboxImages.length}`;
+        if (lightboxMedia.length > 0) {
+            const currentMedia = lightboxMedia[currentIndex];
+            
+            console.log('Loading media:', currentMedia); // Debug log
+            
+            // Hide all media elements first
+            lightboxImg.classList.add('hidden');
+            lightboxVideo.classList.add('hidden');
+            lightboxYoutube.classList.add('hidden');
+            
+            // Stop/clear current media
+            if (!lightboxVideo.classList.contains('hidden')) {
+                lightboxVideo.pause();
+                lightboxVideo.src = '';
+            }
+            if (!lightboxYoutube.classList.contains('hidden')) {
+                lightboxYoutube.src = '';
+            }
+            
+            if (currentMedia.type === 'youtube') {
+                // Show YouTube iframe
+                lightboxYoutube.classList.remove('hidden');
+                lightboxYoutube.src = currentMedia.url;
+                console.log('YouTube iframe src set to:', lightboxYoutube.src);
+            } else if (currentMedia.type === 'video') {
+                // Show uploaded video
+                lightboxVideo.classList.remove('hidden');
+                
+                // Set video source directly on the video element
+                lightboxVideo.src = currentMedia.url;
+                lightboxVideo.type = currentMedia.mime || 'video/mp4';
+                
+                // Load the video
+                lightboxVideo.load();
+                
+                console.log('Video element src set to:', lightboxVideo.src);
+                
+                // Try to play after a small delay
+                setTimeout(() => {
+                    lightboxVideo.play().catch(e => {
+                        console.log('Autoplay prevented, user must click play:', e);
+                    });
+                }, 100);
+            } else {
+                // Show image
+                lightboxImg.classList.remove('hidden');
+                lightboxImg.src = currentMedia.url;
+                lightboxImg.alt = currentMedia.alt;
+            }
+            
+            lightboxCounter.textContent = `${currentIndex + 1} / ${lightboxMedia.length}`;
         }
     }
 
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % lightboxImages.length;
+    function nextMedia() {
+        currentIndex = (currentIndex + 1) % lightboxMedia.length;
         updateLightbox();
     }
 
-    function prevImage() {
-        currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    function prevMedia() {
+        currentIndex = (currentIndex - 1 + lightboxMedia.length) % lightboxMedia.length;
         updateLightbox();
     }
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (!lightbox.open) return;
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextMedia();
+        if (e.key === 'ArrowLeft') prevMedia();
         if (e.key === 'Escape') closeLightbox();
+        if (e.key === ' ' && !lightboxVideo.classList.contains('hidden')) {
+            e.preventDefault();
+            if (lightboxVideo.paused) {
+                lightboxVideo.play();
+            } else {
+                lightboxVideo.pause();
+            }
+        }
     });
 
     // Touch swipe support
@@ -94,8 +208,8 @@ foreach ($images as $image) {
     lightbox.addEventListener('touchend', (e) => {
         const diff = touchStartX - e.changedTouches[0].screenX;
         if (Math.abs(diff) > 50) {
-            if (diff > 0) nextImage();
-            else prevImage();
+            if (diff > 0) nextMedia();
+            else prevMedia();
         }
     });
 </script>

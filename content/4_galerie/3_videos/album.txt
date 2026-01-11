@@ -1,0 +1,22 @@
+Title: Videos
+
+----
+
+Description: Videos
+
+----
+
+Date: 
+
+----
+
+Youtube-videos:
+
+- 
+  youtube_url: 'https://www.youtube.com/watch?v=P6fjdVz2ycI&pp=ygUMdGFibGUgdGVubmlz'
+  title: Table tennis match
+  caption: Legende exemple
+
+----
+
+Uuid: xzaki6f8h4bkrtci

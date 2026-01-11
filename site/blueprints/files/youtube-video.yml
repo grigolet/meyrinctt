@@ -1,0 +1,22 @@
+title: Vidéo YouTube
+accept: 
+  mime: text/plain
+  extension: txt
+
+fields:
+  youtube_url:
+    label: URL YouTube
+    type: url
+    placeholder: https://www.youtube.com/watch?v=...
+    help: Collez le lien complet de la vidéo YouTube
+    required: true
+    
+  alt:
+    label: Titre
+    type: text
+    help: Titre ou description de la vidéo
+    
+  caption:
+    label: Légende
+    type: text
+    help: Légende affichée sous la vidéo

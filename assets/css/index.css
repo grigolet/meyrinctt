@@ -222,6 +222,31 @@ dialog::backdrop {
   background: rgba(0, 0, 0, 0.95);
 }
 
+/* Video player styles */
+video {
+  display: block;
+  max-width: 100%;
+}
+
+#lightbox-video {
+  outline: none;
+}
+
+#lightbox-video::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Video thumbnail play button overlay */
+.video-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
 /* Print styles */
 @media print {
   .no-print {
