@@ -8,7 +8,7 @@
 ?>
     </main>
 
-    <footer class="py-16 bg-primary text-white mt-16">
+    <footer class="site-footer py-16 bg-primary text-white mt-16">
         <div class="max-w-[1200px] mx-auto px-4">
             <!-- Sponsors Section -->
             <?php if ($site->sponsors_list()->isNotEmpty()): ?>
@@ -124,20 +124,9 @@
         </div>
     </footer>
 
+    <script src="<?= url('assets/js/index.js') ?>" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu toggle
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
-
-            if (mobileMenuToggle && mainNav) {
-                mobileMenuToggle.addEventListener('click', () => {
-                    const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-                    mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
-                    mainNav.classList.toggle('hidden');
-                });
-            }
-
             // Announcement Banner Logic
             const banner = document.getElementById('announcement-banner');
             const closeBannerBtn = document.getElementById('close-banner');
@@ -150,6 +139,78 @@
                 closeBannerBtn.addEventListener('click', () => {
                     banner.classList.add('hidden');
                     sessionStorage.setItem('bannerDismissed', 'true');
+                });
+            }
+
+            // Club Carousel Initialization
+            const clubCarousel = document.querySelector('.club-carousel');
+            if (clubCarousel && typeof Swiper !== 'undefined') {
+                <?php if ($page->intendedTemplate() == 'club'): ?>
+                const autoplayEnabled = <?= $page->carousel_autoplay()->toBool() ? 'true' : 'false' ?>;
+                const autoplayDelay = <?= $page->carousel_delay()->or(5000)->toInt() ?>;
+                <?php else: ?>
+                const autoplayEnabled = true;
+                const autoplayDelay = 5000;
+                <?php endif ?>
+
+                new Swiper('.club-carousel', {
+                    loop: true,
+                    autoplay: autoplayEnabled ? {
+                        delay: autoplayDelay,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                    } : false,
+                    speed: 800,
+                    effect: 'slide',
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true,
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true,
+                    },
+                    a11y: {
+                        enabled: true,
+                    },
+                });
+            }
+
+            if (document.body.classList.contains('skin-modern')) {
+                const current = new URL(window.location.href);
+                document.querySelectorAll('a[href]').forEach((link) => {
+                    const rawHref = link.getAttribute('href');
+                    if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) {
+                        return;
+                    }
+
+                    const url = new URL(rawHref, window.location.href);
+                    if (url.origin !== current.origin) {
+                        return;
+                    }
+
+                    url.searchParams.set('skin', 'v2');
+                    link.href = url.toString();
+                });
+
+                document.querySelectorAll('form[action]').forEach((form) => {
+                    const rawAction = form.getAttribute('action');
+                    if (!rawAction) {
+                        return;
+                    }
+
+                    const action = new URL(rawAction, window.location.href);
+                    if (action.origin !== current.origin) {
+                        return;
+                    }
+
+                    action.searchParams.set('skin', 'v2');
+                    form.action = action.toString();
                 });
             }
         });
