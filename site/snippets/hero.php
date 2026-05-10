@@ -10,14 +10,39 @@
 $title = $title ?? $page->hero_title()->or($page->title());
 $subtitle = $subtitle ?? $page->hero_subtitle()->value();
 $bgImage = $image ?? ($page->hasImages() ? $page->images()->first() : null);
+$isModernSkin = get('skin') === 'v2';
+
+if ($isModernSkin) {
+    $realPhotos = [];
+    $photoPages = array_filter([page('club'), page('accueil')]);
+
+    foreach ($photoPages as $photoPage) {
+        foreach ($photoPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']) as $photo) {
+            $realPhotos[] = $photo;
+        }
+    }
+
+    if ($gallery = page('galerie')) {
+        foreach ($gallery->children()->listed()->limit(4) as $album) {
+            foreach ($album->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp'])->limit(3) as $photo) {
+                $realPhotos[] = $photo;
+            }
+        }
+    }
+
+    if (count($realPhotos) > 0) {
+        $bgImage = $realPhotos[crc32($page->id()) % count($realPhotos)];
+    }
+}
+
 $bgUrl = $bgImage ? $bgImage->url() : url('assets/hero.webp');
 ?>
 
-<section class="py-32 bg-bg border-b-2 border-border relative overflow-hidden">
+<section class="site-hero py-32 bg-bg border-b-2 border-border relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0" style="background-image: url('<?= $bgUrl ?>');"></div>
     <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-0 pointer-events-none"></div>
 
-    <div class="absolute top-0 left-0 w-full pointer-events-none z-0">
+    <div class="hero-balls absolute top-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>

@@ -5,6 +5,8 @@
  * This snippet contains the opening HTML tags, head section, and header/navigation.
  * Reused across all templates.
  */
+$isModernSkin = get('skin') === 'v2';
+$cssVersion = @filemtime(kirby()->root('index') . '/assets/css/index.css') ?: null;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,18 +30,18 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?= url('assets/css/index.css') ?>">
+    <link rel="stylesheet" href="<?= url('assets/css/index.css') ?><?= $cssVersion ? '?v=' . $cssVersion : '' ?>">
     
     <style type="text/tailwindcss">
         @theme {
-            --color-primary: <?= $site->color_primary()->or('#0056b3') ?>;
-            --color-primary-light: <?= $site->color_primary_light()->or('#e3f2fd') ?>;
-            --color-primary-dark: <?= $site->color_primary_dark()->or('#003d82') ?>;
-            --color-bg: <?= $site->color_bg()->or('#f8f9fa') ?>;
-            --color-surface: <?= $site->color_surface()->or('#ffffff') ?>;
-            --color-text: <?= $site->color_text()->or('#1a1a1a') ?>;
-            --color-border: <?= $site->color_border()->or('#004494') ?>;
-            --color-accent: <?= $site->color_accent()->or('#d32f2f') ?>;
+            --color-primary: <?= $isModernSkin ? '#0056b3' : $site->color_primary()->or('#0056b3') ?>;
+            --color-primary-light: <?= $isModernSkin ? '#eef7ff' : $site->color_primary_light()->or('#e3f2fd') ?>;
+            --color-primary-dark: <?= $isModernSkin ? '#003d82' : $site->color_primary_dark()->or('#003d82') ?>;
+            --color-bg: <?= $isModernSkin ? '#f6fbff' : $site->color_bg()->or('#f8f9fa') ?>;
+            --color-surface: <?= $isModernSkin ? '#ffffff' : $site->color_surface()->or('#ffffff') ?>;
+            --color-text: <?= $isModernSkin ? '#102033' : $site->color_text()->or('#1a1a1a') ?>;
+            --color-border: <?= $isModernSkin ? '#c9deef' : $site->color_border()->or('#004494') ?>;
+            --color-accent: <?= $isModernSkin ? '#6ee7b7' : $site->color_accent()->or('#d32f2f') ?>;
 
             --font-heading: <?= $site->font_heading()->or("'Space Grotesk', sans-serif") ?>;
             --font-body: <?= $site->font_body()->or("'DM Sans', sans-serif") ?>;
@@ -121,7 +123,7 @@
     </style>
 </head>
 
-<body class="bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
+<body class="<?= $isModernSkin ? 'skin-modern ' : '' ?>bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
 
     <!-- Announcement Banner -->
     <?php if ($site->announcement_enabled()->toBool()): ?>
@@ -138,15 +140,15 @@
     </div>
     <?php endif ?>
 
-    <header class="py-4 bg-bg/95 border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
+    <header class="site-header py-4 bg-bg/95 border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
         <div class="max-w-[1200px] mx-auto px-4 flex justify-between items-center relative z-10">
-            <a href="<?= $site->url() ?>" class="flex items-center gap-3">
+            <a href="<?= $site->url() ?>" class="site-brand flex items-center gap-3">
                 <?php if ($logo = $site->logo()->toFile()): ?>
-                    <img src="<?= $logo->url() ?>" alt="<?= $site->title()->esc() ?> Logo" class="h-12 w-auto">
+                    <img src="<?= $logo->url() ?>" alt="<?= $site->title()->esc() ?> Logo" class="site-logo h-12 w-auto">
                 <?php else: ?>
-                    <img src="<?= url('assets/logo.png') ?>" alt="<?= $site->title()->esc() ?> Logo" class="h-12 w-auto">
+                    <img src="<?= url('assets/logo.png') ?>" alt="<?= $site->title()->esc() ?> Logo" class="site-logo h-12 w-auto">
                 <?php endif ?>
-                <span class="text-3xl font-black text-primary uppercase tracking-tighter"><?= $site->title()->esc() ?></span>
+                <span class="site-title text-3xl font-black text-primary uppercase tracking-tighter"><?= $site->title()->esc() ?></span>
             </a>
 
             <button class="mobile-menu-toggle md:hidden p-2 cursor-pointer bg-transparent" aria-label="Menu" aria-expanded="false">

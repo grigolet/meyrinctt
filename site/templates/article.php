@@ -7,11 +7,34 @@
 snippet('header');
 
 $cover = $page->files()->template('cover')->first() ?? $page->images()->first();
+$isModernSkin = get('skin') === 'v2';
+
+if ($isModernSkin) {
+    $realPhotos = [];
+    $photoPages = array_filter([page('club'), page('accueil')]);
+
+    foreach ($photoPages as $photoPage) {
+        foreach ($photoPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']) as $photo) {
+            $realPhotos[] = $photo;
+        }
+    }
+
+    if ($gallery = page('galerie')) {
+        foreach ($gallery->children()->listed()->limit(4) as $album) {
+            foreach ($album->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp'])->limit(3) as $photo) {
+                $realPhotos[] = $photo;
+            }
+        }
+    }
+
+    if (count($realPhotos) > 0) {
+        $cover = $realPhotos[crc32($page->id()) % count($realPhotos)];
+    }
+}
 
 // Fallback to random cover from covers folder if no cover exists
 if (!$cover) {
-    $coversPage = site()->find('covers');
-    if ($coversPage) {
+    if (!$cover && $coversPage = site()->find('covers')) {
         $coverImages = $coversPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']);
         if ($coverImages->count() > 0) {
             // Use article ID to seed random selection for consistency

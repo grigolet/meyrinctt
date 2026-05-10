@@ -16,11 +16,11 @@ $ctaSecondaryText = $page->hero_cta_secondary()->or('Voir les horaires');
 $ctaSecondaryLink = $page->hero_cta_secondary_link()->toUrl() ?: page('horaires')?->url() ?: '#';
 ?>
 
-<section class="py-32 bg-bg border-b-2 border-border relative overflow-hidden">
+<section class="site-hero site-hero-cta py-32 bg-bg border-b-2 border-border relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full bg-[url('<?= $bgUrl ?>')] bg-cover bg-center z-0"></div>
     <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-0 pointer-events-none"></div>
 
-    <div class="absolute top-0 left-0 w-full pointer-events-none z-0">
+    <div class="hero-balls absolute top-0 left-0 w-full pointer-events-none z-0" aria-hidden="true">
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>
         <div class="ball absolute bg-white/10 rounded-full w-10 h-10 animate-float"></div>
