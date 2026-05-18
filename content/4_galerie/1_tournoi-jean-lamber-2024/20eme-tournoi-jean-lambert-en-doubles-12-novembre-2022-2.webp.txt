@@ -2,7 +2,11 @@ Alt:
 
 ----
 
-Caption: 
+Title: 
+
+----
+
+Caption: Photos ensemble
 
 ----
 

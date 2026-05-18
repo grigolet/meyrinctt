@@ -41,6 +41,7 @@ tabs:
               hero_cta_primary_link:
                 type: link
                 label: Bouton principal (lien)
+                default: "page://inscription"
                 
               hero_cta_secondary:
                 type: text
@@ -50,6 +51,7 @@ tabs:
               hero_cta_secondary_link:
                 type: link
                 label: Bouton secondaire (lien)
+                default: "page://horaires"
                 
           club_section:
             type: fields

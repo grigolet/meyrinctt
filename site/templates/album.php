@@ -44,6 +44,10 @@ snippet('hero', [
             <?php // Display uploaded files (photos and videos) ?>
             <?php foreach ($files as $file): ?>
             <?php $isVideo = $file->type() === 'video' || $file->extension() === 'mp4' || $file->extension() === 'webm' || $file->extension() === 'mov'; ?>
+<<<<<<< HEAD
+            <div class="flex flex-col">
+=======
+>>>>>>> ac98036476495e09ea32adc4a6c52ff57f5a9306
             <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all hover:scale-[1.02] relative" onclick="openLightbox(<?= $index ?>)">
                 <?php if ($isVideo): ?>
                     <!-- Uploaded video thumbnail -->
@@ -78,6 +82,20 @@ snippet('hero', [
                         'height' => 400
                     ]) ?>
                 <?php endif ?>
+<<<<<<< HEAD
+            </div>
+            <?php if ($file->title()->isNotEmpty() || $file->caption()->isNotEmpty()): ?>
+            <div class="mt-2 px-1">
+                <?php if ($file->title()->isNotEmpty()): ?>
+                <h3 class="font-semibold text-sm text-gray-900"><?= $file->title()->esc() ?></h3>
+                <?php endif ?>
+                <?php if ($file->caption()->isNotEmpty()): ?>
+                <p class="text-xs text-gray-600 mt-1"><?= $file->caption()->esc() ?></p>
+                <?php endif ?>
+            </div>
+            <?php endif ?>
+=======
+>>>>>>> ac98036476495e09ea32adc4a6c52ff57f5a9306
             </div>
             <?php $index++; endforeach ?>
             
@@ -89,8 +107,12 @@ snippet('hero', [
                 preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $youtubeUrl, $matches);
                 $videoId = $matches[1] ?? '';
                 $thumbnailUrl = $videoId ? "https://img.youtube.com/vi/{$videoId}/hqdefault.jpg" : '';
+<<<<<<< HEAD
+            ?>            <div class="flex flex-col">            <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all hover:scale-[1.02] relative" onclick="openLightbox(<?= $index ?>)">
+=======
             ?>
             <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all hover:scale-[1.02] relative" onclick="openLightbox(<?= $index ?>)">
+>>>>>>> ac98036476495e09ea32adc4a6c52ff57f5a9306
                 <?php if ($thumbnailUrl): ?>
                     <img src="<?= $thumbnailUrl ?>" alt="<?= $ytVideo->title()->or('Vidéo YouTube')->esc() ?>" class="w-full h-full object-cover" loading="lazy">
                 <?php else: ?>
@@ -106,6 +128,20 @@ snippet('hero', [
                     </svg>
                 </div>
             </div>
+<<<<<<< HEAD
+            <?php if ($ytVideo->title()->isNotEmpty() || $ytVideo->caption()->isNotEmpty()): ?>
+            <div class="mt-2 px-1">
+                <?php if ($ytVideo->title()->isNotEmpty()): ?>
+                <h3 class="font-semibold text-sm text-gray-900"><?= $ytVideo->title()->esc() ?></h3>
+                <?php endif ?>
+                <?php if ($ytVideo->caption()->isNotEmpty()): ?>
+                <p class="text-xs text-gray-600 mt-1"><?= $ytVideo->caption()->esc() ?></p>
+                <?php endif ?>
+            </div>
+            <?php endif ?>
+            </div>
+=======
+>>>>>>> ac98036476495e09ea32adc4a6c52ff57f5a9306
             <?php $index++; endif; endforeach ?>
         </div>
     </div>

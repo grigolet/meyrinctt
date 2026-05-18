@@ -15,7 +15,7 @@ Youtube-videos:
 - 
   youtube_url: 'https://www.youtube.com/watch?v=P6fjdVz2ycI&pp=ygUMdGFibGUgdGVubmlz'
   title: Table tennis match
-  caption: Legende exemple
+  caption: Exemple de video youtube
 
 ----
 

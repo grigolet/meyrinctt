@@ -1,9 +1,0 @@
-Sort: 1
-
-----
-
-Uuid: o6uft1tnrper8cwo
-
-----
-
-Template: hero

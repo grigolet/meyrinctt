@@ -6,6 +6,11 @@ fields:
     label: Texte alternatif
     type: text
     help: Description de l'image pour l'accessibilité
+  
+  title:
+    label: Titre
+    type: text
+    help: Titre de la photo
     
   caption:
     label: Légende

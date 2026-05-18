@@ -24,7 +24,9 @@ foreach ($files as $file) {
             'url' => $file->url(),
             'type' => $isVideo ? 'video' : 'image',
             'mime' => $file->mime(),
-            'alt' => $file->alt()->or('Media')->esc()
+            'alt' => $file->alt()->or('Media')->value(),
+            'title' => $file->title()->isNotEmpty() ? $file->title()->value() : '',
+            'caption' => $file->caption()->isNotEmpty() ? $file->caption()->value() : ''
         ];
     } elseif (is_string($file)) {
         // Fallback for string URLs (assumes image)
@@ -32,7 +34,9 @@ foreach ($files as $file) {
             'url' => $file,
             'type' => 'image',
             'mime' => 'image/jpeg',
-            'alt' => 'Media'
+            'alt' => 'Media',
+            'title' => '',
+            'caption' => ''
         ];
     }
 }
@@ -51,7 +55,9 @@ foreach ($youtubeVideos as $ytVideo) {
                 'url' => $embedUrl,
                 'type' => 'youtube',
                 'mime' => '',
-                'alt' => $ytVideo->title()->or('Vidéo YouTube')->esc()
+                'alt' => $ytVideo->title()->or('Vidéo YouTube')->value(),
+                'title' => $ytVideo->title()->isNotEmpty() ? $ytVideo->title()->value() : '',
+                'caption' => $ytVideo->caption()->isNotEmpty() ? $ytVideo->caption()->value() : ''
             ];
         }
     }
@@ -63,8 +69,14 @@ foreach ($youtubeVideos as $ytVideo) {
     
     <!-- Toolbar -->
     <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-[110] text-white bg-gradient-to-b from-black/50 to-transparent">
-        <span id="lightbox-counter" class="font-bold text-sm"></span>
-        <button onclick="closeLightbox()" class="text-4xl leading-none hover:text-gray-300 focus:outline-none">&times;</button>
+        <div class="flex-1 mr-4">
+            <span id="lightbox-counter" class="font-bold text-sm"></span>
+            <div id="lightbox-info" class="mt-1 max-w-2xl">
+                <h3 id="lightbox-title" class="font-semibold text-base hidden"></h3>
+                <p id="lightbox-caption" class="text-sm text-gray-300 mt-1 hidden"></p>
+            </div>
+        </div>
+        <button onclick="closeLightbox()" class="text-4xl leading-none hover:text-gray-300 focus:outline-none flex-shrink-0">&times;</button>
     </div>
 
     <!-- Navigation Buttons -->
@@ -73,11 +85,11 @@ foreach ($youtubeVideos as $ytVideo) {
 
     <!-- Media Container -->
     <div class="w-full h-full flex items-center justify-center p-4 md:p-12" onclick="event.target === this && closeLightbox()">
-        <img id="lightbox-img" src="" alt="Full screen" class="max-w-full max-h-full object-contain shadow-2xl transition-opacity duration-300 hidden" onclick="event.stopPropagation()">
-        <video id="lightbox-video" controls preload="auto" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300 hidden" onclick="event.stopPropagation()" style="background: black;">
+        <img id="lightbox-img" src="" alt="Full screen" class="max-w-full max-h-full object-contain shadow-2xl transition-opacity duration-300" style="display: none;" onclick="event.stopPropagation()">
+        <video id="lightbox-video" controls preload="auto" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300" style="display: none; background: black;" onclick="event.stopPropagation()">
             Your browser does not support the video element.
         </video>
-        <iframe id="lightbox-youtube" class="max-w-full max-h-full shadow-2xl hidden" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen onclick="event.stopPropagation()" style="aspect-ratio: 16/9; max-width: 90vw; max-height: 90vh;"></iframe>
+        <iframe id="lightbox-youtube" class="max-w-full max-h-full shadow-2xl" style="display: none; aspect-ratio: 16/9; max-width: 90vw; max-height: 90vh;" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen onclick="event.stopPropagation()"></iframe>
     </div>
 
 </dialog>
@@ -88,6 +100,8 @@ foreach ($youtubeVideos as $ytVideo) {
     const lightboxVideo = document.getElementById('lightbox-video');
     const lightboxYoutube = document.getElementById('lightbox-youtube');
     const lightboxCounter = document.getElementById('lightbox-counter');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxMedia = <?= json_encode($mediaItems) ?>;
     let currentIndex = 0;
     
@@ -125,28 +139,24 @@ foreach ($youtubeVideos as $ytVideo) {
             
             console.log('Loading media:', currentMedia); // Debug log
             
-            // Hide all media elements first
-            lightboxImg.classList.add('hidden');
-            lightboxVideo.classList.add('hidden');
-            lightboxYoutube.classList.add('hidden');
+            // Hide all media elements first using inline styles
+            lightboxImg.style.display = 'none';
+            lightboxVideo.style.display = 'none';
+            lightboxYoutube.style.display = 'none';
             
             // Stop/clear current media
-            if (!lightboxVideo.classList.contains('hidden')) {
-                lightboxVideo.pause();
-                lightboxVideo.src = '';
-            }
-            if (!lightboxYoutube.classList.contains('hidden')) {
-                lightboxYoutube.src = '';
-            }
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+            lightboxYoutube.src = '';
             
             if (currentMedia.type === 'youtube') {
                 // Show YouTube iframe
-                lightboxYoutube.classList.remove('hidden');
+                lightboxYoutube.style.display = 'block';
                 lightboxYoutube.src = currentMedia.url;
                 console.log('YouTube iframe src set to:', lightboxYoutube.src);
             } else if (currentMedia.type === 'video') {
                 // Show uploaded video
-                lightboxVideo.classList.remove('hidden');
+                lightboxVideo.style.display = 'block';
                 
                 // Set video source directly on the video element
                 lightboxVideo.src = currentMedia.url;
@@ -165,12 +175,29 @@ foreach ($youtubeVideos as $ytVideo) {
                 }, 100);
             } else {
                 // Show image
-                lightboxImg.classList.remove('hidden');
+                lightboxImg.style.display = 'block';
                 lightboxImg.src = currentMedia.url;
                 lightboxImg.alt = currentMedia.alt;
             }
             
             lightboxCounter.textContent = `${currentIndex + 1} / ${lightboxMedia.length}`;
+            
+            // Update title and caption - check for non-empty strings
+            if (currentMedia.title && typeof currentMedia.title === 'string' && currentMedia.title.trim() !== '') {
+                lightboxTitle.textContent = currentMedia.title;
+                lightboxTitle.classList.remove('hidden');
+            } else {
+                lightboxTitle.textContent = '';
+                lightboxTitle.classList.add('hidden');
+            }
+            
+            if (currentMedia.caption && typeof currentMedia.caption === 'string' && currentMedia.caption.trim() !== '') {
+                lightboxCaption.textContent = currentMedia.caption;
+                lightboxCaption.classList.remove('hidden');
+            } else {
+                lightboxCaption.textContent = '';
+                lightboxCaption.classList.add('hidden');
+            }
         }
     }
 

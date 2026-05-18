@@ -77,18 +77,20 @@ Committee-title: Le Comité
 Committee-members:
 
 - 
-  photo: [ ]
+  photo:
+    - file://rywkrwatzkggyxf7
   role: Présidente
   name: Joan Helfer
   email: helferjoan@hotmail.com
 - 
-  photo: [ ]
+  photo:
+    - file://9zwiml1wdyxuderg
   role: Vice-Président
   name: Jean-Pierre Revol
   email: jean-pierre.revol@cern.ch
 - 
   photo:
-    - file://bsyhpdaelcaxwrza
+    - file://dhhhxpnvqxgahvd9
   role: Vice-Président
   name: Gianluca Rigoletti
   email: gianluca.rigoletti@gmail.com
@@ -118,7 +120,8 @@ Committee-members:
   name: Dominique Schneider
   email: schneiderdom@bluewin.ch
 - 
-  photo: [ ]
+  photo:
+    - file://m17wxhhfyvuov6rm
   role: Techniques
   name: Bugra Bilin
   email: bbilin1986@gmail.com
