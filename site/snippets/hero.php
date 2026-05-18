@@ -10,30 +10,6 @@
 $title = $title ?? $page->hero_title()->or($page->title());
 $subtitle = $subtitle ?? $page->hero_subtitle()->value();
 $bgImage = $image ?? ($page->hasImages() ? $page->images()->first() : null);
-$isModernSkin = get('skin') === 'v2';
-
-if ($isModernSkin) {
-    $realPhotos = [];
-    $photoPages = array_filter([page('club'), page('accueil')]);
-
-    foreach ($photoPages as $photoPage) {
-        foreach ($photoPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']) as $photo) {
-            $realPhotos[] = $photo;
-        }
-    }
-
-    if ($gallery = page('galerie')) {
-        foreach ($gallery->children()->listed()->limit(4) as $album) {
-            foreach ($album->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp'])->limit(3) as $photo) {
-                $realPhotos[] = $photo;
-            }
-        }
-    }
-
-    if (count($realPhotos) > 0) {
-        $bgImage = $realPhotos[crc32($page->id()) % count($realPhotos)];
-    }
-}
 
 $bgUrl = $bgImage ? $bgImage->url() : url('assets/hero.webp');
 ?>
