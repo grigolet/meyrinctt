@@ -10,30 +10,6 @@
 
 $article = $article ?? $page;
 $cover = $article->cover()->toFile() ?? $article->images()->first();
-$isModernSkin = get('skin') === 'v2';
-
-if ($isModernSkin) {
-    $realPhotos = [];
-    $photoPages = array_filter([page('club'), page('accueil')]);
-
-    foreach ($photoPages as $photoPage) {
-        foreach ($photoPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']) as $photo) {
-            $realPhotos[] = $photo;
-        }
-    }
-
-    if ($gallery = page('galerie')) {
-        foreach ($gallery->children()->listed()->limit(4) as $album) {
-            foreach ($album->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp'])->limit(3) as $photo) {
-                $realPhotos[] = $photo;
-            }
-        }
-    }
-
-    if (count($realPhotos) > 0) {
-        $cover = $realPhotos[crc32($article->id()) % count($realPhotos)];
-    }
-}
 
 // Fallback to random cover from covers folder if no cover exists
 if (!$cover) {
