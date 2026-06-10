@@ -127,14 +127,19 @@ $cssVersion = @filemtime(kirby()->root('index') . '/assets/css/index.css') ?: nu
 <body class="<?= $isModernSkin ? 'skin-modern ' : '' ?>bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
 
     <!-- Announcement Banner -->
-    <?php if ($site->announcement_enabled()->toBool()): ?>
-    <div id="announcement-banner" class="bg-accent text-white py-2 px-4 relative z-[60]">
+    <?php
+    $announcementText = $site->announcement_text();
+    $announcementIcon = $site->announcement_icon();
+    $announcementId = substr(sha1($announcementIcon->value() . '|' . $announcementText->value()), 0, 12);
+    ?>
+    <?php if ($site->announcement_enabled()->toBool() && $announcementText->isNotEmpty()): ?>
+    <div id="announcement-banner" data-announcement-id="<?= $announcementId ?>" class="bg-accent text-white py-2 px-4 relative z-[60]">
         <div class="max-w-[1200px] mx-auto flex justify-between items-center">
             <p class="text-sm font-bold text-center w-full">
-                <?php if ($site->announcement_icon()->isNotEmpty()): ?>
-                    <?= $site->announcement_icon()->esc() ?>
+                <?php if ($announcementIcon->isNotEmpty()): ?>
+                    <?= $announcementIcon->esc() ?>
                 <?php endif ?>
-                <?= $site->announcement_text()->esc() ?>
+                <?= $announcementText->esc() ?>
             </p>
             <button id="close-banner" class="text-white hover:text-white/80 font-bold ml-4" aria-label="Fermer">&times;</button>
         </div>

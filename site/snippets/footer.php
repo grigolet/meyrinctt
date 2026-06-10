@@ -132,13 +132,19 @@
             const closeBannerBtn = document.getElementById('close-banner');
 
             if (banner && closeBannerBtn) {
-                if (sessionStorage.getItem('bannerDismissed')) {
+                const announcementId = banner.dataset.announcementId;
+                const dismissedAnnouncementId = sessionStorage.getItem('announcementDismissedId');
+                sessionStorage.removeItem('bannerDismissed');
+
+                if (announcementId && dismissedAnnouncementId === announcementId) {
                     banner.classList.add('hidden');
                 }
 
                 closeBannerBtn.addEventListener('click', () => {
                     banner.classList.add('hidden');
-                    sessionStorage.setItem('bannerDismissed', 'true');
+                    if (announcementId) {
+                        sessionStorage.setItem('announcementDismissedId', announcementId);
+                    }
                 });
             }
 
