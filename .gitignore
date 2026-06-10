@@ -5,6 +5,10 @@
 /site/cache/*
 !/site/cache/.gitkeep
 
+# Generated public media/cache
+/media/*
+!/media/.gitkeep
+
 # Sessions
 /site/sessions/*
 !/site/sessions/.gitkeep
