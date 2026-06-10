@@ -2,6 +2,10 @@ Title: Meyrin CTT
 
 ----
 
+Active-skin: v2
+
+----
+
 Color-primary: #0056b3
 
 ----
@@ -58,11 +62,11 @@ Holiday-decorations: false
 
 ----
 
-Announcement-enabled: false
+Announcement-enabled: true
 
 ----
 
-Announcement-text: 🚨 Info: Le gymnase sera fermé le 25 Décembre.
+Announcement-text: 🚨 Info: Assemblée Generale le mardi 16 juin à 20h
 
 ----
 
@@ -136,6 +140,11 @@ Sponsors-list:
   url: https://staff-association.cern/
   logo:
     - file://7us8kmbrew4cfeec
+- 
+  name: Dr. Neubauer
+  url: https://www.drneubauer.com/
+  logo:
+    - file://auny9fwpapn54vqf
 
 ----
 
