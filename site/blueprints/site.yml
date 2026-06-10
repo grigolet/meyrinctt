@@ -68,6 +68,15 @@ tabs:
     columns:
       - width: 1/2
         fields:
+          active_skin:
+            type: select
+            label: Skin actif
+            help: Choisir l'apparence publique du site.
+            default: v2
+            options:
+              v2: Moderne
+              classic: Classique
+
           theme_headline:
             type: headline
             label: Couleurs du thème

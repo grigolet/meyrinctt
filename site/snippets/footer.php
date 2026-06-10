@@ -181,38 +181,6 @@
                 });
             }
 
-            if (document.body.classList.contains('skin-modern')) {
-                const current = new URL(window.location.href);
-                document.querySelectorAll('a[href]').forEach((link) => {
-                    const rawHref = link.getAttribute('href');
-                    if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) {
-                        return;
-                    }
-
-                    const url = new URL(rawHref, window.location.href);
-                    if (url.origin !== current.origin) {
-                        return;
-                    }
-
-                    url.searchParams.set('skin', 'v2');
-                    link.href = url.toString();
-                });
-
-                document.querySelectorAll('form[action]').forEach((form) => {
-                    const rawAction = form.getAttribute('action');
-                    if (!rawAction) {
-                        return;
-                    }
-
-                    const action = new URL(rawAction, window.location.href);
-                    if (action.origin !== current.origin) {
-                        return;
-                    }
-
-                    action.searchParams.set('skin', 'v2');
-                    form.action = action.toString();
-                });
-            }
         });
     </script>
 </body>

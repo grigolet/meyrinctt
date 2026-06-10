@@ -123,7 +123,7 @@ snippet('header');
                     'alt' => $site->title()->esc(),
                     'preset' => 'default',
                     'sizes' => '(max-width: 1200px) 50vw, 600px',
-                    'class' => 'rounded-xl shadow-soft border-2 border-border',
+                    'class' => 'block rounded-xl shadow-soft border-2 border-border',
                     'lazy' => true,
                     'width' => 600,
                     'height' => 400

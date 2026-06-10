@@ -5,7 +5,8 @@
  * This snippet contains the opening HTML tags, head section, and header/navigation.
  * Reused across all templates.
  */
-$isModernSkin = get('skin') === 'v2';
+$activeSkin = $site->active_skin()->or('v2')->value();
+$isModernSkin = $activeSkin === 'v2';
 $cssVersion = @filemtime(kirby()->root('index') . '/assets/css/index.css') ?: null;
 ?>
 <!DOCTYPE html>

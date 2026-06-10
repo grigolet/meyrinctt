@@ -11,6 +11,7 @@
  *     'preset' => 'default',
  *     'class' => 'css-classes',
  *     'lazy' => true,
+ *     'fetchpriority' => 'auto',
  *     'width' => 800,
  *     'height' => 600
  * ])
@@ -22,6 +23,7 @@ $sizes = $sizes ?? '100vw';
 $preset = $preset ?? 'default';
 $class = $class ?? '';
 $lazy = $lazy ?? true;
+$fetchpriority = $fetchpriority ?? null;
 $width = $width ?? null;
 $height = $height ?? null;
 
@@ -34,8 +36,15 @@ $srcsetAvif = $image->srcset($preset, ['format' => 'avif']);
 $srcsetWebp = $image->srcset($preset, ['format' => 'webp']);
 $srcsetDefault = $image->srcset($preset);
 
-// Fallback image
-$fallbackUrl = $image->url();
+// Fallback image for browsers that don't support picture/srcset.
+$fallbackOptions = [
+    'thumbnail' => ['width' => 400, 'height' => 400, 'crop' => true],
+    'avatar' => ['width' => 120, 'height' => 120, 'crop' => true],
+    'card' => ['width' => 800, 'height' => 600, 'crop' => true],
+    'cover' => ['width' => 1600],
+    'default' => ['width' => 1200],
+];
+$fallbackUrl = $image->thumb($fallbackOptions[$preset] ?? $fallbackOptions['default'])->url();
 
 // Get dimensions if not provided
 if (!$width || !$height) {
@@ -64,6 +73,8 @@ $loadingAttr = $lazy ? 'loading="lazy"' : '';
         height="<?= $height ?>"
         <?php endif ?>
         <?= $loadingAttr ?>
+        decoding="async"
+        <?php if ($fetchpriority): ?>fetchpriority="<?= esc($fetchpriority) ?>"<?php endif ?>
         <?php if ($class): ?>class="<?= $class ?>"<?php endif ?>
     >
 </picture>

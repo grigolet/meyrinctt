@@ -17,7 +17,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Enable Apache modules
-RUN a2enmod rewrite
+RUN a2enmod rewrite headers expires deflate
 
 # Copy application files
 COPY . /var/www/html/

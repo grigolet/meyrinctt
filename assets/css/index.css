@@ -268,7 +268,7 @@ video {
   }
 }
 
-/* Modern Club preview skin: enabled with ?skin=v2 */
+/* Modern Club skin: enabled from the Panel site settings */
 body.skin-modern {
   --color-primary: #0056b3;
   --color-primary-dark: #003d82;

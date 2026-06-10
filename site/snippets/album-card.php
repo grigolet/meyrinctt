@@ -10,13 +10,23 @@
 
 $album = $album ?? $page;
 $cover = $album->cover()->toFile() ?? $album->images()->first();
-$coverUrl = $cover ? $cover->url() : null;
 $imageCount = $album->images()->count();
 ?>
 
 <a href="<?= $album->url() ?>" class="block bg-surface border-2 border-border rounded-xl shadow-soft transition-transform hover:-translate-y-1.5 hover:shadow-hover overflow-hidden group">
-    <?php if ($coverUrl): ?>
-    <div class="h-[240px] border-b-2 border-border bg-cover bg-center" style="background-image: url('<?= $coverUrl ?>');"></div>
+    <?php if ($cover): ?>
+    <div class="h-[240px] border-b-2 border-border bg-gray-100 overflow-hidden">
+        <?php snippet('responsive-image', [
+            'image' => $cover,
+            'alt' => $album->title()->value(),
+            'preset' => 'card',
+            'sizes' => '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+            'class' => 'block w-full h-full object-cover',
+            'lazy' => true,
+            'width' => 800,
+            'height' => 600
+        ]) ?>
+    </div>
     <?php else: ?>
     <div class="h-[240px] border-b-2 border-border bg-gray-200 flex items-center justify-center">
         <span class="text-gray-400 font-bold text-4xl">📷</span>

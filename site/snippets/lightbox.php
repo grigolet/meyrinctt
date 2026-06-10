@@ -19,9 +19,10 @@ foreach ($files as $file) {
         // Better video detection for uploaded videos
         $isVideo = $file->type() === 'video' || 
                    in_array($file->extension(), ['mp4', 'webm', 'mov', 'avi', 'mkv', 'ogg']);
+        $url = $isVideo ? $file->url() : $file->thumb(['width' => 1800, 'format' => 'webp', 'quality' => 82])->url();
         
         $mediaItems[] = [
-            'url' => $file->url(),
+            'url' => $url,
             'type' => $isVideo ? 'video' : 'image',
             'mime' => $file->mime(),
             'alt' => $file->alt()->or('Media')->value(),
@@ -86,7 +87,7 @@ foreach ($youtubeVideos as $ytVideo) {
     <!-- Media Container -->
     <div class="w-full h-full flex items-center justify-center p-4 md:p-12" onclick="event.target === this && closeLightbox()">
         <img id="lightbox-img" src="" alt="Full screen" class="max-w-full max-h-full object-contain shadow-2xl transition-opacity duration-300" style="display: none;" onclick="event.stopPropagation()">
-        <video id="lightbox-video" controls preload="auto" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300" style="display: none; background: black;" onclick="event.stopPropagation()">
+        <video id="lightbox-video" controls preload="metadata" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300" style="display: none; background: black;" onclick="event.stopPropagation()">
             Your browser does not support the video element.
         </video>
         <iframe id="lightbox-youtube" class="max-w-full max-h-full shadow-2xl" style="display: none; aspect-ratio: 16/9; max-width: 90vw; max-height: 90vh;" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen onclick="event.stopPropagation()"></iframe>
@@ -104,13 +105,8 @@ foreach ($youtubeVideos as $ytVideo) {
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxMedia = <?= json_encode($mediaItems) ?>;
     let currentIndex = 0;
-    
-    // Debug: log all media items
-    console.log('Lightbox media items:', lightboxMedia);
-    console.log('Total items:', lightboxMedia.length);
 
     function openLightbox(index) {
-        console.log('Opening lightbox with index:', index);
         currentIndex = index;
         updateLightbox();
         lightbox.classList.remove('hidden');
@@ -137,8 +133,6 @@ foreach ($youtubeVideos as $ytVideo) {
         if (lightboxMedia.length > 0) {
             const currentMedia = lightboxMedia[currentIndex];
             
-            console.log('Loading media:', currentMedia); // Debug log
-            
             // Hide all media elements first using inline styles
             lightboxImg.style.display = 'none';
             lightboxVideo.style.display = 'none';
@@ -153,7 +147,6 @@ foreach ($youtubeVideos as $ytVideo) {
                 // Show YouTube iframe
                 lightboxYoutube.style.display = 'block';
                 lightboxYoutube.src = currentMedia.url;
-                console.log('YouTube iframe src set to:', lightboxYoutube.src);
             } else if (currentMedia.type === 'video') {
                 // Show uploaded video
                 lightboxVideo.style.display = 'block';
@@ -165,19 +158,12 @@ foreach ($youtubeVideos as $ytVideo) {
                 // Load the video
                 lightboxVideo.load();
                 
-                console.log('Video element src set to:', lightboxVideo.src);
-                
-                // Try to play after a small delay
-                setTimeout(() => {
-                    lightboxVideo.play().catch(e => {
-                        console.log('Autoplay prevented, user must click play:', e);
-                    });
-                }, 100);
             } else {
                 // Show image
                 lightboxImg.style.display = 'block';
                 lightboxImg.src = currentMedia.url;
                 lightboxImg.alt = currentMedia.alt;
+                preloadAdjacentImage();
             }
             
             lightboxCounter.textContent = `${currentIndex + 1} / ${lightboxMedia.length}`;
@@ -199,6 +185,16 @@ foreach ($youtubeVideos as $ytVideo) {
                 lightboxCaption.classList.add('hidden');
             }
         }
+    }
+
+    function preloadAdjacentImage() {
+        if (lightboxMedia.length < 2) return;
+
+        const next = lightboxMedia[(currentIndex + 1) % lightboxMedia.length];
+        if (next.type !== 'image') return;
+
+        const image = new Image();
+        image.src = next.url;
     }
 
     function nextMedia() {

@@ -15,10 +15,6 @@ $youtubeVideos = $page->youtube_videos()->toStructure();
 // Combine total count
 $totalCount = $files->count() + $youtubeVideos->count();
 
-// Debug: Log what files we have
-// Uncomment the next lines to debug
-// echo "<!-- Files found: " . $files->count() . " | YouTube: " . $youtubeVideos->count() . " -->\n";
-
 snippet('hero', [
     'title' => $page->title(),
     'subtitle' => $totalCount . ' ' . ($totalCount > 1 ? 'éléments' : 'élément')
@@ -73,7 +69,7 @@ snippet('hero', [
                         'alt' => $file->alt()->or('Photo ' . ($index + 1))->esc(),
                         'preset' => 'thumbnail',
                         'sizes' => '(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw',
-                        'class' => 'w-full h-full object-cover',
+                        'class' => 'block w-full h-full object-cover',
                         'lazy' => true,
                         'width' => 400,
                         'height' => 400
@@ -101,7 +97,9 @@ snippet('hero', [
                 preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $youtubeUrl, $matches);
                 $videoId = $matches[1] ?? '';
                 $thumbnailUrl = $videoId ? "https://img.youtube.com/vi/{$videoId}/hqdefault.jpg" : '';
-            ?>            <div class="flex flex-col">            <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all hover:scale-[1.02] relative" onclick="openLightbox(<?= $index ?>)">
+            ?>
+            <div class="flex flex-col">
+            <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all hover:scale-[1.02] relative" onclick="openLightbox(<?= $index ?>)">
                 <?php if ($thumbnailUrl): ?>
                     <img src="<?= $thumbnailUrl ?>" alt="<?= $ytVideo->title()->or('Vidéo YouTube')->esc() ?>" class="w-full h-full object-cover" loading="lazy">
                 <?php else: ?>

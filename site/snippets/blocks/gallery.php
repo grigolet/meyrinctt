@@ -25,7 +25,7 @@ if ($images->count() === 0) {
                 'alt' => $alt->or($image->alt())->value(),
                 'preset' => 'thumbnail',
                 'sizes' => '(max-width: 768px) 50vw, 33vw',
-                'class' => 'w-full h-full object-cover',
+                'class' => 'block w-full h-full object-cover',
                 'lazy' => true,
                 'width' => 400,
                 'height' => 400
