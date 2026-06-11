@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 25
+
+----
+
+Uuid: acca1901c4eb423b
+
+----
+
+Template: photo

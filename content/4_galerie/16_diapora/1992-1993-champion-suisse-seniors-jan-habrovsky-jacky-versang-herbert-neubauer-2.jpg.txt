@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 70
+
+----
+
+Uuid: fbe8020723d34a2a
+
+----
+
+Template: photo

@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 200
+
+----
+
+Uuid: cc3602dbda234c44
+
+----
+
+Template: photo

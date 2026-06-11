@@ -18,6 +18,9 @@ Fees-note: Rabais par enfant si plusieurs membres de la famille: 40.- CHF
 
 ----
 
+Hero-image:
+----
+
 Fees:
 
 - 
@@ -76,7 +79,7 @@ Licence-forms:
 - 
   title: Demande de licence
   file:
-    - file://ncpcettlks2z4peb
+    - file://fwheuycluzk4ekiy
   url: 'https://www.meyrinctt.ch/docs/Demande%20de%20licence%20saison%202025-2026.pdf'
 - 
   title: Formulaire dopage

@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 50
+
+----
+
+Uuid: a365f90ba4c14af0
+
+----
+
+Template: photo

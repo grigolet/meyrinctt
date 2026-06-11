@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 94
+
+----
+
+Uuid: 2400cf124adf4526
+
+----
+
+Template: photo

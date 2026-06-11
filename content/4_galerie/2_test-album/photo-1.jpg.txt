@@ -1,9 +1,0 @@
-Sort: 1
-
-----
-
-Uuid: p0rjdq8nrc8rscn6
-
-----
-
-Template: cover

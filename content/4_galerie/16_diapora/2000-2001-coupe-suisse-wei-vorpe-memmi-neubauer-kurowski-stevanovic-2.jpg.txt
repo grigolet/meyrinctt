@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 103
+
+----
+
+Uuid: de2a8caa12b14040
+
+----
+
+Template: photo

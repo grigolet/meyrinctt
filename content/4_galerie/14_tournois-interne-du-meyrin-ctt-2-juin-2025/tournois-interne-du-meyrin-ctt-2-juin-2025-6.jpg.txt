@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 12
+
+----
+
+Uuid: ff1b7d249e3f41e8
+
+----
+
+Template: photo

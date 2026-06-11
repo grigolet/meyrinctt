@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 6
+
+----
+
+Uuid: mahtuwupk0wxwrha
+
+----
+
+Template: photo

@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 268
+
+----
+
+Uuid: 1992ec2cd9c24e42
+
+----
+
+Template: photo

@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 97
+
+----
+
+Uuid: dea56e59a8844672
+
+----
+
+Template: photo

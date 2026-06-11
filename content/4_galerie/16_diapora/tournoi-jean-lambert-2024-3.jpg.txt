@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 255
+
+----
+
+Uuid: fb564753d0554105
+
+----
+
+Template: photo

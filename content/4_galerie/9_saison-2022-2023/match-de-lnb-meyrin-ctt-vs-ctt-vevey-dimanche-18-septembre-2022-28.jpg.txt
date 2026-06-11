@@ -1,0 +1,15 @@
+Alt:
+----
+
+Caption:
+----
+
+Sort: 21
+
+----
+
+Uuid: b7273e92821946b2
+
+----
+
+Template: photo

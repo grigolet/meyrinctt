@@ -57,4 +57,3 @@ tabs:
         image:
           cover: true
         template: album
-        sortBy: date desc

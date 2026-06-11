@@ -1,0 +1,20 @@
+Alt:
+----
+
+Title: 
+
+----
+
+Caption: Photos ensemble
+
+----
+
+Sort: 2
+
+----
+
+Uuid: xypoqfhiyhoznq3b
+
+----
+
+Template: photo
