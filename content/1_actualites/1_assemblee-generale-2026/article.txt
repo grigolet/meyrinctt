@@ -1,0 +1,24 @@
+Title: Assemblee Generale 2026
+
+----
+
+Date: 2026-05-18
+
+----
+
+Author: Gianluca
+
+----
+
+Excerpt:
+
+AG 2026 : Marquez la date dans vos agendas !
+Mardi 16 juin 2026 á 20h
+
+----
+
+Text: [{"content":{"text":"Chers membres, chères joueuses, chers joueurs,\n\nL'heure est venue de faire le bilan de notre saison et de préparer l'avenir du club ! Le Meyrin Tennis de Table a le plaisir de vous inviter à sa prochaine Assemblée Générale ordinaire.\n\nDate : Mardi 16 juin 2026\n\nHeure : 20h00 (ouverture des portes dès 18h45)\n\nLieu : [Insérer le nom de la salle/lieu, ex: Local du club / Salle omnisports]\n\nPourquoi votre présence est essentielle ?\nL'AG est le moment idéal pour vous exprimer, voter les grandes orientations du club, et élire les membres du comité. Que vous soyez compétiteur acharné, joueur loisir ou parent de jeune pongiste, votre voix compte !\n\nOrdre du jour abrégé : Bilan moral et financier, projets pour la saison 2026-2027, et bien sûr, le traditionnel verre de l'amitié pour clôturer la soirée.\n\nNous vous attendons nombreux pour partager ce moment important de la vie de notre club.\n\nÀ vos agendas, et allez Meyrin !\n\nLe Comité du Meyrin TT"},"id":"c3c066d6-108d-4b99-a142-c9e4619e10a6","isHidden":false,"type":"markdown"},{"content":{"location":"kirby","image":["file://rawlsi1afs8hbj8y"],"src":"","alt":"Affiche AG","caption":"","link":"","ratio":"","crop":"false"},"id":"5422700f-0c34-41b1-b08e-1a45c9d9ca6a","isHidden":false,"type":"image"}]
+
+----
+
+Uuid: 1ka1qym0gnfkqdjz

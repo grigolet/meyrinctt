@@ -1,0 +1,9 @@
+Uuid: lw7efjfsecvamdo5
+
+----
+
+Template: blocks/image
+
+----
+
+Sort: 2

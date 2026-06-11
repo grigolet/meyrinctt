@@ -1,0 +1,21 @@
+Title: Vente des maillots
+
+----
+
+Date: 2026-06-10
+
+----
+
+Author: Gianluca
+
+----
+
+Excerpt: En vente des maintenant les maillots officiels du club
+
+----
+
+Text: [{"content":{"text":"Les nouveaux maillots officiels du club sont disponibles !\n\n**Prix: 45.- CHF**\n\n<h4 class=\"text-red-600\">Pour rappel, le porte du maillots **est obligatoire** pour les compétitions officiels</h4>"},"id":"0cf86f2d-1499-4769-b413-251c87cc849b","isHidden":false,"type":"markdown"},{"content":{"location":"kirby","image":["file://xg1pwggppilwregd"],"src":"","alt":"","caption":"","link":"","ratio":"21/9","crop":"false"},"id":"1517a50d-9c1d-4a43-a5b8-98d5c0842a2f","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["file://lw7efjfsecvamdo5"],"src":"","alt":"","caption":"","link":"","ratio":"21/9","crop":"false"},"id":"85b7e4ec-a7eb-4bcd-8493-4775ce1eb3ed","isHidden":false,"type":"image"}]
+
+----
+
+Uuid: thxyi7go8jp1t9ix

@@ -1,0 +1,9 @@
+Uuid: xg1pwggppilwregd
+
+----
+
+Template: blocks/image
+
+----
+
+Sort: 1

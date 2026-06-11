@@ -10,4 +10,4 @@ Template: cover
 
 ----
 
-Focus: 17.4% 38.3%
+Focus: 50.9% 10.4%
