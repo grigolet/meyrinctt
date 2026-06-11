@@ -74,11 +74,11 @@ Announcement-icon: 🚨
 
 ----
 
-Email-to: helferjoan@hotmail.com
+Email-to: info@meyrinctt.ch
 
 ----
 
-Email-from: noreply@meyrinctt.ch
+Email-from: info@meyrinctt.ch
 
 ----
 
@@ -124,7 +124,7 @@ Social-links:
 
 ----
 
-Sponsors-title: 
+Sponsors-title: Nos partenaires
 
 ----
 

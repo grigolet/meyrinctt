@@ -171,18 +171,6 @@ tabs:
             label: Description du site
             help: Description pour le SEO (meta description)
             
-          optimize_images:
-            type: toggle
-            label: Optimiser les images
-            help: Activer/désactiver l'optimisation automatique des images
-            default: true
-            
-          replace_originals:
-            type: toggle
-            label: Remplacer les originaux
-            help: Remplacer les images originales par les versions optimisées
-            default: true
-            
           holiday_decorations:
             type: toggle
             label: Décorations de fêtes

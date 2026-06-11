@@ -9,7 +9,7 @@
  */
 
 $article = $article ?? $page;
-$cover = $article->cover()->toFile() ?? $article->images()->first();
+$cover = $article->files()->template('cover')->first() ?? $article->images()->first();
 
 // Fallback to random cover from covers folder if no cover exists
 if (!$cover) {
