@@ -77,6 +77,16 @@ tabs:
               v2: Moderne
               classic: Classique
 
+          default_hero_image:
+            type: files
+            label: Image hero par défaut
+            help: Image utilisée quand une page n'a pas d'image hero spécifique.
+            max: 1
+            layout: cards
+            query: site.images
+            uploads:
+              template: hero
+
           theme_headline:
             type: headline
             label: Couleurs du thème
@@ -204,61 +214,6 @@ tabs:
             placeholder: "🚨"
             when:
               announcement_enabled: true
-
-  # Contact settings
-  contact:
-    label: Contact
-    icon: email
-    fields:
-      contact_headline:
-        type: headline
-        label: Configuration email
-        
-      email_to:
-        type: email
-        label: Email de réception
-        help: Adresse email qui recevra les messages du formulaire de contact
-        default: "info@meyrinctt.ch"
-        
-      email_from:
-        type: email
-        label: Email d'envoi
-        help: Adresse email utilisée comme expéditeur
-        default: "noreply@meyrinctt.ch"
-        
-      email_subject:
-        type: text
-        label: Sujet des emails
-        help: Sujet par défaut des emails de contact
-        default: "Nouveau message depuis le site Meyrin CTT"
-        
-      enable_notifications:
-        type: toggle
-        label: Activer les notifications
-        help: Envoyer des emails lors de nouveaux messages
-        default: true
-        
-      address_headline:
-        type: headline
-        label: Coordonnées du club
-        
-      club_address:
-        type: textarea
-        label: Adresse du club
-        default: |
-          Meyrin CTT
-          Rue de Livron 2
-          1217 Meyrin
-          
-      club_email:
-        type: email
-        label: Email public
-        default: "info@meyrinctt.ch"
-        
-      club_location_note:
-        type: text
-        label: Note sur l'emplacement
-        default: "Local en-dessous de la Piscine"
 
   # Social & footer
   footer:

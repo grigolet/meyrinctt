@@ -6,6 +6,10 @@ Active-skin: v2
 
 ----
 
+Default-hero-image: - file://rgris4unejj6vykx
+
+----
+
 Color-primary: #0056b3
 
 ----
@@ -50,14 +54,6 @@ Site-description: Club de Tennis de Table Meyrin - Passion, Compétition et Conv
 
 ----
 
-Optimize-images: true
-
-----
-
-Replace-originals: true
-
-----
-
 Holiday-decorations: false
 
 ----
@@ -71,38 +67,6 @@ Announcement-text: 🚨 Info: Assemblée Generale le mardi 16 juin à 20h
 ----
 
 Announcement-icon: 🚨
-
-----
-
-Email-to: info@meyrinctt.ch
-
-----
-
-Email-from: info@meyrinctt.ch
-
-----
-
-Email-subject: Nouveau message depuis le site Meyrin CTT
-
-----
-
-Enable-notifications: true
-
-----
-
-Club-address:
-
-Meyrin CTT
-Rue de Livron 2
-1217 Meyrin
-
-----
-
-Club-email: info@meyrinctt.ch
-
-----
-
-Club-location-note: Local en-dessous de la Piscine
 
 ----
 
@@ -145,6 +109,46 @@ Sponsors-list:
   url: https://www.drneubauer.com/
   logo:
     - file://auny9fwpapn54vqf
+
+----
+
+Optimize-images: true
+
+----
+
+Replace-originals: true
+
+----
+
+Email-to: info@meyrinctt.ch
+
+----
+
+Email-from: info@meyrinctt.ch
+
+----
+
+Email-subject: Nouveau message depuis le site Meyrin CTT
+
+----
+
+Enable-notifications: true
+
+----
+
+Club-address:
+
+Meyrin CTT
+Rue de Livron 2
+1217 Meyrin
+
+----
+
+Club-email: info@meyrinctt.ch
+
+----
+
+Club-location-note: Local en-dessous de la Piscine
 
 ----
 

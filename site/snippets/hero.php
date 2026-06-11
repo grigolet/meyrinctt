@@ -9,7 +9,10 @@
 
 $title = $title ?? $page->hero_title()->or($page->title());
 $subtitle = $subtitle ?? $page->hero_subtitle()->value();
-$bgImage = $image ?? ($page->hasImages() ? $page->images()->first() : null);
+$bgImage = $image
+    ?? $page->hero_image()->toFile()
+    ?? $site->default_hero_image()->toFile()
+    ?? null;
 ?>
 
 <section class="site-hero py-32 bg-bg border-b-2 border-border relative overflow-hidden">

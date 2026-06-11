@@ -6,30 +6,30 @@ Hero-title: Contact
 
 ----
 
-Hero-subtitle: Une question ? Envie de nous rejoindre ?
-
-----
-
-Form-title: Envoyez un message
-
-----
-
-Success-message: Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
-
-----
 
 Info-title: Coordonnées
 
 ----
 
-Map-embed: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2759.9789872426513!2d6.079028577601021!3d46.230762571096825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c63729252821b%3A0xc64dc70019dfd522!2sMeyrin%20CTT!5e0!3m2!1sen!2sch!4v1767624038005!5m2!1sen!2sch" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+Contact-email: info@meyrinctt.ch
 
 ----
 
-Directions:
+Coordinates:
+
+**Meyrin CTT**
+
+Rue de Livron 2
+1217 Meyrin
+
+*Local en-dessous de la Piscine*
 
 Arret tram 14 Forumeyrin
 En dessous de la piscine de Livron
+
+----
+
+Map-embed: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2759.9789872426513!2d6.079028577601021!3d46.230762571096825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c63729252821b%3A0xc64dc70019dfd522!2sMeyrin%20CTT!5e0!3m2!1sen!2sch!4v1767624038005!5m2!1sen!2sch" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ----
 

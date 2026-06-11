@@ -27,6 +27,18 @@ tabs:
                 
       - width: 1/2
         sections:
+          hero_image:
+            type: fields
+            fields:
+              hero_image:
+                type: files
+                label: Image Hero
+                max: 1
+                layout: cards
+                query: page.images
+                uploads:
+                  template: hero
+
           info:
             type: info
             label: Albums

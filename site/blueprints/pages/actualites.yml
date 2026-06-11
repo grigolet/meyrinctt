@@ -30,6 +30,15 @@ tabs:
           settings:
             type: fields
             fields:
+              hero_image:
+                type: files
+                label: Image Hero
+                max: 1
+                layout: cards
+                query: page.images
+                uploads:
+                  template: hero
+
               per_page:
                 type: number
                 label: Articles par page

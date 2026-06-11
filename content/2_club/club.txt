@@ -10,11 +10,11 @@ Hero-subtitle: Découvrez l'équipe du Meyrin CTT.
 
 ----
 
-Stat-members: 160
+Stat-members: 106
 
 ----
 
-Stat-licensed: 60
+Stat-licensed: 41
 
 ----
 
@@ -22,7 +22,7 @@ Stat-min-age: 6
 
 ----
 
-About-text: [{"content":{"text":"<p>Le Meyrin CTT est une association sportive de tennis de table dynamique, comptant plus de 160 membres dont environ 60 joueurs licenciés. Notre club offre un environnement convivial pour les joueurs de tous niveaux, du débutant au compétiteur confirmé.\n\nNous proposons une **école de jeunesse** accueillant les enfants dès l'âge de 6 ans, avec un encadrement professionnel et des installations de qualité. Nos équipes participent activement aux ligues suisses, représentant fièrement Meyrin dans les compétitions régionales et nationales.\n\nLe club organise régulièrement des **tournois internes et stages**, et met également ses installations à disposition pour la location d'événements.</p>"},"id":"00918954-9b9f-4a10-a130-782decfc1807","isHidden":false,"type":"text"}]
+About-text: [{"content":{"text":"<p>Le Meyrin CTT est une association sportive de tennis de table dynamique, comptant plus de 100 membres dont environ 40 joueurs licenciés. Notre club offre un environnement convivial pour les joueurs de tous niveaux, du débutant au compétiteur confirmé.  Nous proposons une **école de jeunesse** accueillant les enfants dès l'âge de 6 ans, avec un encadrement professionnel et des installations de qualité. Nos équipes participent activement aux ligues suisses, représentant fièrement Meyrin dans les compétitions régionales et nationales.  Le club organise régulièrement des **tournois internes et stages**, et met également ses installations à disposition pour la location d'événements.</p>"},"id":"00918954-9b9f-4a10-a130-782decfc1807","isHidden":false,"type":"text"}]
 
 ----
 
@@ -81,50 +81,50 @@ Committee-members:
     - file://rywkrwatzkggyxf7
   role: Présidente
   name: Joan Helfer
-  email: helferjoan@hotmail.com
+  email: ""
 - 
   photo:
     - file://9zwiml1wdyxuderg
   role: Vice-Président
   name: Jean-Pierre Revol
-  email: jean-pierre.revol@cern.ch
+  email: ""
 - 
   photo:
     - file://dhhhxpnvqxgahvd9
   role: Vice-Président
   name: Gianluca Rigoletti
-  email: gianluca.rigoletti@gmail.com
+  email: ""
 - 
   photo: [ ]
   role: Trésorier
   name: Alain Reynier
-  email: alain-reynier@hotmail.com
+  email: ""
 - 
   photo: [ ]
   role: Secrétaire
   name: Reynald Schmid
-  email: reynald.schmid@bluewin.ch
+  email: ""
 - 
   photo: [ ]
   role: Informatique
   name: Alan Lumley
-  email: alan@lumley.ch
+  email: ""
 - 
   photo: [ ]
   role: 'Salle & Bar'
   name: Carsten Neubauer
-  email: carsten.neubauer@web.de
+  email: ""
 - 
   photo: [ ]
   role: Webmaster
   name: Dominique Schneider
-  email: schneiderdom@bluewin.ch
+  email: ""
 - 
   photo:
     - file://m17wxhhfyvuov6rm
   role: Techniques
   name: Bugra Bilin
-  email: bbilin1986@gmail.com
+  email: ""
 
 ----
 
@@ -136,13 +136,23 @@ Coaches-members:
 
 - 
   photo: [ ]
-  specialty: Niveau B
+  specialty: ""
   name: Giacomo Sorrentino
   email: ""
 - 
   photo: [ ]
-  specialty: Niveau A
+  specialty: ""
   name: Nenad Stevanovic
+  email: ""
+- 
+  photo: [ ]
+  specialty: ""
+  name: Wilfried Monteil
+  email: ""
+- 
+  photo: [ ]
+  specialty: ""
+  name: Sacha Bosijokovic
   email: ""
 
 ----

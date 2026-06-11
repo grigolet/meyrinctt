@@ -1,0 +1,8 @@
+title: Image Hero
+accept: image/*
+
+fields:
+  alt:
+    type: text
+    label: Texte alternatif
+    help: Courte description de l'image pour l'accessibilité.

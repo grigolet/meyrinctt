@@ -13,14 +13,6 @@ return [
     // Force HTTPS for Railway (behind proxy)
     'url' => 'https://' . ($_SERVER['HTTP_HOST'] ?? 'localhost'),
 
-    // Turnstile captcha settings (testing keys)
-    // See: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-    'turnstile' => [
-        'enabled' => true,
-        'siteKey' => '1x00000000000000000000AA',           // Always passes (visible widget test key)
-        'secretKey' => '1x0000000000000000000000000000000AA' // Always passes (test secret key)
-    ],
-
     // Homepage settings
     'home' => 'accueil',
     

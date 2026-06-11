@@ -5,6 +5,9 @@
  * This snippet contains the footer and closing HTML tags.
  * Reused across all templates.
  */
+$contactPage = page('contact');
+$footerEmail = $contactPage ? $contactPage->contact_email() : null;
+$footerCoordinates = $contactPage ? $contactPage->coordinates() : null;
 ?>
     </main>
 
@@ -48,8 +51,8 @@
                 <div>
                     <h4 class="mb-4 text-primary-light font-extrabold uppercase"><?= $site->title()->esc() ?></h4>
                     <p>Club de Tennis de Table</p>
-                    <?php if ($site->club_address()->isNotEmpty()): ?>
-                        <?= $site->club_address()->kt() ?>
+                    <?php if ($footerCoordinates && $footerCoordinates->isNotEmpty()): ?>
+                        <?= $footerCoordinates->kt() ?>
                     <?php else: ?>
                         <p>1217 Meyrin</p>
                     <?php endif ?>
@@ -68,8 +71,8 @@
                 </div>
                 <div>
                     <h4 class="mb-4 text-primary-light font-extrabold uppercase">Contact</h4>
-                    <?php if ($site->club_email()->isNotEmpty()): ?>
-                        <p class="mb-4"><?= $site->club_email()->esc() ?></p>
+                    <?php if ($footerEmail && $footerEmail->isNotEmpty()): ?>
+                        <p class="mb-4"><?= $footerEmail->esc() ?></p>
                     <?php else: ?>
                         <p class="mb-4">info@meyrinctt.ch</p>
                     <?php endif ?>

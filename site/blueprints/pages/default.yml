@@ -25,6 +25,15 @@ columns:
           hero_subtitle:
             type: text
             label: Sous-titre
+
+          hero_image:
+            type: files
+            label: Image Hero
+            max: 1
+            layout: cards
+            query: page.images
+            uploads:
+              template: hero
             
       content:
         type: fields

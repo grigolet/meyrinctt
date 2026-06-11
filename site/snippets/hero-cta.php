@@ -7,7 +7,10 @@
 
 $title = $title ?? $page->hero_title()->or($page->title());
 $subtitle = $subtitle ?? $page->hero_subtitle()->value();
-$bgImage = $image ?? ($page->hasImages() ? $page->images()->first() : null);
+$bgImage = $image
+    ?? $page->hero_image()->toFile()
+    ?? $site->default_hero_image()->toFile()
+    ?? null;
 
 $ctaPrimaryText = $page->hero_cta_primary()->or('Rejoignez-nous');
 $ctaPrimaryLink = $page->hero_cta_primary_link()->toUrl() ?: page('contact')?->url() ?: '#';
