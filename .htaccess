@@ -1,6 +1,9 @@
 # Kirby .htaccess
 # revision 2023-07-22
 
+# prevent directory listings
+Options -Indexes
+
 # rewrite rules
 <IfModule mod_rewrite.c>
 
