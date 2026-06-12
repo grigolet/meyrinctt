@@ -232,8 +232,14 @@ video {
   outline: none;
 }
 
-#lightbox-video::-webkit-media-controls-panel {
-  background-color: rgba(0, 0, 0, 0.8);
+.announcement-text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.announcement-text a:hover {
+  text-decoration-thickness: 2px;
 }
 
 /* Video thumbnail play button overlay */
