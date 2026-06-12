@@ -72,19 +72,14 @@ tabs:
             width: 1/3
           cotisation:
             type: text
-            label: Cotisation
+            label: Cotisation sans licence
             width: 1/5
             placeholder: "CHF 210.00"
           licence:
             type: text
-            label: Licence AGTT
+            label: Cotisation avec licence AGTT
             width: 1/5
             placeholder: "CHF 150.00"
-          total:
-            type: text
-            label: Total
-            width: 1/5
-            placeholder: "CHF 360.00"
 
   forms:
     label: Formulaires

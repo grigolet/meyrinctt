@@ -3,11 +3,11 @@ description: Editor
 permissions:
   access:
     account: true
-    languages: true
+    languages: false
     panel: true
     site: true
-    system: true
-    users: true
+    system: false
+    users: false
   files:
     access: true
     changeName: true
@@ -20,9 +20,9 @@ permissions:
     sort: true
     update: true
   languages:
-    create: true
-    delete: true
-    update: true
+    create: false
+    delete: false
+    update: false
   pages:
     access: true
     changeSlug: true
@@ -42,19 +42,19 @@ permissions:
     changeTitle: true
     update: true
   users:
-    changeEmail: true
-    changeLanguage: true
-    changeName: true
-    changePassword: true
-    changeRole: true
-    create: true
-    delete: true
-    update: true
+    changeEmail: false
+    changeLanguage: false
+    changeName: false
+    changePassword: false
+    changeRole: false
+    create: false
+    delete: false
+    update: false
   user:
     changeEmail: true
     changeLanguage: true
     changeName: true
     changePassword: true
-    changeRole: true
-    delete: true
+    changeRole: false
+    delete: false
     update: true

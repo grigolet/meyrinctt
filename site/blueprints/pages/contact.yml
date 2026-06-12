@@ -58,7 +58,7 @@ tabs:
         type: headline
         label: Localisation
 
-      map_embed:
-        type: textarea
-        label: Code embed Google Maps
-        help: Collez le code iframe de Google Maps ici
+      map_url:
+        type: url
+        label: URL embed Google Maps
+        help: Collez uniquement l'URL src de l'iframe Google Maps.

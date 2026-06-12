@@ -20,9 +20,15 @@ foreach ($files as $file) {
         $isVideo = $file->type() === 'video' || 
                    in_array($file->extension(), ['mp4', 'webm', 'mov', 'avi', 'mkv', 'ogg']);
         $url = $isVideo ? $file->url() : $file->thumb(['width' => 1800, 'format' => 'webp', 'quality' => 82])->url();
+        $poster = null;
+
+        if ($isVideo && ($posterImage = $file->poster()->toFile())) {
+            $poster = $posterImage->resize(1200)->url();
+        }
         
         $mediaItems[] = [
             'url' => $url,
+            'poster' => $poster,
             'type' => $isVideo ? 'video' : 'image',
             'mime' => $file->mime(),
             'alt' => $file->alt()->or('Media')->value(),
@@ -33,6 +39,7 @@ foreach ($files as $file) {
         // Fallback for string URLs (assumes image)
         $mediaItems[] = [
             'url' => $file,
+            'poster' => null,
             'type' => 'image',
             'mime' => 'image/jpeg',
             'alt' => 'Media',
@@ -54,6 +61,7 @@ foreach ($youtubeVideos as $ytVideo) {
         if ($embedUrl) {
             $mediaItems[] = [
                 'url' => $embedUrl,
+                'poster' => null,
                 'type' => 'youtube',
                 'mime' => '',
                 'alt' => $ytVideo->title()->or('Vidéo YouTube')->value(),
@@ -87,7 +95,7 @@ foreach ($youtubeVideos as $ytVideo) {
     <!-- Media Container -->
     <div class="w-full h-full flex items-center justify-center p-4 md:p-12" onclick="event.target === this && closeLightbox()">
         <img id="lightbox-img" src="" alt="Full screen" class="max-w-full max-h-full object-contain shadow-2xl transition-opacity duration-300" style="display: none;" onclick="event.stopPropagation()">
-        <video id="lightbox-video" controls preload="metadata" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300" style="display: none; background: black;" onclick="event.stopPropagation()">
+        <video id="lightbox-video" controls preload="metadata" class="max-w-full max-h-full shadow-2xl transition-opacity duration-300 hidden bg-black" onclick="event.stopPropagation()">
             Your browser does not support the video element.
         </video>
         <iframe id="lightbox-youtube" class="max-w-full max-h-full shadow-2xl" style="display: none; aspect-ratio: 16/9; max-width: 90vw; max-height: 90vh;" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen onclick="event.stopPropagation()"></iframe>
@@ -137,23 +145,32 @@ foreach ($youtubeVideos as $ytVideo) {
             lightboxImg.style.display = 'none';
             lightboxVideo.style.display = 'none';
             lightboxYoutube.style.display = 'none';
+            lightboxImg.classList.add('hidden');
+            lightboxVideo.classList.add('hidden');
+            lightboxYoutube.classList.add('hidden');
             
             // Stop/clear current media
             lightboxVideo.pause();
             lightboxVideo.src = '';
+            lightboxVideo.removeAttribute('poster');
             lightboxYoutube.src = '';
             
             if (currentMedia.type === 'youtube') {
                 // Show YouTube iframe
                 lightboxYoutube.style.display = 'block';
+                lightboxYoutube.classList.remove('hidden');
                 lightboxYoutube.src = currentMedia.url;
             } else if (currentMedia.type === 'video') {
                 // Show uploaded video
                 lightboxVideo.style.display = 'block';
+                lightboxVideo.classList.remove('hidden');
                 
                 // Set video source directly on the video element
-                lightboxVideo.src = currentMedia.url;
+                lightboxVideo.src = currentMedia.url + '#t=0.1';
                 lightboxVideo.type = currentMedia.mime || 'video/mp4';
+                if (currentMedia.poster) {
+                    lightboxVideo.poster = currentMedia.poster;
+                }
                 
                 // Load the video
                 lightboxVideo.load();
@@ -161,6 +178,7 @@ foreach ($youtubeVideos as $ytVideo) {
             } else {
                 // Show image
                 lightboxImg.style.display = 'block';
+                lightboxImg.classList.remove('hidden');
                 lightboxImg.src = currentMedia.url;
                 lightboxImg.alt = currentMedia.alt;
                 preloadAdjacentImage();

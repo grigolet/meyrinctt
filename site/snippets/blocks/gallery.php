@@ -36,7 +36,7 @@ if ($images->count() === 0) {
 
     <?php if ($caption->isNotEmpty()): ?>
     <figcaption>
-        <?= $caption ?>
+        <?= $caption->esc() ?>
     </figcaption>
     <?php endif ?>
 </figure>

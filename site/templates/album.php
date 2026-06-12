@@ -51,13 +51,16 @@ snippet('hero', [
                     <?php if ($posterUrl): ?>
                         <img src="<?= $posterUrl ?>" alt="<?= $file->alt()->or('Vidéo')->esc() ?>" class="w-full h-full object-cover" loading="lazy">
                     <?php else: ?>
-                        <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white opacity-40" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
-                            </svg>
-                        </div>
+                        <video
+                            class="w-full h-full object-cover"
+                            preload="metadata"
+                            muted
+                            playsinline
+                            aria-label="<?= $file->alt()->or('Vidéo')->esc() ?>">
+                            <source src="<?= esc($file->url(), 'attr') ?>#t=0.1" type="<?= esc($file->mime(), 'attr') ?>">
+                        </video>
                     <?php endif ?>
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 pointer-events-none">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/10 pointer-events-none">
                         <svg class="w-16 h-16 text-white opacity-90 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -109,7 +112,7 @@ snippet('hero', [
                         </svg>
                     </div>
                 <?php endif ?>
-                <div class="absolute inset-0 flex items-center justify-center bg-black/30 pointer-events-none">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/10 pointer-events-none">
                     <svg class="w-16 h-16 text-white opacity-90 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/>
                     </svg>

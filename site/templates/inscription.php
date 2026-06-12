@@ -19,9 +19,9 @@ snippet('hero');
                     <thead>
                         <tr class="bg-primary text-white">
                             <th class="p-4 text-left font-bold uppercase text-sm border-2 border-primary">Catégorie</th>
-                            <th class="p-4 text-right font-bold uppercase text-sm border-2 border-primary">Cotisation</th>
-                            <th class="p-4 text-right font-bold uppercase text-sm border-2 border-primary">Licence AGTT</th>
-                            <th class="p-4 text-right font-bold uppercase text-sm border-2 border-primary">Total</th>
+                            <th class="p-4 text-right font-bold uppercase text-sm border-2 border-primary">Cotisation sans licence</th>
+                            <th class="p-4 text-right font-bold uppercase text-sm border-2 border-primary">Cotisation avec licence AGTT</th>
+                            <!-- <th class="p-4 text-right font-bold uppercase text-sm border-2 border-primary">Total</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,7 @@ snippet('hero');
                             <td class="p-4 border-2 border-border font-medium"><?= $fee->category()->esc() ?></td>
                             <td class="p-4 border-2 border-border text-right font-mono"><?= $fee->cotisation()->esc() ?></td>
                             <td class="p-4 border-2 border-border text-right font-mono"><?= $fee->licence()->or('—')->esc() ?></td>
-                            <td class="p-4 border-2 border-border text-right font-bold font-mono text-primary"><?= $fee->total()->esc() ?></td>
+                            <!-- <td class="p-4 border-2 border-border text-right font-bold font-mono text-primary"><?= $fee->total()->esc() ?></td> -->
                         </tr>
                         <?php endforeach ?>
                     </tbody>

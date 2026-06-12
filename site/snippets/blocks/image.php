@@ -25,11 +25,11 @@ if (!$src) {
 
 <figure<?= Html::attr(['data-ratio' => $ratio, 'data-crop' => $crop], null, ' ') ?>>
     <?php if ($link->isNotEmpty()): ?>
-    <a href="<?= Str::esc($link) ?>">
+    <a href="<?= esc($link->toUrl(), 'attr') ?>">
     <?php endif ?>
 
     <?php if (is_string($src)): ?>
-        <img src="<?= $src ?>" alt="<?= $alt->esc() ?>" loading="lazy">
+        <img src="<?= esc($src, 'attr') ?>" alt="<?= $alt->esc() ?>" loading="lazy">
     <?php else: ?>
         <?php snippet('responsive-image', [
             'image' => $src,
@@ -49,7 +49,7 @@ if (!$src) {
 
     <?php if ($caption->isNotEmpty()): ?>
     <figcaption>
-        <?= $caption ?>
+        <?= $caption->esc() ?>
     </figcaption>
     <?php endif ?>
 </figure>

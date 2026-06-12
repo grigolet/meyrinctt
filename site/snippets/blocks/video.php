@@ -29,7 +29,7 @@ if ($posterImage = $block->poster()->toFile()) {
 
 <figure>
     <video 
-        <?= $poster ? 'poster="' . $poster . '"' : '' ?> 
+        <?= $poster ? 'poster="' . esc($poster, 'attr') . '"' : '' ?>
         controls
         preload="metadata"
         <?php if ($video && $video->width() && $video->height()): ?>
@@ -37,13 +37,13 @@ if ($posterImage = $block->poster()->toFile()) {
         height="<?= $video->height() ?>"
         <?php endif ?>
     >
-        <source src="<?= $url ?>" type="<?= $video ? $video->mime() : 'video/mp4' ?>">
+        <source src="<?= esc($url, 'attr') ?>" type="<?= $video ? esc($video->mime(), 'attr') : 'video/mp4' ?>">
         Your browser does not support the video tag.
     </video>
 
     <?php if ($caption->isNotEmpty()): ?>
     <figcaption>
-        <?= $caption ?>
+        <?= $caption->esc() ?>
     </figcaption>
     <?php endif ?>
 </figure>

@@ -18,36 +18,47 @@ Fees-note: Rabais par enfant si plusieurs membres de la famille: 40.- CHF
 
 ----
 
-Hero-image:
+Hero-image: 
+
 ----
 
 Fees:
 
 - 
-  category: Adultes (dès 18 ans)
-  cotisation: CHF 210.00
-  licence: CHF 150.00
+  category: >
+    Adultes (inclus cours de tennis de
+    table)
+  cotisation: CHF 210
+  licence: CHF 360
   total: CHF 360.00
 - 
-  category: Juniors (moins de 18 ans) avec cours
-  cotisation: CHF 220.00
-  licence: CHF 100.00
+  category: >
+    Écoliers et étudiants (inclus cours de
+    tennis de table)
+  cotisation: CHF 220
+  licence: CHF 320
   total: CHF 320.00
 - 
-  category: Conjoints
-  cotisation: CHF 100.00
-  licence: CHF 160.00
+  category: >
+    Étudiants et apprentis (sans cours de
+    tennis de table)
+  cotisation: CHF 160
+  licence: CHF 300
   total: CHF 260.00
 - 
-  category: Membres externes sans cours
-  cotisation: CHF 100.00
-  licence: ""
+  category: Conjoints
+  cotisation: CHF 100
+  licence: CHF 260
   total: CHF 100.00
 - 
   category: Baby Ping
-  cotisation: CHF 120.00
+  cotisation: CHF 120
   licence: ""
   total: CHF 50.00
+- 
+  category: "Membre externe (licencié·e auprès d'un autre club)"
+  cotisation: CHF 100
+  licence: ""
 
 ----
 

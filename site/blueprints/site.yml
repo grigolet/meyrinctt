@@ -154,16 +154,24 @@ tabs:
             label: Polices de caractères
 
           font_heading:
-            type: text
+            type: select
             label: Police des titres
-            help: Police pour les titres et navigation (ex. 'Space Grotesk')
-            default: "'Space Grotesk', sans-serif"
+            help: Police pour les titres et navigation
+            default: space-grotesk
+            options:
+              space-grotesk: Space Grotesk
+              dm-sans: DM Sans
+              system: Police système
 
           font_body:
-            type: text
+            type: select
             label: Police du texte
-            help: Police pour le contenu et paragraphes (ex. 'DM Sans')
-            default: "'DM Sans', sans-serif"
+            help: Police pour le contenu et paragraphes
+            default: dm-sans
+            options:
+              dm-sans: DM Sans
+              space-grotesk: Space Grotesk
+              system: Police système
 
   # Site settings
   settings:
@@ -200,10 +208,15 @@ tabs:
             default: false
             
           announcement_text:
-            type: text
+            type: textarea
             label: Texte du bandeau
-            help: Contenu du message d'annonce
+            help: Contenu du message d'annonce. Vous pouvez ajouter un lien en Markdown, par exemple [Plus d'infos](https://example.com).
             placeholder: "🚨 Info: Le gymnase sera fermé le 25 Décembre."
+            buttons:
+              - bold
+              - italic
+              - link
+              - email
             when:
               announcement_enabled: true
               

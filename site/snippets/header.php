@@ -8,6 +8,15 @@
 $activeSkin = $site->active_skin()->or('v2')->value();
 $isModernSkin = $activeSkin === 'v2';
 $cssVersion = @filemtime(kirby()->root('index') . '/assets/css/index.css') ?: null;
+$fontStacks = [
+    'space-grotesk' => "'Space Grotesk', sans-serif",
+    'dm-sans' => "'DM Sans', sans-serif",
+    'system' => "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+];
+$headingFontSetting = $site->font_heading()->value();
+$bodyFontSetting = $site->font_body()->value();
+$headingFont = $fontStacks[$headingFontSetting] ?? (in_array($headingFontSetting, $fontStacks, true) ? $headingFontSetting : $fontStacks['space-grotesk']);
+$bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontStacks, true) ? $bodyFontSetting : $fontStacks['dm-sans']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,8 +53,8 @@ $cssVersion = @filemtime(kirby()->root('index') . '/assets/css/index.css') ?: nu
             --color-border: <?= $isModernSkin ? '#c9deef' : $site->color_border()->or('#004494') ?>;
             --color-accent: <?= $isModernSkin ? '#6ee7b7' : $site->color_accent()->or('#d32f2f') ?>;
 
-            --font-heading: <?= $site->font_heading()->or("'Space Grotesk', sans-serif") ?>;
-            --font-body: <?= $site->font_body()->or("'DM Sans', sans-serif") ?>;
+            --font-heading: <?= $headingFont ?>;
+            --font-body: <?= $bodyFont ?>;
 
             --shadow-soft: 4px 4px 0px rgba(0, 86, 179, 0.15);
             --shadow-hover: 6px 6px 0px rgba(0, 86, 179, 0.25);
@@ -135,12 +144,12 @@ $cssVersion = @filemtime(kirby()->root('index') . '/assets/css/index.css') ?: nu
     <?php if ($site->announcement_enabled()->toBool() && $announcementText->isNotEmpty()): ?>
     <div id="announcement-banner" data-announcement-id="<?= $announcementId ?>" class="bg-accent text-white py-2 px-4 relative z-[60]">
         <div class="max-w-[1200px] mx-auto flex justify-between items-center">
-            <p class="text-sm font-bold text-center w-full">
+            <div class="announcement-text text-sm font-bold text-center w-full">
                 <?php if ($announcementIcon->isNotEmpty()): ?>
                     <?= $announcementIcon->esc() ?>
                 <?php endif ?>
-                <?= $announcementText->esc() ?>
-            </p>
+                <?= $announcementText->kti() ?>
+            </div>
             <button id="close-banner" class="text-white hover:text-white/80 font-bold ml-4" aria-label="Fermer">&times;</button>
         </div>
     </div>

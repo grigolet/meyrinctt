@@ -62,7 +62,7 @@ Announcement-enabled: true
 
 ----
 
-Announcement-text: 🚨 Info: Assemblée Generale le mardi 16 juin à 20h
+Announcement-text: Info: (link: page://1ka1qym0gnfkqdjz text: Assemblée Generale le mardi 16 juin à 20h)
 
 ----
 

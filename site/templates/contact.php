@@ -8,6 +8,18 @@ snippet('header');
 snippet('hero', ['subtitle' => '']);
 
 $contactEmail = $page->contact_email();
+$mapUrl = $page->map_url();
+$mapSrc = null;
+
+if ($mapUrl->isNotEmpty()) {
+    $candidate = $mapUrl->value();
+    $host = parse_url($candidate, PHP_URL_HOST);
+    $path = parse_url($candidate, PHP_URL_PATH) ?: '';
+
+    if ($host && preg_match('/^(www|maps)\.google\.com$/i', $host) && str_contains($path, '/maps/embed')) {
+        $mapSrc = $candidate;
+    }
+}
 ?>
 
 <section class="py-16">
@@ -38,9 +50,18 @@ $contactEmail = $page->contact_email();
 
             <section>
                 <h2 class="text-2xl font-black uppercase mb-6">Localisation</h2>
-                <?php if ($page->map_embed()->isNotEmpty()): ?>
+                <?php if ($mapSrc): ?>
                 <div class="bg-white border-2 border-border rounded-xl overflow-hidden shadow-soft">
-                    <?= $page->map_embed()->value() ?>
+                    <iframe
+                        src="<?= esc($mapSrc, 'attr') ?>"
+                        width="600"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="block w-full aspect-[4/3]">
+                    </iframe>
                 </div>
                 <?php endif ?>
             </section>

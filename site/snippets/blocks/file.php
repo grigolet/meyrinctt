@@ -33,7 +33,7 @@ $icon = $iconMap[$extension] ?? '📎';
     <a href="<?= $file->url() ?>" class="file-link" download>
         <span class="file-icon"><?= $icon ?></span>
         <div class="file-info">
-            <span class="file-caption"><?= $caption ?></span>
+            <span class="file-caption"><?= $caption->esc() ?></span>
             <span class="file-meta"><?= $extension ?> • <?= $size ?></span>
         </div>
         <span class="download-icon">⬇️</span>
@@ -103,7 +103,7 @@ $icon = $iconMap[$extension] ?? '📎';
     <div class="file-header">
         <span class="file-icon"><?= $icon ?></span>
         <div class="file-info">
-            <span class="file-caption"><?= $caption ?></span>
+            <span class="file-caption"><?= $caption->esc() ?></span>
             <span class="file-meta"><?= $extension ?> • <?= $size ?></span>
         </div>
     </div>

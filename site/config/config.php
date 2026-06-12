@@ -7,11 +7,18 @@
  * https://getkirby.com/docs/reference/system/options
  */
 
-return [
-    'debug' => true,
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$forwardedProto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? null;
+$scheme = $forwardedProto
+    ? trim(explode(',', $forwardedProto)[0])
+    : ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http');
+$siteUrl = getenv('KIRBY_URL') ?: $scheme . '://' . $host;
 
-    // Force HTTPS for Railway (behind proxy)
-    'url' => 'https://' . ($_SERVER['HTTP_HOST'] ?? 'localhost'),
+return [
+    'debug' => false,
+
+    // Set KIRBY_URL=https://meyrinctt.ch in production to force the canonical domain.
+    'url' => $siteUrl,
 
     // Homepage settings
     'home' => 'accueil',
@@ -20,7 +27,10 @@ return [
     'panel' => [
         'install' => true,
         'slug' => 'panel',
-        'language' => 'fr'
+        'language' => 'fr',
+        'vue' => [
+            'compiler' => false
+        ]
     ],
     
     // Language settings
