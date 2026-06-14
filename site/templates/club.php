@@ -166,7 +166,7 @@ snippet('hero');
 
         <!-- Coaches Section -->
         <?php if ($page->coaches_members()->isNotEmpty()): ?>
-        <div class="mb-16 mt-32 text-center">
+        <div id="entraineur" data-anchor-aliases="entraineurs,nos-entraineurs" class="mb-16 mt-32 text-center">
             <h2 class="text-3xl font-black uppercase mb-8 text-center pb-4 border-b-4 border-primary inline-block"><?= $page->coaches_title()->or('Nos Entraîneurs')->esc() ?></h2>
 
             <div class="max-w-[900px] mx-auto">

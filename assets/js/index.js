@@ -5,10 +5,134 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
+  initHeadingAnchors();
   initMobileMenu();
   initSmoothScroll();
   initLazyLoad();
 });
+
+/**
+ * Add URL-friendly anchors to headings.
+ */
+function initHeadingAnchors() {
+  const usedIds = new Set(
+    Array.from(document.querySelectorAll('[id]'))
+      .map(element => element.id)
+      .filter(Boolean)
+  );
+  const headings = document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6');
+
+  headings.forEach(heading => {
+    if (heading.closest('a, button, [data-no-heading-anchor]')) return;
+
+    if (!heading.id) {
+      const baseSlug = slugify(heading.textContent);
+      if (!baseSlug) return;
+
+      let slug = baseSlug;
+      let index = 2;
+
+      while (usedIds.has(slug)) {
+        slug = `${baseSlug}-${index}`;
+        index += 1;
+      }
+
+      heading.id = slug;
+      usedIds.add(slug);
+    }
+
+    addHeadingAnchor(heading);
+  });
+
+  if (window.location.hash) {
+    scrollToHash(window.location.hash, 'auto');
+    window.setTimeout(() => scrollToHash(window.location.hash, 'auto'), 100);
+  }
+}
+
+/**
+ * Add a visible-on-hover permalink to a heading.
+ */
+function addHeadingAnchor(heading) {
+  if (!heading.id || heading.querySelector('.heading-anchor')) return;
+
+  const anchor = document.createElement('a');
+  anchor.className = 'heading-anchor';
+  anchor.href = `#${encodeURIComponent(heading.id)}`;
+  anchor.setAttribute('aria-label', `Lien vers ${heading.textContent.trim()}`);
+  anchor.title = 'Copier le lien de cette section';
+  anchor.textContent = '#';
+
+  anchor.addEventListener('click', async event => {
+    const absoluteUrl = `${window.location.origin}${window.location.pathname}#${heading.id}`;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      event.preventDefault();
+      history.pushState(null, '', anchor.getAttribute('href'));
+      scrollToHash(anchor.getAttribute('href'));
+
+      try {
+        await navigator.clipboard.writeText(absoluteUrl);
+        anchor.dataset.copied = 'true';
+        window.setTimeout(() => {
+          delete anchor.dataset.copied;
+        }, 1200);
+      } catch (error) {
+        window.location.hash = heading.id;
+      }
+    }
+  });
+
+  heading.appendChild(anchor);
+}
+
+/**
+ * Scroll to a hash target after generated anchors are ready.
+ */
+function scrollToHash(hash, behavior = 'smooth') {
+  const target = getAnchorTarget(hash);
+  if (!target) return false;
+
+  target.scrollIntoView({
+    behavior,
+    block: 'start'
+  });
+
+  return true;
+}
+
+/**
+ * Resolve a hash to an element id or configured alias.
+ */
+function getAnchorTarget(hash) {
+  const id = decodeURIComponent(hash.replace(/^#/, ''));
+  if (!id) return null;
+
+  const directTarget = document.getElementById(id);
+  if (directTarget) return directTarget;
+
+  return Array.from(document.querySelectorAll('[data-anchor-aliases]')).find(element => {
+    const aliases = element.dataset.anchorAliases
+      .split(',')
+      .map(alias => alias.trim())
+      .filter(Boolean);
+
+    return aliases.includes(id);
+  }) || null;
+}
+
+/**
+ * Convert visible heading text to a stable URL fragment.
+ */
+function slugify(value) {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, ' et ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 /**
  * Mobile menu toggle
@@ -51,13 +175,9 @@ function initSmoothScroll() {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
 
-      const target = document.querySelector(targetId);
-      if (target) {
+      if (getAnchorTarget(targetId)) {
         e.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        scrollToHash(targetId);
       }
     });
   });

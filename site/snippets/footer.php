@@ -8,6 +8,7 @@
 $contactPage = page('contact');
 $footerEmail = $contactPage ? $contactPage->contact_email() : null;
 $footerCoordinates = $contactPage ? $contactPage->coordinates() : null;
+$jsVersion = @filemtime(kirby()->root('index') . '/assets/js/index.js') ?: null;
 ?>
     </main>
 
@@ -127,7 +128,7 @@ $footerCoordinates = $contactPage ? $contactPage->coordinates() : null;
         </div>
     </footer>
 
-    <script src="<?= url('assets/js/index.js') ?>" defer></script>
+    <script src="<?= url('assets/js/index.js') ?><?= $jsVersion ? '?v=' . $jsVersion : '' ?>" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Announcement Banner Logic
