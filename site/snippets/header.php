@@ -18,6 +18,26 @@ $bodyFontSetting = $site->font_body()->value();
 $headingFont = $fontStacks[$headingFontSetting] ?? (in_array($headingFontSetting, $fontStacks, true) ? $headingFontSetting : $fontStacks['space-grotesk']);
 $bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontStacks, true) ? $bodyFontSetting : $fontStacks['dm-sans']);
 $themeAccent = $site->color_accent()->or($isModernSkin ? '#6ee7b7' : '#d32f2f');
+$isArticlePage = $page->intendedTemplate()->name() === 'article';
+$metaTitle = $isArticlePage ? $page->title()->value() : $page->title()->value() . ' | ' . $site->title()->value();
+$metaDescription = $isArticlePage
+    ? $page->excerpt()->or($page->metaDescription())->or($site->site_description())->value()
+    : $page->metaDescription()->or($site->site_description())->value();
+$metaDescription = trim(preg_replace('/\s+/', ' ', $metaDescription));
+$metaUrl = $page->url();
+$metaImage = null;
+
+if ($isArticlePage && function_exists('meyrinctt_cover_image')) {
+    $metaImage = meyrinctt_cover_image($page);
+}
+
+if (!$metaImage) {
+    $metaImage = $page->hero_image()->toFile() ?? $site->default_hero_image()->toFile() ?? null;
+}
+
+$metaImageUrl = $metaImage
+    ? $metaImage->thumb(['width' => 1200, 'height' => 630, 'crop' => true, 'format' => 'jpg', 'quality' => 85])->url()
+    : url('assets/hero.webp');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,8 +46,28 @@ $themeAccent = $site->color_accent()->or($isModernSkin ? '#6ee7b7' : '#d32f2f');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title><?= $page->title()->esc() ?> | <?= $site->title()->esc() ?></title>
-    <meta name="description" content="<?= $page->metaDescription()->or($site->site_description())->esc() ?>">
+    <title><?= esc($metaTitle) ?></title>
+    <meta name="description" content="<?= esc($metaDescription, 'attr') ?>">
+    <link rel="canonical" href="<?= esc($metaUrl, 'attr') ?>">
+
+    <meta property="og:type" content="<?= $isArticlePage ? 'article' : 'website' ?>">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:site_name" content="<?= $site->title()->esc() ?>">
+    <meta property="og:title" content="<?= esc($metaTitle, 'attr') ?>">
+    <meta property="og:description" content="<?= esc($metaDescription, 'attr') ?>">
+    <meta property="og:url" content="<?= esc($metaUrl, 'attr') ?>">
+    <meta property="og:image" content="<?= esc($metaImageUrl, 'attr') ?>">
+    <meta property="og:image:secure_url" content="<?= esc($metaImageUrl, 'attr') ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <?php if ($isArticlePage && $page->date()->isNotEmpty()): ?>
+    <meta property="article:published_time" content="<?= esc(date('c', $page->date()->toDate('U')), 'attr') ?>">
+    <?php endif ?>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= esc($metaTitle, 'attr') ?>">
+    <meta name="twitter:description" content="<?= esc($metaDescription, 'attr') ?>">
+    <meta name="twitter:image" content="<?= esc($metaImageUrl, 'attr') ?>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

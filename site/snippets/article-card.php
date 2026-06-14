@@ -9,21 +9,7 @@
  */
 
 $article = $article ?? $page;
-$cover = $article->files()->template('cover')->first() ?? $article->images()->first();
-
-// Fallback to random cover from covers folder if no cover exists
-if (!$cover) {
-    if (!$cover && $coversPage = site()->find('covers')) {
-        $coverImages = $coversPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']);
-        if ($coverImages->count() > 0) {
-            // Use article ID to seed random selection for consistency
-            $seed = crc32($article->id());
-            $index = $seed % $coverImages->count();
-            $cover = $coverImages->nth($index);
-        }
-    }
-}
-
+$cover = meyrinctt_cover_image($article);
 $date = meyrinctt_date($article->date());
 $author = $article->author()->isNotEmpty() ? $article->author()->esc() : null;
 ?>

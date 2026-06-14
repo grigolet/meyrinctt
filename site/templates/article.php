@@ -6,20 +6,7 @@
  */
 snippet('header');
 
-$cover = $page->files()->template('cover')->first() ?? $page->images()->first();
-
-// Fallback to random cover from covers folder if no cover exists
-if (!$cover) {
-    if (!$cover && $coversPage = site()->find('covers')) {
-        $coverImages = $coversPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']);
-        if ($coverImages->count() > 0) {
-            // Use article ID to seed random selection for consistency
-            $seed = crc32($page->id());
-            $index = $seed % $coverImages->count();
-            $cover = $coverImages->nth($index);
-        }
-    }
-}
+$cover = meyrinctt_cover_image($page);
 ?>
 
 <?php snippet('hero', [

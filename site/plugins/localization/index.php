@@ -2,6 +2,32 @@
 
 use Kirby\Cms\App as Kirby;
 
+function meyrinctt_cover_image($page)
+{
+    $cover = $page->files()->template('cover')->first() ?? $page->images()->first();
+
+    if ($cover) {
+        return $cover;
+    }
+
+    $coversPage = site()->find('covers');
+
+    if (!$coversPage) {
+        return null;
+    }
+
+    $coverImages = $coversPage->images()->filterBy('extension', 'in', ['jpg', 'jpeg', 'png', 'webp']);
+
+    if ($coverImages->count() === 0) {
+        return null;
+    }
+
+    $seed = crc32($page->id());
+    $index = $seed % $coverImages->count();
+
+    return $coverImages->nth($index);
+}
+
 function meyrinctt_date($value, string $pattern = 'd MMMM y', string $locale = 'fr_CH'): string
 {
     if (is_object($value) && method_exists($value, 'isEmpty') && $value->isEmpty()) {
