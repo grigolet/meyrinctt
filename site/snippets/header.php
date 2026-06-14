@@ -17,6 +17,7 @@ $headingFontSetting = $site->font_heading()->value();
 $bodyFontSetting = $site->font_body()->value();
 $headingFont = $fontStacks[$headingFontSetting] ?? (in_array($headingFontSetting, $fontStacks, true) ? $headingFontSetting : $fontStacks['space-grotesk']);
 $bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontStacks, true) ? $bodyFontSetting : $fontStacks['dm-sans']);
+$themeAccent = $site->color_accent()->or($isModernSkin ? '#6ee7b7' : '#d32f2f');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -51,7 +52,7 @@ $bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontSt
             --color-surface: <?= $isModernSkin ? '#ffffff' : $site->color_surface()->or('#ffffff') ?>;
             --color-text: <?= $isModernSkin ? '#102033' : $site->color_text()->or('#1a1a1a') ?>;
             --color-border: <?= $isModernSkin ? '#c9deef' : $site->color_border()->or('#004494') ?>;
-            --color-accent: <?= $isModernSkin ? '#6ee7b7' : $site->color_accent()->or('#d32f2f') ?>;
+            --color-accent: <?= $themeAccent ?>;
 
             --font-heading: <?= $headingFont ?>;
             --font-body: <?= $bodyFont ?>;
@@ -130,10 +131,14 @@ $bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontSt
         .ball:nth-child(3) { top: 40%; left: 20%; width: 30px; height: 30px; opacity: 0.4; animation-duration: 18s; animation-delay: -10s; }
         .ball:nth-child(4) { top: 80%; left: 15%; animation-duration: 22s; animation-delay: -2s; }
         .ball:nth-child(5) { top: 20%; left: 90%; width: 50px; height: 50px; animation-duration: 28s; animation-delay: -8s; }
+
+        body.skin-modern {
+            --color-accent: <?= $themeAccent ?>;
+        }
     </style>
 </head>
 
-<body class="<?= $isModernSkin ? 'skin-modern ' : '' ?>bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen">
+<body class="<?= $isModernSkin ? 'skin-modern ' : '' ?>bg-bg text-text leading-relaxed overflow-x-hidden antialiased flex flex-col min-h-screen" style="--color-accent: <?= esc($themeAccent, 'attr') ?>">
 
     <!-- Announcement Banner -->
     <?php
@@ -142,7 +147,7 @@ $bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontSt
     $announcementId = substr(sha1($announcementIcon->value() . '|' . $announcementText->value()), 0, 12);
     ?>
     <?php if ($site->announcement_enabled()->toBool() && $announcementText->isNotEmpty()): ?>
-    <div id="announcement-banner" data-announcement-id="<?= $announcementId ?>" class="bg-accent text-white py-2 px-4 relative z-[60]">
+    <div id="announcement-banner" data-announcement-id="<?= $announcementId ?>" class="text-white py-2 px-4 relative z-[60]" style="background-color: <?= esc($themeAccent, 'attr') ?>">
         <div class="max-w-[1200px] mx-auto flex justify-between items-center">
             <div class="announcement-text text-sm font-bold text-center w-full">
                 <?php if ($announcementIcon->isNotEmpty()): ?>

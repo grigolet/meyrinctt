@@ -24,7 +24,7 @@ if (!$cover) {
 
 <?php snippet('hero', [
     'title' => $page->title(),
-    'subtitle' => $page->date()->toDate('d M Y'),
+    'subtitle' => meyrinctt_date($page->date()),
     'image' => $cover
 ]) ?>
 
@@ -35,7 +35,7 @@ if (!$cover) {
         <div class="mt-12 pt-8 mb-8 border-t-2 border-border">
             <a href="<?= $page->parent()->url() ?>" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border-2 border-primary bg-primary/10 px-5 py-3 font-bold text-primary transition-colors hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/25">
                 <span aria-hidden="true">&larr;</span>
-                <span>Retour aux actualités</span>
+                <span><?= t('article.backToNews', 'Retour aux actualités') ?></span>
             </a>
         </div>
 

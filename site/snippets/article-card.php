@@ -24,7 +24,7 @@ if (!$cover) {
     }
 }
 
-$date = $article->date()->toDate('d M Y');
+$date = meyrinctt_date($article->date());
 $author = $article->author()->isNotEmpty() ? $article->author()->esc() : null;
 ?>
 
@@ -54,9 +54,9 @@ $author = $article->author()->isNotEmpty() ? $article->author()->esc() : null;
         <?php endif ?>
         <div class="mt-auto">
             <?php if ($author): ?>
-            <p class="text-sm text-gray-600 mb-3">Par <?= $author ?></p>
+            <p class="text-sm text-gray-600 mb-3"><?= t('article.by', 'Par') ?> <?= $author ?></p>
             <?php endif ?>
-            <span class="inline-block font-bold text-text border-b-2 border-accent uppercase text-sm">Lire la suite</span>
+            <span class="inline-block font-bold text-text border-b-2 border-accent uppercase text-sm"><?= t('article.readMore', 'Lire la suite') ?></span>
         </div>
     </div>
 </a>
