@@ -53,9 +53,9 @@ snippet('hero');
                     <?= $page->carousel_title()->or('Notre Club en Images')->esc() ?>
                 </h2>
                 <?php if ($page->carousel_subtitle()->isNotEmpty()): ?>
-                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-                    <?= $page->carousel_subtitle()->esc() ?>
-                </p>
+                <div class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                    <?= $page->carousel_subtitle()->kt() ?>
+                </div>
                 <?php endif ?>
             </div>
 
@@ -113,7 +113,9 @@ snippet('hero');
                     <div class="bg-surface border-2 border-border rounded-xl p-8 shadow-soft">
                         <span class="inline-block px-4 py-1 bg-primary text-white font-bold text-sm uppercase rounded-full mb-4"><?= $event->year()->esc() ?></span>
                         <h3 class="text-2xl font-black mb-4"><?= $event->title()->esc() ?></h3>
-                        <p class="mb-4 leading-relaxed"><?= $event->description()->kt() ?></p>
+                        <div class="mb-4 leading-relaxed">
+                            <?= $event->description()->kt() ?>
+                        </div>
                     </div>
                     <?php endforeach ?>
                 </div>

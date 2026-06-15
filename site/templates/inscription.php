@@ -52,7 +52,9 @@ snippet('hero');
                     <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">1</span>
                     Demande d'adhésion
                 </h2>
-                <p class="mb-6 text-gray-700 min-h-24"><?= $page->adhesion_description()->or("Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club.")->esc() ?></p>
+                <div class="mb-6 text-gray-700 min-h-24">
+                    <?= $page->adhesion_description()->or("Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club.")->kt() ?>
+                </div>
                 
                 <?php if ($page->adhesion_forms()->isNotEmpty()): ?>
                 <div class="flex flex-col gap-4">
@@ -74,7 +76,9 @@ snippet('hero');
                     <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">2</span>
                     Demande de licence
                 </h2>
-                <p class="mb-6 text-gray-700 min-h-24"><?= $page->licence_description()->or("Pour les joueurs désirant rejoindre une équipe pour la compétition, veuillez remplir les documents suivants.")->esc() ?></p>
+                <div class="mb-6 text-gray-700 min-h-24">
+                    <?= $page->licence_description()->or("Pour les joueurs désirant rejoindre une équipe pour la compétition, veuillez remplir les documents suivants.")->kt() ?>
+                </div>
                 
                 <?php if ($page->licence_forms()->isNotEmpty()): ?>
                 <div class="flex flex-col gap-4">

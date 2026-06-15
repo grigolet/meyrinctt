@@ -60,7 +60,9 @@ snippet('header');
                 <?php foreach ($page->cards()->toStructure() as $card): ?>
                 <a href="<?= $card->link()->toUrl() ?>" class="bg-surface border-2 border-border rounded-xl p-8 shadow-soft transition-all hover:-translate-y-1.5 hover:shadow-hover hover:border-primary group">
                     <h3 class="text-primary mb-3 text-2xl font-extrabold uppercase group-hover:underline"><?= $card->title()->esc() ?></h3>
-                    <p class="mb-4"><?= $card->description()->esc() ?></p>
+                    <div class="mb-4">
+                        <?= $card->description()->kt() ?>
+                    </div>
                     <span class="text-primary font-bold text-sm uppercase inline-flex items-center gap-2"><?= $card->link_text()->or('En savoir plus')->esc() ?> <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
                 </a>
                 <?php endforeach ?>

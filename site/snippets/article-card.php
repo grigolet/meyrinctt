@@ -36,7 +36,9 @@ $author = $article->author()->isNotEmpty() ? $article->author()->esc() : null;
         <span class="block text-sm font-bold text-primary uppercase mb-2"><?= $date ?></span>
         <h3 class="text-2xl font-extrabold mb-2 leading-tight"><?= $article->title()->esc() ?></h3>
         <?php if ($article->excerpt()->isNotEmpty()): ?>
-        <p class="mb-4 flex-grow"><?= $article->excerpt()->esc() ?></p>
+        <div class="mb-4 flex-grow">
+            <?= $article->excerpt()->kt() ?>
+        </div>
         <?php endif ?>
         <div class="mt-auto">
             <?php if ($author): ?>

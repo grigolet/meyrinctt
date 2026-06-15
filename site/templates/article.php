@@ -27,7 +27,9 @@ $cover = meyrinctt_cover_image($page);
         </div>
 
         <?php if ($page->excerpt()->isNotEmpty()): ?>
-        <p class="lead text-xl font-medium text-gray-600 mb-8 prose"><?= $page->excerpt()->esc() ?></p>
+        <div class="lead text-xl font-medium text-gray-600 mb-8 prose">
+            <?= $page->excerpt()->kt() ?>
+        </div>
         <?php endif ?>
 
         <?php if ($page->text()->isNotEmpty()): ?>
