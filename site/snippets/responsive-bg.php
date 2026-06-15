@@ -29,6 +29,7 @@ $webpUrl = $image->thumb(['format' => 'webp'])->url();
 $fallbackUrl = $image->url();
 
 $loadingAttr = $lazy ? 'loading="lazy"' : '';
+$focusPosition = function_exists('meyrinctt_focus_position') ? meyrinctt_focus_position($image) : null;
 ?>
 
 <div class="<?= $class ?> relative overflow-hidden">
@@ -36,6 +37,7 @@ $loadingAttr = $lazy ? 'loading="lazy"' : '';
         src="<?= $webpUrl ?>" 
         alt="<?= esc($alt) ?>" 
         class="absolute inset-0 w-full h-full object-cover"
+        <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
         <?= $loadingAttr ?>
     >
 </div>

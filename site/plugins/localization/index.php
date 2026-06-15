@@ -28,6 +28,25 @@ function meyrinctt_cover_image($page)
     return $coverImages->nth($index);
 }
 
+function meyrinctt_focus_position($image): ?string
+{
+    if (!is_object($image)) {
+        return null;
+    }
+
+    try {
+        $focus = trim($image->focus()->value());
+    } catch (Throwable) {
+        return null;
+    }
+
+    if (preg_match('/^\d+(?:\.\d+)?%\s+\d+(?:\.\d+)?%$/', $focus) !== 1) {
+        return null;
+    }
+
+    return $focus;
+}
+
 function meyrinctt_date($value, string $pattern = 'd MMMM y', string $locale = 'fr_CH'): string
 {
     if (is_object($value) && method_exists($value, 'isEmpty') && $value->isEmpty()) {

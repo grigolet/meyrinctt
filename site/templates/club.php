@@ -63,6 +63,7 @@ snippet('hero');
                 <div class="club-carousel swiper border-2 border-border rounded-xl overflow-hidden shadow-soft">
                     <div class="swiper-wrapper">
                         <?php foreach ($page->images()->template('carousel-image') as $image): ?>
+                        <?php $focusPosition = meyrinctt_focus_position($image); ?>
                         <div class="swiper-slide">
                             <div class="relative aspect-[16/9] bg-gray-100">
                                 <picture>
@@ -75,6 +76,7 @@ snippet('hero');
                                         src="<?= $image->resize(1200)->url() ?>" 
                                         alt="<?= $image->alt()->or($page->carousel_title())->esc() ?>" 
                                         class="w-full h-full object-cover"
+                                        <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
                                         loading="lazy"
                                     >
                                 </picture>
@@ -132,6 +134,7 @@ snippet('hero');
                         <div class="flex justify-center mb-4">
                             <?php if ($member->photo()->toFile()): ?>
                             <?php $photo = $member->photo()->toFile(); ?>
+                            <?php $focusPosition = meyrinctt_focus_position($photo); ?>
                             <picture>
                                 <source srcset="<?= $photo->srcset('avatar') ?>" type="image/webp">
                                 <img 
@@ -140,6 +143,7 @@ snippet('hero');
                                     class="w-24 h-24 rounded-full object-cover border-4 border-primary"
                                     width="120"
                                     height="120"
+                                    <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
                                     loading="lazy"
                                 >
                             </picture>
@@ -177,6 +181,7 @@ snippet('hero');
                         <div class="flex justify-center mb-4">
                             <?php if ($coach->photo()->toFile()): ?>
                             <?php $photo = $coach->photo()->toFile(); ?>
+                            <?php $focusPosition = meyrinctt_focus_position($photo); ?>
                             <picture>
                                 <source srcset="<?= $photo->srcset('avatar') ?>" type="image/webp">
                                 <img 
@@ -185,6 +190,7 @@ snippet('hero');
                                     class="w-24 h-24 rounded-full object-cover border-4 border-primary"
                                     width="120"
                                     height="120"
+                                    <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
                                     loading="lazy"
                                 >
                             </picture>

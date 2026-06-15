@@ -26,6 +26,7 @@ $lazy = $lazy ?? true;
 $fetchpriority = $fetchpriority ?? null;
 $width = $width ?? null;
 $height = $height ?? null;
+$style = $style ?? '';
 
 if (!$image || !is_object($image)) {
     return;
@@ -53,6 +54,12 @@ if (!$width || !$height) {
 }
 
 $loadingAttr = $lazy ? 'loading="lazy"' : '';
+$focusPosition = function_exists('meyrinctt_focus_position') ? meyrinctt_focus_position($image) : null;
+$styleRules = trim($style);
+
+if ($focusPosition) {
+    $styleRules = trim($styleRules . '; object-position: ' . $focusPosition, '; ');
+}
 ?>
 
 <picture>
@@ -76,5 +83,6 @@ $loadingAttr = $lazy ? 'loading="lazy"' : '';
         decoding="async"
         <?php if ($fetchpriority): ?>fetchpriority="<?= esc($fetchpriority) ?>"<?php endif ?>
         <?php if ($class): ?>class="<?= $class ?>"<?php endif ?>
+        <?php if ($styleRules): ?>style="<?= esc($styleRules, 'attr') ?>"<?php endif ?>
     >
 </picture>
