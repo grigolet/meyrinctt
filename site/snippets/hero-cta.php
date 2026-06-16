@@ -18,7 +18,7 @@ $ctaSecondaryText = $page->hero_cta_secondary()->or('Voir les horaires');
 $ctaSecondaryLink = $page->hero_cta_secondary_link()->toUrl() ?: page('horaires')?->url() ?: '#';
 ?>
 
-<section class="site-hero site-hero-cta py-32 bg-bg border-b-2 border-border relative overflow-hidden">
+<section class="site-hero site-hero-cta py-32 bg-bg border-b-2 border-border relative overflow-hidden" data-no-heading-anchor>
     <?php if ($bgImage): ?>
         <?php snippet('responsive-image', [
             'image' => $bgImage,

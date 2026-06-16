@@ -15,7 +15,7 @@ $bgImage = $image
     ?? null;
 ?>
 
-<section class="site-hero py-32 bg-bg border-b-2 border-border relative overflow-hidden">
+<section class="site-hero py-32 bg-bg border-b-2 border-border relative overflow-hidden" data-no-heading-anchor>
     <?php if ($bgImage): ?>
         <?php snippet('responsive-image', [
             'image' => $bgImage,
