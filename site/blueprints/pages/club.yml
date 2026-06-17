@@ -200,13 +200,15 @@ tabs:
             layout: cards
             query: page.images
             width: 1/2
-          specialty:
-            type: text
-            label: Spécialité
-            width: 1/2
           name:
             type: text
             label: Nom
+            width: 1/2
+          titles:
+            type: textarea
+            label: Titres
+            help: Un titre par ligne. Ces titres sont affichés sous le nom.
+            buttons: false
             width: 1/2
           email:
             type: email

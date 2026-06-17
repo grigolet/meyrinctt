@@ -26,6 +26,10 @@ About-text: [{"content":{"text":"<p>Le Meyrin CTT est une association sportive d
 
 ----
 
+Hero-image: 
+
+----
+
 Carousel-title: Photos du club
 
 ----
@@ -136,24 +140,34 @@ Coaches-members:
 
 - 
   photo: [ ]
-  specialty: ""
   name: Giacomo Sorrentino
+  titles: |
+    Entraîneur de club
+    Titulaire en LNC
+    Responsable jeunesse
+    Licencié
+    baby ping
+    Repérage ETT
   email: ""
+  specialty: ""
 - 
   photo: [ ]
-  specialty: ""
   name: Nenad Stevanovic
+  titles: ""
   email: ""
+  specialty: ""
 - 
   photo: [ ]
-  specialty: ""
   name: Wilfried Monteil
+  titles: ""
   email: ""
+  specialty: ""
 - 
   photo: [ ]
-  specialty: ""
   name: Sacha Bosijokovic
+  titles: ""
   email: ""
+  specialty: ""
 
 ----
 

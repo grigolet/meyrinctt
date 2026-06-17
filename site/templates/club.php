@@ -178,6 +178,15 @@ snippet('hero');
             <div class="max-w-[900px] mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <?php foreach ($page->coaches_members()->toStructure() as $coach): ?>
+                    <?php
+                    $coachTitlesRaw = $coach->titles()->isNotEmpty()
+                        ? $coach->titles()->value()
+                        : $coach->specialty()->value();
+                    $coachTitles = array_filter(
+                        array_map('trim', preg_split('/\r\n|\r|\n/', $coachTitlesRaw ?: '')),
+                        fn ($title) => $title !== ''
+                    );
+                    ?>
                     <div class="bg-surface border-2 border-border rounded-xl p-6 shadow-soft hover:shadow-hover transition-all">
                         <!-- Avatar -->
                         <div class="flex justify-center mb-4">
@@ -205,10 +214,15 @@ snippet('hero');
                             <?php endif ?>
                         </div>
                         
-                        <div class="text-sm font-bold text-primary uppercase mb-1 text-center"><?= $coach->specialty()->esc() ?></div>
-                        <div class="text-lg font-bold mb-2 text-center"><?= $coach->name()->esc() ?></div>
-                        <?php if ($coach->email()->isNotEmpty()): ?>
-                        <a href="mailto:<?= $coach->email()->esc() ?>" class="text-sm text-gray-600 hover:text-primary transition-colors block text-center"><?= $coach->email()->esc() ?></a>
+                        <div class="text-lg font-bold mb-3 text-center"><?= $coach->name()->esc() ?></div>
+                        <?php if (!empty($coachTitles)): ?>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <?php foreach ($coachTitles as $coachTitle): ?>
+                            <span class="inline-flex rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary">
+                                <?= esc($coachTitle) ?>
+                            </span>
+                            <?php endforeach ?>
+                        </div>
                         <?php endif ?>
                     </div>
                     <?php endforeach ?>

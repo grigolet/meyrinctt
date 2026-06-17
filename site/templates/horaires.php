@@ -33,6 +33,10 @@ function formatTimeKirby($time) {
     if (!$time) return '';
     return $time->toDate('H') . 'h' . $time->toDate('i');
 }
+
+$schedulePdf = $page->schedule_pdf();
+$schedulePdfFile = $schedulePdf->toFile();
+$schedulePdfUrl = $schedulePdfFile ? $schedulePdfFile->url() : $schedulePdf->toUrl();
 ?>
 
 <section class="py-16">
@@ -95,9 +99,9 @@ function formatTimeKirby($time) {
         </div>
         <?php endif ?>
 
-        <?php if ($page->schedule_pdf()->isNotEmpty()): ?>
+        <?php if ($schedulePdfUrl): ?>
         <div class="mt-8 text-center">
-            <a href="<?= $page->schedule_pdf()->esc() ?>" target="_blank" class="inline-block px-8 py-4 bg-primary text-white border-2 border-border rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
+            <a href="<?= esc($schedulePdfUrl, 'attr') ?>" target="_blank" class="inline-block px-8 py-4 bg-primary text-white border-2 border-border rounded-full font-bold uppercase shadow-soft transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hover active:translate-0 active:shadow-none cursor-pointer">
                 Télécharger le PDF
             </a>
         </div>
