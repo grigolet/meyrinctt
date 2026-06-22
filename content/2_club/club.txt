@@ -26,6 +26,26 @@ About-text: [{"content":{"text":"<p>Le Meyrin CTT est une association sportive d
 
 ----
 
+Ttstats-enabled: true
+
+----
+
+Ttstats-title: TT stats
+
+----
+
+Ttstats-url: https://ttstats.ch/widget/33165?theme=light&lang=fr
+
+----
+
+Ttstats-height: 
+
+----
+
+Ttstats-iframe-title: 
+
+----
+
 Hero-image: 
 
 ----
@@ -129,6 +149,53 @@ Committee-members:
   role: Techniques
   name: Bugra Bilin
   email: ""
+
+----
+
+Honorary-president-title: Présidente d'Honneur
+
+----
+
+Honorary-president-photo: - file://rywkrwatzkggyxf7
+
+----
+
+Honorary-president-name: Joan Helfer
+
+----
+
+Honorary-president-description: Joan a tenu les rênes du club pendant ces 20 dernières années, y investissant son temps, son énergie et ses ressources, probablement plus que quiconque au sein de notre communauté. Pour honorer ce dévouement exceptionnel et sa contribution essentielle au fil de toutes ces années, Joan a été nommée Présidente d'Honneur du club sous les applaudissements chaleureux de l'assemblée.
+
+----
+
+Achievements-title: Palmarès
+
+----
+
+Achievements-image: 
+
+----
+
+Achievements-intro: 
+
+----
+
+Club-achievements:
+
+- 
+  number: "5"
+  label: Champion Suisse LNA
+  description: 1994, 2001, 2002, 2003, 2004
+- 
+  number: "8"
+  label: Vice-champion suisse LNA
+  description: >
+    1996, 2005, 2006, 2007, 2008, 2009,
+    2012, 2015
+- 
+  number: "4"
+  label: Vainquer coupe Suisse
+  description: 2001, 2002, 2003, 2004
 
 ----
 

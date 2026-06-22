@@ -59,6 +59,45 @@ tabs:
                   - text
                   - list
                   - quote
+
+          ttstats:
+            type: fields
+            fields:
+              ttstats_headline:
+                type: headline
+                label: Widget TTStats
+
+              ttstats_enabled:
+                type: toggle
+                label: Afficher le widget TTStats
+                default: true
+                width: 1/2
+
+              ttstats_title:
+                type: text
+                label: Titre de la section
+                default: "Résultats TTStats"
+                width: 1/2
+
+              ttstats_url:
+                type: url
+                label: URL du widget
+                default: "https://ttstats.ch/widget/33165?theme=light&lang=fr"
+
+              ttstats_height:
+                type: number
+                label: Hauteur du widget (px)
+                default: 700
+                min: 400
+                max: 1200
+                step: 50
+                width: 1/2
+
+              ttstats_iframe_title:
+                type: text
+                label: Titre accessible de l'iframe
+                default: "TTStats Club Widget"
+                width: 1/2
                   
       - width: 1/3
         sections:
@@ -179,6 +218,83 @@ tabs:
             type: email
             label: Email
             width: 1/2
+
+  honorary_president:
+    label: Présidente d'honneur
+    icon: user
+    fields:
+      honorary_president_title:
+        type: text
+        label: Titre section présidente d'honneur
+        default: "Présidente d'honneur"
+
+      honorary_president_photo:
+        type: files
+        label: Photo
+        max: 1
+        layout: cards
+        query: page.images
+        width: 1/2
+
+      honorary_president_name:
+        type: text
+        label: Nom
+        width: 1/2
+
+      honorary_president_description:
+        type: textarea
+        label: Courte description
+        buttons:
+          - bold
+          - italic
+          - link
+
+  achievements:
+    label: Palmarès
+    icon: trophy
+    fields:
+      achievements_title:
+        type: text
+        label: Titre section palmarès
+        default: "Palmarès du Club"
+
+      achievements_image:
+        type: files
+        label: Image ou trophée
+        max: 1
+        layout: cards
+        query: page.images
+        help: Optionnel. Si aucune image n'est choisie, une icône trophée sera affichée.
+
+      achievements_intro:
+        type: textarea
+        label: Texte d'introduction
+        buttons:
+          - bold
+          - italic
+          - link
+
+      club_achievements:
+        type: structure
+        label: Trophées et accomplissements
+        fields:
+          number:
+            type: text
+            label: Nombre
+            width: 1/4
+            placeholder: "3"
+          label:
+            type: text
+            label: Accomplissement
+            width: 3/4
+            placeholder: "Champions suisses LNB Hommes"
+          description:
+            type: textarea
+            label: Détail optionnel
+            buttons:
+              - bold
+              - italic
+              - link
 
   coaches:
     label: Entraîneurs

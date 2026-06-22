@@ -45,6 +45,32 @@ snippet('hero');
             </div>
         </div>
 
+        <!-- TTStats Widget Section -->
+        <?php
+        $ttstatsEnabled = $page->ttstats_enabled()->isEmpty() || $page->ttstats_enabled()->toBool();
+        $ttstatsUrl = $page->ttstats_url()->or('https://ttstats.ch/widget/33165?theme=light&lang=fr');
+        ?>
+        <?php if ($ttstatsEnabled && $ttstatsUrl->isNotEmpty()): ?>
+        <div class="mb-16 mt-32 text-center">
+            <h2 class="text-3xl font-black uppercase mb-8 text-center pb-4 border-b-4 border-primary inline-block"><?= $page->ttstats_title()->or('Résultats TTStats')->esc() ?></h2>
+
+            <div class="max-w-[1100px] mx-auto">
+                <div class="bg-surface border-2 border-border rounded-xl p-3 md:p-4 shadow-soft overflow-hidden">
+                    <iframe
+                        src="<?= $ttstatsUrl->esc() ?>"
+                        width="100%"
+                        height="<?= $page->ttstats_height()->or('700')->esc() ?>"
+                        frameborder="0"
+                        scrolling="auto"
+                        class="w-full rounded-lg border-0"
+                        style="min-height: 520px;"
+                        title="<?= $page->ttstats_iframe_title()->or('TTStats Club Widget')->esc() ?>"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
         <!-- Club Carousel Section -->
         <?php if ($page->images()->template('carousel-image')->count() > 0): ?>
         <div class="mb-16 mt-32">
@@ -165,6 +191,107 @@ snippet('hero');
                         <?php endif ?>
                     </div>
                     <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
+        <!-- Honorary President Section -->
+        <?php if ($page->honorary_president_name()->isNotEmpty() || $page->honorary_president_photo()->isNotEmpty() || $page->honorary_president_description()->isNotEmpty()): ?>
+        <?php $honoraryPresidentPhoto = $page->honorary_president_photo()->toFile(); ?>
+        <div class="mb-16 mt-32 text-center">
+            <h2 class="text-3xl font-black uppercase mb-8 text-center pb-4 border-b-4 border-primary inline-block"><?= $page->honorary_president_title()->or("Présidente d'honneur")->esc() ?></h2>
+
+            <div class="max-w-[900px] mx-auto">
+                <div class="bg-surface border-2 border-border rounded-xl p-6 md:p-8 shadow-soft">
+                    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8 items-center text-left">
+                        <div class="flex justify-center">
+                            <?php if ($honoraryPresidentPhoto): ?>
+                            <?php $focusPosition = meyrinctt_focus_position($honoraryPresidentPhoto); ?>
+                            <picture>
+                                <source srcset="<?= $honoraryPresidentPhoto->srcset('card') ?>" type="image/webp">
+                                <img
+                                    src="<?= $honoraryPresidentPhoto->crop(320, 320)->url() ?>"
+                                    alt="<?= $page->honorary_president_name()->or($page->honorary_president_title())->esc() ?>"
+                                    class="w-44 h-44 md:w-52 md:h-52 rounded-xl object-cover border-4 border-primary shadow-soft"
+                                    width="320"
+                                    height="320"
+                                    <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
+                                    loading="lazy"
+                                >
+                            </picture>
+                            <?php else: ?>
+                            <?php $initials = strtoupper(substr($page->honorary_president_name()->or('H'), 0, 1)); ?>
+                            <div class="w-44 h-44 md:w-52 md:h-52 rounded-xl bg-primary flex items-center justify-center text-white text-6xl font-black border-4 border-primary shadow-soft">
+                                <?= esc($initials) ?>
+                            </div>
+                            <?php endif ?>
+                        </div>
+
+                        <div class="text-center md:text-left">
+                            <?php if ($page->honorary_president_name()->isNotEmpty()): ?>
+                            <div class="text-sm font-bold text-primary uppercase mb-2"><?= $page->honorary_president_title()->or("Présidente d'honneur")->esc() ?></div>
+                            <h3 class="text-3xl font-black mb-4"><?= $page->honorary_president_name()->esc() ?></h3>
+                            <?php endif ?>
+                            <?php if ($page->honorary_president_description()->isNotEmpty()): ?>
+                            <div class="leading-relaxed text-gray-700">
+                                <?= $page->honorary_president_description()->kt() ?>
+                            </div>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
+        <!-- Club Achievements Section -->
+        <?php if ($page->club_achievements()->isNotEmpty()): ?>
+        <?php $achievementsImage = $page->achievements_image()->toFile(); ?>
+        <div class="mb-16 mt-32 text-center">
+            <h2 class="text-3xl font-black uppercase mb-8 text-center pb-4 border-b-4 border-primary inline-block"><?= $page->achievements_title()->or('Palmarès du Club')->esc() ?></h2>
+
+            <div class="max-w-[1000px] mx-auto">
+                <div class="bg-primary/5 border-2 border-primary rounded-xl p-6 md:p-10 shadow-soft overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-10 items-center">
+                        <div class="flex flex-col items-center text-center">
+                            <?php if ($achievementsImage): ?>
+                            <?php $focusPosition = meyrinctt_focus_position($achievementsImage); ?>
+                            <picture>
+                                <source srcset="<?= $achievementsImage->srcset('card') ?>" type="image/webp">
+                                <img
+                                    src="<?= $achievementsImage->resize(520)->url() ?>"
+                                    alt="<?= $page->achievements_title()->or('Palmarès du Club')->esc() ?>"
+                                    class="max-h-64 w-full max-w-[260px] object-contain"
+                                    <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
+                                    loading="lazy"
+                                >
+                            </picture>
+                            <?php else: ?>
+                            <div class="flex h-44 w-44 items-center justify-center rounded-full bg-white text-7xl shadow-soft border-2 border-border" aria-hidden="true">&#127942;</div>
+                            <?php endif ?>
+
+                            <?php if ($page->achievements_intro()->isNotEmpty()): ?>
+                            <div class="mt-6 leading-relaxed text-gray-700">
+                                <?= $page->achievements_intro()->kt() ?>
+                            </div>
+                            <?php endif ?>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                            <?php foreach ($page->club_achievements()->toStructure() as $achievement): ?>
+                            <div class="bg-surface border-2 border-border rounded-xl p-6 text-center shadow-soft">
+                                <div class="text-5xl md:text-6xl font-black text-primary mb-3 leading-none"><?= $achievement->number()->esc() ?></div>
+                                <div class="text-lg font-bold leading-snug"><?= $achievement->label()->esc() ?></div>
+                                <?php if ($achievement->description()->isNotEmpty()): ?>
+                                <div class="mt-3 text-sm leading-relaxed text-gray-600">
+                                    <?= $achievement->description()->kt() ?>
+                                </div>
+                                <?php endif ?>
+                            </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
