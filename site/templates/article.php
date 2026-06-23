@@ -7,6 +7,18 @@
 snippet('header');
 
 $cover = meyrinctt_cover_image($page);
+$articleBlocks = $page->text()->toBlocks();
+$articleGalleryFiles = [];
+
+foreach ($articleBlocks as $articleBlock) {
+    if ($articleBlock->type() !== 'gallery') {
+        continue;
+    }
+
+    foreach ($articleBlock->images()->toFiles() as $galleryFile) {
+        $articleGalleryFiles[$galleryFile->id()] = $galleryFile;
+    }
+}
 ?>
 
 <?php snippet('hero', [
@@ -34,11 +46,15 @@ $cover = meyrinctt_cover_image($page);
 
         <?php if ($page->text()->isNotEmpty()): ?>
         <div class="article-content prose lg:prose-xl">
-            <?= $page->text()->toBlocks() ?>
+            <?= $articleBlocks ?>
         </div>
         <?php endif ?>
 
     </div>
 </section>
+
+<?php if (!empty($articleGalleryFiles)): ?>
+<?php snippet('lightbox', ['files' => array_values($articleGalleryFiles)]) ?>
+<?php endif ?>
 
 <?php snippet('footer') ?>

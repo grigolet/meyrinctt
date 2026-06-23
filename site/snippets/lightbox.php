@@ -27,6 +27,7 @@ foreach ($files as $file) {
         }
         
         $mediaItems[] = [
+            'id' => $file->id(),
             'url' => $url,
             'poster' => $poster,
             'type' => $isVideo ? 'video' : 'image',
@@ -38,6 +39,7 @@ foreach ($files as $file) {
     } elseif (is_string($file)) {
         // Fallback for string URLs (assumes image)
         $mediaItems[] = [
+            'id' => $file,
             'url' => $file,
             'poster' => null,
             'type' => 'image',
@@ -60,6 +62,7 @@ foreach ($youtubeVideos as $ytVideo) {
         
         if ($embedUrl) {
             $mediaItems[] = [
+                'id' => 'youtube-' . $videoId,
                 'url' => $embedUrl,
                 'poster' => null,
                 'type' => 'youtube',
@@ -204,6 +207,21 @@ foreach ($youtubeVideos as $ytVideo) {
             }
         }
     }
+
+    function openLightboxById(fileId) {
+        const index = lightboxMedia.findIndex(item => item.id === fileId);
+        if (index >= 0) openLightbox(index);
+    }
+
+    document.querySelectorAll('[data-lightbox-file]').forEach(link => {
+        link.addEventListener('click', event => {
+            const fileId = link.dataset.lightboxFile;
+            if (!lightboxMedia.some(item => item.id === fileId)) return;
+
+            event.preventDefault();
+            openLightboxById(fileId);
+        });
+    });
 
     function preloadAdjacentImage() {
         if (lightboxMedia.length < 2) return;
