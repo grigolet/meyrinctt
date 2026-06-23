@@ -39,7 +39,7 @@ foreach ($articleBlocks as $articleBlock) {
         </div>
 
         <?php if ($page->excerpt()->isNotEmpty()): ?>
-        <div class="lead text-xl font-medium text-gray-600 mb-8 prose">
+        <div class="article-lead lead text-gray-600 mb-8 prose">
             <?= $page->excerpt()->kt() ?>
         </div>
         <?php endif ?>
