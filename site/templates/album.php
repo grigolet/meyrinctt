@@ -30,7 +30,7 @@ snippet('hero', [
 
         <?php if ($page->description()->isNotEmpty()): ?>
         <div class="mb-8">
-            <div class="text-lg text-gray-700">
+            <div class="formatted-text text-lg text-gray-700">
                 <?= $page->description()->kt() ?>
             </div>
         </div>

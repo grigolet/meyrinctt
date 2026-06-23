@@ -176,6 +176,15 @@ main :is(h1, h2, h3, h4, h5, h6)[id]:hover .heading-anchor,
   color: #666;
 }
 
+/* Preserve paragraph breaks from Panel textarea/KirbyText fields. */
+.formatted-text > * + * {
+  margin-top: 1em;
+}
+
+.formatted-text > :last-child {
+  margin-bottom: 0;
+}
+
 /* Lead paragraph */
 .prose .lead {
   font-size: 1.25em;

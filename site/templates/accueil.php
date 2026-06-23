@@ -60,7 +60,7 @@ snippet('header');
                 <?php foreach ($page->cards()->toStructure() as $card): ?>
                 <a href="<?= $card->link()->toUrl() ?>" class="bg-surface border-2 border-border rounded-xl p-8 shadow-soft transition-all hover:-translate-y-1.5 hover:shadow-hover hover:border-primary group">
                     <h3 class="text-primary mb-3 text-2xl font-extrabold uppercase group-hover:underline"><?= $card->title()->esc() ?></h3>
-                    <div class="mb-4">
+                    <div class="formatted-text mb-4">
                         <?= $card->description()->kt() ?>
                     </div>
                     <span class="text-primary font-bold text-sm uppercase inline-flex items-center gap-2"><?= $card->link_text()->or('En savoir plus')->esc() ?> <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
@@ -91,7 +91,9 @@ snippet('header');
             <div>
                 <h3 class="text-3xl font-black uppercase mb-4"><?= $page->club_title()->or('Pourquoi rejoindre le Meyrin CTT ?')->esc() ?></h3>
                 <?php if ($page->club_description()->isNotEmpty()): ?>
+                <div class="formatted-text">
                     <?= $page->club_description()->kt() ?>
+                </div>
                 <?php else: ?>
                 <p class="text-lg mb-4">Plus qu'un simple club de tennis de table, le Meyrin CTT est une véritable communauté où la passion du sport se mêle à la convivialité. Avec plus de 160 membres et une soixantaine de licenciés, nous offrons un environnement accueillant pour tous les âges et tous les niveaux.</p>
                 <?php endif ?>

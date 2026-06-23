@@ -52,7 +52,7 @@ snippet('hero');
                     <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">1</span>
                     Demande d'adhésion
                 </h2>
-                <div class="mb-6 text-gray-700 min-h-24">
+                <div class="formatted-text mb-6 text-gray-700 min-h-24">
                     <?= $page->adhesion_description()->or("Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club.")->kt() ?>
                 </div>
                 
@@ -76,7 +76,7 @@ snippet('hero');
                     <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">2</span>
                     Demande de licence
                 </h2>
-                <div class="mb-6 text-gray-700 min-h-24">
+                <div class="formatted-text mb-6 text-gray-700 min-h-24">
                     <?= $page->licence_description()->or("Pour les joueurs désirant rejoindre une équipe pour la compétition, veuillez remplir les documents suivants.")->kt() ?>
                 </div>
                 

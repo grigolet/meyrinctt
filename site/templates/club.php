@@ -79,7 +79,7 @@ snippet('hero');
                     <?= $page->carousel_title()->or('Notre Club en Images')->esc() ?>
                 </h2>
                 <?php if ($page->carousel_subtitle()->isNotEmpty()): ?>
-                <div class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                <div class="formatted-text text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
                     <?= $page->carousel_subtitle()->kt() ?>
                 </div>
                 <?php endif ?>
@@ -139,7 +139,7 @@ snippet('hero');
                     <div class="bg-surface border-2 border-border rounded-xl p-8 shadow-soft">
                         <span class="inline-block px-4 py-1 bg-primary text-white font-bold text-sm uppercase rounded-full mb-4"><?= $event->year()->esc() ?></span>
                         <h3 class="text-2xl font-black mb-4"><?= $event->title()->esc() ?></h3>
-                        <div class="mb-4 leading-relaxed">
+                        <div class="formatted-text mb-4 leading-relaxed">
                             <?= $event->description()->kt() ?>
                         </div>
                     </div>
@@ -234,7 +234,7 @@ snippet('hero');
                             <h3 class="text-3xl font-black mb-4"><?= $page->honorary_president_name()->esc() ?></h3>
                             <?php endif ?>
                             <?php if ($page->honorary_president_description()->isNotEmpty()): ?>
-                            <div class="leading-relaxed text-gray-700">
+                            <div class="formatted-text leading-relaxed text-gray-700">
                                 <?= $page->honorary_president_description()->kt() ?>
                             </div>
                             <?php endif ?>
@@ -272,7 +272,7 @@ snippet('hero');
                             <?php endif ?>
 
                             <?php if ($page->achievements_intro()->isNotEmpty()): ?>
-                            <div class="mt-6 leading-relaxed text-gray-700">
+                            <div class="formatted-text mt-6 leading-relaxed text-gray-700">
                                 <?= $page->achievements_intro()->kt() ?>
                             </div>
                             <?php endif ?>
@@ -284,7 +284,7 @@ snippet('hero');
                                 <div class="text-5xl md:text-6xl font-black text-primary mb-3 leading-none"><?= $achievement->number()->esc() ?></div>
                                 <div class="text-lg font-bold leading-snug"><?= $achievement->label()->esc() ?></div>
                                 <?php if ($achievement->description()->isNotEmpty()): ?>
-                                <div class="mt-3 text-sm leading-relaxed text-gray-600">
+                                <div class="formatted-text mt-3 text-sm leading-relaxed text-gray-600">
                                     <?= $achievement->description()->kt() ?>
                                 </div>
                                 <?php endif ?>
