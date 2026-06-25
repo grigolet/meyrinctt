@@ -947,6 +947,31 @@ body.skin-modern .site-footer a.bg-white {
 }
 
 /* Fillable inscription form */
+.inscription-page > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.inscription-fees-overview {
+  order: 1;
+}
+
+.inscription-online-form {
+  order: 2;
+}
+
+.inscription-downloads {
+  order: 3;
+}
+
+.inscription-payment-info {
+  order: 4;
+}
+
+.inscription-help-box {
+  order: 5;
+}
+
 .inscription-online-form {
   overflow: hidden;
 }

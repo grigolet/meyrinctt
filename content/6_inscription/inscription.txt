@@ -74,22 +74,17 @@ Fees:
 
 ----
 
-Adhesion-description: Pour nous rejoindre, vous pouvez télécharger le formulaire vierge ou remplir la demande directement en ligne.
+Adhesion-description: Pour demander les clés d'accès au club, veuillez télécharger le formulaire, le remplir et le signer.
 
 ----
 
 Adhesion-forms:
 
 - 
-  title: Formulaire (Français)
+  title: Demande de clés (Français)
   file:
-    - file://y15mhgkqoccvsjp6
+    - file://vcjvygxxtqpdnaxt
   url: 'https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_fr.pdf'
-- 
-  title: Formulaire (English)
-  file:
-    - file://aghpkflvoohnxdnz
-  url: 'https://www.meyrinctt.ch/docs/Demande%20d%27adh%C3%A9sion%20Meyrin%20CTT_en.pdf'
 
 ----
 
@@ -321,7 +316,7 @@ Online-form-sections:
       type: notice
       width: full
       label_fr: "Pour toute information, veuillez écrire au club à l'adresse {{club_email}}."
-      label_en: "For any information, please write to the club at {{club_email}}."
+      label_en: 'For any information, please write to the club at {{club_email}}.'
       help_fr: ""
       help_en: ""
       required: 'false'
@@ -331,7 +326,10 @@ Online-form-sections:
       type: checkbox
       width: full
       label_fr: "J'autorise le Meyrin CTT à utiliser des photos me représentant sur le site web du club et ses canaux de communication officiels."
-      label_en: "I authorize Meyrin CTT to use photos of me on the club website and its official communication channels."
+      label_en: >
+        I authorize Meyrin CTT to use photos of
+        me on the club website and its official
+        communication channels.
       help_fr: ""
       help_en: ""
       required: 'false'

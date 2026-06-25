@@ -96,16 +96,16 @@ tabs:
     fields:
       adhesion_headline:
         type: headline
-        label: Demande d'adhésion
+        label: Demande de clés
 
       adhesion_description:
         type: textarea
         label: Description
-        default: "Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club."
+        default: "Pour demander les clés d'accès au club, veuillez télécharger le formulaire, le remplir et le signer."
 
       adhesion_forms:
         type: structure
-        label: Formulaires d'adhésion
+        label: Formulaires de demande de clés
         fields:
           title:
             type: text

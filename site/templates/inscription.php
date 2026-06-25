@@ -144,10 +144,10 @@ $clubEmail = $contactPage && $contactPage->contact_email()->isNotEmpty()
             <div class="bg-surface border-2 border-border rounded-xl p-8 shadow-soft">
                 <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-3">
                     <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">1</span>
-                    Demande d'adhésion
+                    Demande de clés
                 </h2>
                 <div class="formatted-text mb-6 text-gray-700 min-h-24">
-                    <?= $page->adhesion_description()->or("Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club.")->kt() ?>
+                    <?= $page->adhesion_description()->or("Pour demander les clés d'accès au club, veuillez télécharger le formulaire, le remplir et le signer.")->kt() ?>
                 </div>
 
                 <?php if ($page->adhesion_forms()->isNotEmpty()): ?>
