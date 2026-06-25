@@ -186,6 +186,46 @@ tabs:
             type: textarea
             label: Description
 
+  statutes:
+    label: Statuts
+    icon: document
+    fields:
+      statutes_title:
+        type: text
+        label: Titre de la section
+        default: "Statuts du Club"
+
+      statutes_document_title:
+        type: text
+        label: Titre du document
+        default: "Statuts du Meyrin CTT"
+        width: 1/2
+
+      statutes_button_label:
+        type: text
+        label: Texte du bouton
+        default: "Télécharger les statuts"
+        width: 1/2
+
+      statutes_description:
+        type: textarea
+        label: Description
+        default: "Consultez les statuts officiels qui définissent l'organisation et le fonctionnement du club."
+        buttons:
+          - bold
+          - italic
+          - link
+
+      statutes_pdf:
+        type: files
+        label: Fichier PDF des statuts
+        max: 1
+        layout: cards
+        query: page.files.filterBy("extension", "pdf")
+        uploads:
+          template: document
+        help: Si aucun fichier n'est sélectionné, le document Statuts_Meyrin_CTT.pdf existant sera utilisé.
+
   committee:
     label: Comité
     icon: users

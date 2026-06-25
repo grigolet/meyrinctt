@@ -94,6 +94,26 @@ History-timeline:
 
 ----
 
+Statutes-title: Statuts du club
+
+----
+
+Statutes-document-title: Version du 2013
+
+----
+
+Statutes-button-label: Telecharger le pdf
+
+----
+
+Statutes-description: Voici le statuts du club
+
+----
+
+Statutes-pdf: - file://2diy9rbffp7qgznh
+
+----
+
 Committee-title: Le Comité
 
 ----

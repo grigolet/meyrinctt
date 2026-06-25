@@ -149,6 +149,47 @@ snippet('hero');
         </div>
         <?php endif ?>
 
+        <!-- Club Statutes Section -->
+        <?php
+        $statutesPdf = $page->statutes_pdf()->toFile();
+        $defaultStatutesPath = kirby()->root('index') . '/assets/documents/Statuts_Meyrin_CTT.pdf';
+        $statutesUrl = $statutesPdf?->url() ?? url('assets/documents/Statuts_Meyrin_CTT.pdf');
+        $statutesFilename = $statutesPdf?->filename() ?? 'Statuts_Meyrin_CTT.pdf';
+        ?>
+        <?php if ($statutesPdf || is_file($defaultStatutesPath)): ?>
+        <div class="mb-16 mt-32 text-center">
+            <h2 class="text-3xl font-black uppercase mb-8 text-center pb-4 border-b-4 border-primary inline-block"><?= $page->statutes_title()->or('Statuts du Club')->esc() ?></h2>
+
+            <div class="max-w-[900px] mx-auto">
+                <div class="bg-primary/5 border-2 border-primary rounded-xl p-6 md:p-8 shadow-soft flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                    <div class="w-20 h-20 flex-shrink-0 rounded-lg bg-primary text-white flex items-center justify-center text-xl font-black" aria-hidden="true">
+                        PDF
+                    </div>
+
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-black mb-2"><?= $page->statutes_document_title()->or('Statuts du Meyrin CTT')->esc() ?></h3>
+                        <?php if ($page->statutes_description()->isNotEmpty()): ?>
+                        <div class="formatted-text text-gray-700 leading-relaxed">
+                            <?= $page->statutes_description()->kt() ?>
+                        </div>
+                        <?php else: ?>
+                        <p class="text-gray-700 leading-relaxed">Consultez les statuts officiels qui définissent l'organisation et le fonctionnement du club.</p>
+                        <?php endif ?>
+                    </div>
+
+                    <a
+                        href="<?= esc($statutesUrl, 'attr') ?>"
+                        download="<?= esc($statutesFilename, 'attr') ?>"
+                        class="inline-flex flex-shrink-0 items-center justify-center gap-3 rounded-lg bg-primary px-6 py-4 font-bold text-white shadow-soft transition-all hover:-translate-y-1 hover:bg-primary-dark hover:shadow-hover focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
+                    >
+                        <span aria-hidden="true">&darr;</span>
+                        <span><?= $page->statutes_button_label()->or('Télécharger les statuts')->esc() ?></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
         <!-- Committee Section -->
         <?php if ($page->committee_members()->isNotEmpty()): ?>
         <div class="mb-16 mt-32 text-center">
