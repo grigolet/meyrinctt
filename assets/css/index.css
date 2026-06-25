@@ -945,3 +945,672 @@ body.skin-modern .site-footer a.bg-white {
     scroll-behavior: auto !important;
   }
 }
+
+/* Fillable inscription form */
+.inscription-online-form {
+  overflow: hidden;
+}
+
+.inscription-form-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-bottom: 2px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(0, 86, 179, 0.06), rgba(255, 255, 255, 0));
+}
+
+.inscription-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  min-width: 16rem;
+}
+
+.inscription-lang-toggle {
+  display: inline-flex;
+  overflow: hidden;
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
+  background: white;
+}
+
+.inscription-lang-toggle button {
+  min-width: 3.25rem;
+  padding: 0.7rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.inscription-lang-toggle button.is-active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.inscription-form-body {
+  padding: 2rem;
+}
+
+.inscription-print-header {
+  display: none;
+}
+
+.inscription-form-section + .inscription-form-section {
+  margin-top: 2rem;
+}
+
+.inscription-form-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.inscription-field-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.inscription-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.inscription-field--full {
+  grid-column: span 6;
+}
+
+.inscription-field--half {
+  grid-column: span 3;
+}
+
+.inscription-field--third {
+  grid-column: span 2;
+}
+
+.inscription-field label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #26384c;
+}
+
+.inscription-field input,
+.inscription-field textarea,
+.inscription-field select {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0.7rem 0.85rem;
+  border: 2px solid rgba(0, 86, 179, 0.18);
+  border-radius: 0.5rem;
+  background: white;
+  font: inherit;
+}
+
+.inscription-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.inscription-field input:focus,
+.inscription-field textarea:focus,
+.inscription-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.14);
+}
+
+.inscription-help {
+  font-size: 0.82rem;
+  color: #5f6b7a;
+}
+
+.inscription-notice {
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(0, 86, 179, 0.14);
+  border-radius: 0.5rem;
+  background: rgba(0, 86, 179, 0.04);
+  font-weight: 700;
+}
+
+.inscription-signature-box {
+  min-height: 5.5rem;
+  border: 2px dashed rgba(0, 86, 179, 0.35);
+  border-radius: 0.5rem;
+  background: white;
+}
+
+.inscription-checkbox-field {
+  display: grid;
+  grid-template-columns: 1.35rem 1fr;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(0, 86, 179, 0.14);
+  border-radius: 0.5rem;
+  background: rgba(0, 86, 179, 0.04);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.inscription-checkbox-field input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+.inscription-tariff-table-wrap {
+  overflow-x: auto;
+}
+
+.inscription-tariff-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inscription-tariff-table th,
+.inscription-tariff-table td {
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 86, 179, 0.18);
+  vertical-align: middle;
+}
+
+.inscription-tariff-table th {
+  background: var(--color-primary);
+  color: white;
+  text-align: left;
+  font-weight: 800;
+}
+
+.inscription-tariff-table td:nth-child(2),
+.inscription-tariff-table td:nth-child(3) {
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.inscription-fee-option {
+  display: inline-grid;
+  grid-template-columns: 1.65rem auto;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.inscription-fee-option input {
+  appearance: none;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 2px solid rgba(0, 86, 179, 0.48);
+  border-radius: 0.25rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.inscription-fee-option input:checked {
+  border-color: var(--color-primary);
+  background:
+    linear-gradient(135deg, transparent 42%, white 42% 58%, transparent 58%),
+    linear-gradient(45deg, transparent 42%, white 42% 58%, transparent 58%),
+    var(--color-primary);
+}
+
+.inscription-fee-option input:focus-visible {
+  outline: 3px solid rgba(0, 86, 179, 0.24);
+  outline-offset: 2px;
+}
+
+.inscription-fee-option.is-disabled {
+  cursor: not-allowed;
+  color: #6b7280;
+}
+
+.inscription-fee-option.is-disabled input {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.inscription-fees-note {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.inscription-form-bottom-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2rem 2rem;
+}
+
+@media (max-width: 767px) {
+  .inscription-form-toolbar {
+    flex-direction: column;
+  }
+
+  .inscription-form-actions {
+    width: 100%;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .inscription-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inscription-field--full,
+  .inscription-field--half,
+  .inscription-field--third {
+    grid-column: span 1;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+
+  html,
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+
+  body {
+    color: #000 !important;
+    font-size: 8.8pt;
+    line-height: 1.12;
+  }
+
+  body.skin-modern::before,
+  body.skin-modern::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    background-image: none !important;
+  }
+
+  #announcement-banner,
+  .announcement-banner,
+  .snowflake,
+  .christmas-light,
+  .light-string,
+  .site-header,
+  .site-hero,
+  .site-footer,
+  .inscription-fees-overview,
+  .inscription-downloads,
+  .inscription-payment-info,
+  .inscription-help-box,
+  .inscription-form-toolbar,
+  .inscription-form-bottom-actions,
+  .heading-anchor {
+    display: none !important;
+  }
+
+  main,
+  .inscription-page,
+  .inscription-page > div {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .inscription-online-form {
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    background-image: none !important;
+    overflow: visible !important;
+  }
+
+  .inscription-online-form *,
+  .inscription-online-form *::before,
+  .inscription-online-form *::after {
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .inscription-print-header {
+    display: flex !important;
+    align-items: center;
+    gap: 6mm;
+    margin-bottom: 3mm;
+    padding-bottom: 2mm;
+    border-bottom: 1.5px solid #0056b3;
+  }
+
+  .inscription-print-header img {
+    width: 18mm;
+    height: auto;
+  }
+
+  .inscription-club-name {
+    margin: 0 0 0.5mm;
+    color: #0056b3;
+    font-size: 11pt;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .inscription-print-header p {
+    margin: 0;
+    font-size: 7pt;
+  }
+
+  .inscription-form-body {
+    padding: 0 !important;
+  }
+
+  .inscription-form-section {
+    break-inside: avoid;
+    margin-top: 2mm !important;
+  }
+
+  .inscription-form-section h3 {
+    margin: 0 0 1.4mm !important;
+    padding-bottom: 0;
+    border-bottom: 0;
+    color: #1f55b5 !important;
+    font-size: 8.5pt;
+    text-transform: none;
+  }
+
+  .inscription-field-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.2mm 3mm;
+  }
+
+  .inscription-field--full {
+    grid-column: span 6;
+  }
+
+  .inscription-field--half {
+    grid-column: span 3;
+  }
+
+  .inscription-field--third {
+    grid-column: span 2;
+  }
+
+  .inscription-field {
+    gap: 0.5mm;
+  }
+
+  .inscription-field label {
+    color: #26384c !important;
+    font-size: 7pt;
+    font-weight: 800;
+  }
+
+  .inscription-field input,
+  .inscription-field textarea,
+  .inscription-field select {
+    min-height: 5.8mm;
+    padding: 0.9mm 1.4mm;
+    border: 1px solid #b9ccef !important;
+    border-radius: 0.9mm !important;
+    background: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    font-size: 8.5pt;
+    color: #102033 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body.skin-modern .inscription-online-form .inscription-field input,
+  body.skin-modern .inscription-online-form .inscription-field textarea,
+  body.skin-modern .inscription-online-form .inscription-field select {
+    border-radius: 0.9mm !important;
+    background: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  .inscription-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #102033 !important;
+  }
+
+  .inscription-field select::-ms-expand {
+    display: none;
+  }
+
+  .inscription-online-form.is-printing-blank [data-date-input]::placeholder {
+    color: transparent !important;
+    opacity: 0 !important;
+  }
+
+  .inscription-field textarea {
+    min-height: 10mm;
+  }
+
+  .inscription-help {
+    margin: 0;
+    color: #4b5563 !important;
+    font-size: 6.5pt;
+    font-style: italic;
+  }
+
+  .inscription-notice {
+    padding: 1.6mm;
+    border: 1px solid #b9ccef;
+    border-radius: 0.8mm;
+    background: #fff !important;
+    font-size: 7pt;
+    font-weight: 800;
+    text-align: center;
+    color: #102033 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body.skin-modern .inscription-online-form .inscription-notice,
+  body.skin-modern .inscription-online-form .inscription-checkbox-field,
+  body.skin-modern .inscription-online-form .inscription-signature-box {
+    border-radius: 0.8mm !important;
+    background: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  .inscription-signature-box {
+    min-height: 10mm;
+    border: 1px dashed #8fb0e8;
+    border-radius: 0.9mm;
+    background: #fff !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .inscription-checkbox-field {
+    position: relative;
+    grid-template-columns: 5mm 1fr;
+    gap: 2mm;
+    padding: 1.6mm;
+    border: 1px solid #b9ccef;
+    border-radius: 0.8mm;
+    background: #fff !important;
+    font-size: 7pt;
+    line-height: 1.15;
+    color: #102033 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .inscription-checkbox-field input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 4.2mm;
+    height: 4.2mm;
+    min-width: 4.2mm;
+    min-height: 4.2mm;
+    inline-size: 4.2mm;
+    block-size: 4.2mm;
+    aspect-ratio: 1 / 1;
+    margin: 0;
+    border: 1.2px solid #8fb0e8 !important;
+    border-radius: 0.6mm !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .inscription-checkbox-field:has(input:checked)::after {
+    content: "X";
+    position: absolute;
+    left: 1.2mm;
+    top: 1.25mm;
+    width: 4.2mm;
+    height: 4.2mm;
+    color: #1f55b5;
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 900;
+    line-height: 4.2mm;
+    text-align: center;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .inscription-tariff-table {
+    border-collapse: separate !important;
+    border-spacing: 0;
+    box-shadow: none !important;
+    font-size: 6.8pt;
+    overflow: hidden;
+    border-radius: 0.9mm;
+  }
+
+  .inscription-tariff-table th,
+  .inscription-tariff-table td {
+    padding: 1.1mm 1.5mm;
+    border: 0 !important;
+    border-bottom: 1px solid #d8e3f7 !important;
+    color: #102033 !important;
+    background: white !important;
+  }
+
+  .inscription-tariff-table th {
+    background: #2e58b7 !important;
+    color: #fff !important;
+    font-weight: 800;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .inscription-fee-option {
+    grid-template-columns: 3mm auto;
+    gap: 1.2mm;
+  }
+
+  .inscription-fee-option input {
+    appearance: none;
+    width: 3mm;
+    height: 3mm;
+    border: 1px solid #b9ccef;
+    border-radius: 999px;
+    background: white;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .inscription-fee-option input:checked {
+    background:
+      radial-gradient(circle at center, #2e58b7 0 42%, transparent 45%),
+      white;
+    border-color: #2e58b7;
+  }
+
+  .inscription-fee-option.is-disabled {
+    color: #6b7280;
+  }
+
+  .inscription-fees-note {
+    margin: 1.2mm 0 0;
+    color: #1f3f86 !important;
+    font-size: 6.8pt;
+    font-weight: 800;
+  }
+
+}
+
+@media print {
+  body.skin-modern,
+  body.skin-modern main,
+  body.skin-modern .inscription-page,
+  body.skin-modern .inscription-page > div,
+  body.skin-modern .inscription-online-form,
+  body.skin-modern .inscription-online-form.bg-white,
+  body.skin-modern .inscription-online-form.border-2,
+  body.skin-modern .inscription-online-form.bg-white.border-2,
+  body.skin-modern .inscription-online-form.shadow-soft,
+  body.skin-modern .inscription-online-form.bg-white.border-2.shadow-soft,
+  body.skin-modern .inscription-form-body,
+  body.skin-modern .inscription-form-section,
+  body.skin-modern .inscription-field,
+  body.skin-modern .inscription-field-grid {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    overflow: visible !important;
+  }
+
+  body.skin-modern .inscription-online-form .inscription-field input,
+  body.skin-modern .inscription-online-form .inscription-field textarea,
+  body.skin-modern .inscription-online-form .inscription-field select {
+    border: 1px solid #b9ccef !important;
+    border-radius: 3px !important;
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  body.skin-modern .inscription-online-form .inscription-notice,
+  body.skin-modern .inscription-online-form .inscription-checkbox-field,
+  body.skin-modern .inscription-online-form .inscription-signature-box {
+    border-radius: 3px !important;
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  body.skin-modern .inscription-online-form .inscription-tariff-table {
+    border-radius: 3px !important;
+    background: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  body.skin-modern .inscription-online-form .inscription-tariff-table th {
+    background: #2e58b7 !important;
+    background-color: #2e58b7 !important;
+    color: #fff !important;
+  }
+}

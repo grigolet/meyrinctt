@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
   initLazyLoad();
+  initInscriptionForm();
 });
 
 /**
@@ -223,6 +224,166 @@ function initLazyLoad() {
       });
     }
   }
+}
+
+/**
+ * Fillable inscription form language switching and print flow.
+ */
+function initInscriptionForm() {
+  const form = document.querySelector('[data-inscription-form]');
+  if (!form) return;
+
+  const langButtons = form.querySelectorAll('[data-inscription-lang]');
+  const printButtons = form.querySelectorAll('[data-inscription-print]');
+  const blankPrintButtons = form.querySelectorAll('[data-inscription-print-empty]');
+  const dateInputs = form.querySelectorAll('[data-date-input]');
+  let currentLang = 'fr';
+
+  const setLanguage = (lang) => {
+    currentLang = lang;
+    form.dataset.lang = lang;
+    document.documentElement.dataset.inscriptionLang = lang;
+
+    form.querySelectorAll('[data-lang-fr][data-lang-en]').forEach(element => {
+      const value = element.dataset[`lang${lang.charAt(0).toUpperCase()}${lang.slice(1)}`];
+      if (typeof value !== 'undefined') {
+        element.textContent = value;
+      }
+    });
+
+    dateInputs.forEach(input => {
+      const suffix = lang.charAt(0).toUpperCase() + lang.slice(1);
+      input.placeholder = input.dataset[`placeholder${suffix}`] || input.placeholder;
+      input.title = input.dataset[`title${suffix}`] || input.title;
+    });
+
+    langButtons.forEach(button => {
+      const isActive = button.dataset.inscriptionLang === lang;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  };
+
+  const validateDateInput = (input) => {
+    if (!input.value) {
+      input.setCustomValidity('');
+      return true;
+    }
+
+    const match = input.value.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+    const invalidMessage = currentLang === 'en'
+      ? 'Please use the format dd.mm.yyyy.'
+      : 'Veuillez utiliser le format jj.mm.aaaa.';
+
+    if (!match) {
+      input.setCustomValidity(invalidMessage);
+      return false;
+    }
+
+    const day = Number(match[1]);
+    const month = Number(match[2]);
+    const year = Number(match[3]);
+    const date = new Date(year, month - 1, day);
+    const isValidDate = date.getFullYear() === year
+      && date.getMonth() === month - 1
+      && date.getDate() === day;
+
+    input.setCustomValidity(isValidDate ? '' : invalidMessage);
+    return isValidDate;
+  };
+
+  const validateDates = () => {
+    let allValid = true;
+    dateInputs.forEach(input => {
+      if (!validateDateInput(input)) {
+        allValid = false;
+      }
+    });
+    return allValid;
+  };
+
+  langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      setLanguage(button.dataset.inscriptionLang || 'fr');
+    });
+  });
+
+  printButtons.forEach(printButton => {
+    printButton.addEventListener('click', () => {
+      validateDates();
+      if (!form.reportValidity()) {
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) {
+          firstInvalid.focus({ preventScroll: true });
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      form.dataset.printLang = currentLang;
+      window.print();
+    });
+  });
+
+  blankPrintButtons.forEach(printButton => {
+    printButton.addEventListener('click', () => {
+      const controls = Array.from(form.querySelectorAll('input, textarea, select'));
+      const previousValues = controls.map(control => ({
+        control,
+        checked: control.checked,
+        selectedIndex: control.selectedIndex,
+        value: control.value
+      }));
+
+      controls.forEach(control => {
+        if (control.type === 'radio' || control.type === 'checkbox') {
+          control.checked = false;
+        } else if (control.tagName === 'SELECT') {
+          control.selectedIndex = -1;
+        } else {
+          control.value = '';
+        }
+      });
+
+      const restoreValues = () => {
+        previousValues.forEach(({ control, checked, selectedIndex, value }) => {
+          control.checked = checked;
+          if (control.tagName === 'SELECT') {
+            control.selectedIndex = selectedIndex;
+          }
+          control.value = value;
+        });
+        form.classList.remove('is-printing-blank');
+        window.removeEventListener('afterprint', restoreValues);
+      };
+
+      form.classList.add('is-printing-blank');
+      window.addEventListener('afterprint', restoreValues);
+      window.setTimeout(restoreValues, 1000);
+      form.dataset.printLang = currentLang;
+      window.print();
+    });
+  });
+
+  dateInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      const digits = input.value.replace(/\D/g, '').slice(0, 8);
+      const parts = [
+        digits.slice(0, 2),
+        digits.slice(2, 4),
+        digits.slice(4, 8)
+      ].filter(Boolean);
+
+      input.value = parts.join('.');
+      validateDateInput(input);
+    });
+
+    input.addEventListener('blur', () => {
+      validateDateInput(input);
+    });
+  });
+
+  setLanguage(currentLang);
 }
 
 /**

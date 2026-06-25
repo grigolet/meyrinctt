@@ -25,44 +25,56 @@ Hero-image:
 Fees:
 
 - 
-  category: >
-    Adultes (inclus cours de tennis de
-    table)
+  fee_key: adult-course
+  category: Adultes, avec cours
+  category_en: Adults, trainings included
   cotisation: CHF 210
   licence: CHF 360
   total: CHF 360.00
 - 
-  category: >
-    Écoliers et étudiants (inclus cours de
-    tennis de table)
+  fee_key: junior-student-course
+  category: Étudiants, 11-18 ans, avec cours
+  category_en: >
+    Students, 11-18 years old, with
+    trainings
   cotisation: CHF 220
   licence: CHF 320
   total: CHF 320.00
 - 
-  category: >
-    Étudiants et apprentis (sans cours de
-    tennis de table)
+  fee_key: student-apprentice-no-course
+  category: Étudiants, 11-18 ans, sans cours
+  category_en: >
+    Students, 11-18 years old, without
+    trainings
   cotisation: CHF 160
   licence: CHF 300
   total: CHF 260.00
 - 
+  fee_key: spouse
   category: Conjoints
+  category_en: Spouses
   cotisation: CHF 100
   licence: CHF 260
   total: CHF 100.00
 - 
-  category: Baby Ping
+  fee_key: kids-0-11
+  category: "Enfants, jusq'à 11 ans"
+  category_en: Kids, up to 11 years old
   cotisation: CHF 120
   licence: ""
   total: CHF 50.00
 - 
-  category: "Membre externe (licencié·e auprès d'un autre club)"
+  fee_key: external-member
+  category: "Membre externe (licencié-e auprès d'un autre club)"
+  category_en: >
+    External member (licensed with another
+    club)
   cotisation: CHF 100
   licence: ""
 
 ----
 
-Adhesion-description: Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club.
+Adhesion-description: Pour nous rejoindre, vous pouvez télécharger le formulaire vierge ou remplir la demande directement en ligne.
 
 ----
 
@@ -101,6 +113,253 @@ Licence-forms:
 ----
 
 Payment-info: 12-19447-4
+
+----
+
+Online-form-enabled: true
+
+----
+
+Online-form-title-fr: Demande d'adhésion
+
+----
+
+Online-form-title-en: Membership application
+
+----
+
+Online-form-intro-fr: Remplissez le formulaire, choisissez votre cotisation, puis téléchargez le PDF pour le signer et le déposer au club ou l'envoyer par email à info@meyrinctt.ch
+
+----
+
+Online-form-intro-en: Fill in the form, choose your membership fee, then download the PDF to sign it and leave it to the mailbox of the club or send it via email to info@meyrinctt.ch
+
+----
+
+Online-form-submit-label-fr: Télécharger le PDF rempli
+
+----
+
+Online-form-submit-label-en: Download filled PDF
+
+----
+
+Online-form-sections:
+
+- 
+  title_fr: Identité
+  title_en: Identity
+  fields:
+    - 
+      name: family_name
+      type: text
+      width: half
+      label_fr: Nom de famille
+      label_en: Family name
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: first_name
+      type: text
+      width: half
+      label_fr: Prénom usuel
+      label_en: First name
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: birth_date
+      type: date
+      width: third
+      label_fr: Date de naissance
+      label_en: Date of birth
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: sex
+      type: select
+      width: third
+      label_fr: Sexe
+      label_en: Sex
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options:
+        - 
+          value: female
+          label_fr: F
+          label_en: F
+        - 
+          value: male
+          label_fr: M
+          label_en: M
+        - 
+          value: other
+          label_fr: Autre
+          label_en: Other
+    - 
+      name: nationality
+      type: text
+      width: third
+      label_fr: Nationalité
+      label_en: Nationality
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+- 
+  title_fr: Coordonnées
+  title_en: Contact details
+  fields:
+    - 
+      name: care_of
+      type: text
+      width: half
+      label_fr: Chez
+      label_en: Care of
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+    - 
+      name: address
+      type: text
+      width: half
+      label_fr: Adresse
+      label_en: Address
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: postal_code
+      type: text
+      width: third
+      label_fr: Code postal
+      label_en: Postal code
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: locality
+      type: text
+      width: third
+      label_fr: Localité
+      label_en: City
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: email
+      type: email
+      width: third
+      label_fr: Courriel privé
+      label_en: Private email
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: mobile_phone
+      type: tel
+      width: third
+      label_fr: Portable
+      label_en: Mobile
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+    - 
+      name: avs_number
+      type: text
+      width: half
+      label_fr: N AVS si écoliers
+      label_en: AVS number for pupils
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+- 
+  title_fr: Déclaration
+  title_en: Declaration
+  fields:
+    - 
+      name: accident_insurance_notice
+      type: notice
+      width: full
+      label_fr: "Le membre doit être impérativement assuré en cas d'accident. La demande comporte l'adhésion sans réserve aux statuts."
+      label_en: >
+        The member must be insured in case of
+        accident. This application implies full
+        acceptance of the club statutes.
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+    - 
+      name: resignation_notice
+      type: notice
+      width: full
+      label_fr: "Toute démission doit être présentée par écrit ou par email pour la fin d'une saison."
+      label_en: >
+        Any resignation must be submitted
+        written or by email for the end of a
+        season.
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+    - 
+      name: information_notice
+      type: notice
+      width: full
+      label_fr: "Pour toute information, veuillez écrire au club à l'adresse {{club_email}}."
+      label_en: "For any information, please write to the club at {{club_email}}."
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+    - 
+      name: image_rights
+      type: checkbox
+      width: full
+      label_fr: "J'autorise le Meyrin CTT à utiliser des photos me représentant sur le site web du club et ses canaux de communication officiels."
+      label_en: "I authorize Meyrin CTT to use photos of me on the club website and its official communication channels."
+      help_fr: ""
+      help_en: ""
+      required: 'false'
+      options: [ ]
+    - 
+      name: application_date
+      type: date
+      width: half
+      label_fr: Date
+      label_en: Date
+      help_fr: ""
+      help_en: ""
+      required: 'true'
+      options: [ ]
+    - 
+      name: signature
+      type: signature
+      width: half
+      label_fr: Signature
+      label_en: Signature
+      help_fr: >
+        Pour les mineurs, signature du
+        représentant légal.
+      help_en: >
+        For minors, signature of the legal
+        representative.
+      required: 'false'
+      options: [ ]
 
 ----
 

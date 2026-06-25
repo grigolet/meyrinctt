@@ -1,6 +1,6 @@
 # Inscription page blueprint
 title: Inscription
-icon: 📝
+icon: edit
 
 tabs:
   content:
@@ -16,29 +16,29 @@ tabs:
                 type: text
                 label: Titre de la page
                 default: "Inscription"
-                
+
               hero_subtitle:
                 type: text
                 label: Sous-titre
                 default: "Rejoignez le Meyrin CTT pour la saison 2025 - 2026."
-                
+
           fees_section:
             type: fields
             fields:
               fees_headline:
                 type: headline
                 label: Tarifs
-                
+
               fees_title:
                 type: text
                 label: Titre section tarifs
                 default: "Tarifs d'adhésion 2025-2026"
-                
+
               fees_note:
                 type: text
                 label: Note sur les tarifs
                 default: "Rabais par enfant si plusieurs membres de la famille: 40.- CHF"
-                
+
       - width: 1/3
         sections:
           hero_image:
@@ -66,34 +66,43 @@ tabs:
         type: structure
         label: Grille tarifaire
         fields:
+          fee_key:
+            type: slug
+            label: Clé stable
+            help: "Identifiant utilisé par le formulaire. Exemple: adult-course"
+            width: 1/4
           category:
             type: text
-            label: Catégorie
+            label: Catégorie FR
+            width: 1/3
+          category_en:
+            type: text
+            label: Catégorie EN
             width: 1/3
           cotisation:
             type: text
             label: Cotisation sans licence
             width: 1/5
-            placeholder: "CHF 210.00"
+            placeholder: "CHF 210"
           licence:
             type: text
             label: Cotisation avec licence AGTT
             width: 1/5
-            placeholder: "CHF 150.00"
+            placeholder: "CHF 360"
 
   forms:
-    label: Formulaires
+    label: Documents
     icon: file
     fields:
       adhesion_headline:
         type: headline
         label: Demande d'adhésion
-        
+
       adhesion_description:
         type: textarea
         label: Description
         default: "Pour nous rejoindre, veuillez remplir le formulaire d'adhésion ou passer directement au club."
-        
+
       adhesion_forms:
         type: structure
         label: Formulaires d'adhésion
@@ -110,16 +119,16 @@ tabs:
                 - application/pdf
                 - application/msword
                 - application/vnd.openxmlformats-officedocument.wordprocessingml.document
-            
+
       licence_headline:
         type: headline
         label: Demande de licence
-        
+
       licence_description:
         type: textarea
         label: Description
         default: "Pour les joueurs désirant rejoindre une équipe pour la compétition, veuillez remplir les documents suivants."
-        
+
       licence_forms:
         type: structure
         label: Formulaires de licence
@@ -136,8 +145,140 @@ tabs:
                 - application/pdf
                 - application/msword
                 - application/vnd.openxmlformats-officedocument.wordprocessingml.document
-            
+
       payment_info:
         type: text
         label: Info paiement (CCP)
         default: "12-19447-4"
+
+  online_form:
+    label: Formulaire en ligne
+    icon: edit
+    fields:
+      online_form_headline:
+        type: headline
+        label: Formulaire remplissable
+
+      online_form_enabled:
+        type: toggle
+        label: Activer le formulaire remplissable
+        default: true
+
+      online_form_title_fr:
+        type: text
+        label: Titre FR
+        default: "Demande d'adhésion"
+        width: 1/2
+
+      online_form_title_en:
+        type: text
+        label: Titre EN
+        default: "Membership application"
+        width: 1/2
+
+      online_form_intro_fr:
+        type: textarea
+        label: Introduction FR
+        default: "Remplissez le formulaire, choisissez votre cotisation, puis téléchargez le PDF pour le signer."
+        width: 1/2
+
+      online_form_intro_en:
+        type: textarea
+        label: Introduction EN
+        default: "Fill in the form, choose your membership fee, then download the PDF for signature."
+        width: 1/2
+
+      online_form_submit_label_fr:
+        type: text
+        label: Bouton PDF FR
+        default: "Télécharger le PDF rempli"
+        width: 1/2
+
+      online_form_submit_label_en:
+        type: text
+        label: Bouton PDF EN
+        default: "Download filled PDF"
+        width: 1/2
+
+      online_form_sections:
+        type: structure
+        label: Sections et champs
+        fields:
+          title_fr:
+            type: text
+            label: Titre de section FR
+            width: 1/2
+          title_en:
+            type: text
+            label: Titre de section EN
+            width: 1/2
+          fields:
+            type: structure
+            label: Champs
+            fields:
+              name:
+                type: slug
+                label: Nom technique
+                help: "Unique dans le formulaire, sans espaces. Exemple: family_name"
+                width: 1/3
+              type:
+                type: select
+                label: Type
+                default: text
+                width: 1/3
+                options:
+                  text: Texte
+                  email: Email
+                  tel: Telephone
+                  date: Date
+                  select: Liste
+                  checkbox: Case à cocher
+                  textarea: Texte long
+                  notice: Texte informatif
+                  signature: Zone de signature
+              width:
+                type: select
+                label: Largeur
+                default: half
+                width: 1/3
+                options:
+                  full: Pleine largeur
+                  half: Demi-largeur
+                  third: Tiers
+              label_fr:
+                type: text
+                label: Libellé FR
+                width: 1/2
+              label_en:
+                type: text
+                label: Libellé EN
+                width: 1/2
+              help_fr:
+                type: textarea
+                label: Aide FR
+                width: 1/2
+              help_en:
+                type: textarea
+                label: Aide EN
+                width: 1/2
+              required:
+                type: toggle
+                label: Obligatoire
+                default: false
+              options:
+                type: structure
+                label: Options pour les listes
+                fields:
+                  value:
+                    type: slug
+                    label: Valeur
+                    width: 1/3
+                  label_fr:
+                    type: text
+                    label: Libellé FR
+                    width: 1/3
+                  label_en:
+                    type: text
+                    label: Libellé EN
+                    width: 1/3
+
