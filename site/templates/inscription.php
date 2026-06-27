@@ -85,6 +85,13 @@ function inscription_bool($field, string $key): bool
     return $content ? $content->get($key)->toBool() : $field->{$key}()->toBool();
 }
 
+function inscription_fee_label_html($value): string
+{
+    $raw = is_object($value) && method_exists($value, 'value') ? $value->value() : (string)$value;
+
+    return strip_tags($raw, '<strong><b><u><em><i><br>');
+}
+
 function inscription_render_text(string $value, string $clubEmail): string
 {
     return str_replace('{{club_email}}', $clubEmail, $value);
@@ -123,7 +130,7 @@ $clubEmail = $contactPage && $contactPage->contact_email()->isNotEmpty()
                     <tbody>
                         <?php foreach ($fees as $fee): ?>
                         <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="p-4 border-2 border-border font-medium"><?= $fee->category()->esc() ?></td>
+                            <td class="p-4 border-2 border-border font-medium"><?= inscription_fee_label_html($fee->category()) ?></td>
                             <td class="p-4 border-2 border-border text-right font-mono"><?= $fee->cotisation()->esc() ?></td>
                             <td class="p-4 border-2 border-border text-right font-mono"><?= $fee->licence()->or('-')->esc() ?></td>
                         </tr>
@@ -238,15 +245,15 @@ $clubEmail = $contactPage && $contactPage->contact_email()->isNotEmpty()
                                 <?php foreach ($fees as $index => $fee): ?>
                                 <?php
                                 $feeKey = $fee->fee_key()->or('fee-' . $index)->value();
-                                $feeLabelFr = $fee->category()->value();
-                                $feeLabelEn = $fee->category_en()->or($fee->category())->value();
+                                $feeLabelFr = inscription_fee_label_html($fee->category());
+                                $feeLabelEn = inscription_fee_label_html($fee->category_en()->or($fee->category()));
                                 $hasCotisation = $fee->cotisation()->isNotEmpty();
                                 $hasLicence = $fee->licence()->isNotEmpty();
                                 ?>
                                 <tr>
                                     <td>
-                                        <span data-lang-fr="<?= esc($feeLabelFr, 'attr') ?>" data-lang-en="<?= esc($feeLabelEn, 'attr') ?>">
-                                            <?= esc($feeLabelFr) ?>
+                                        <span data-lang-rich data-lang-fr="<?= esc($feeLabelFr, 'attr') ?>" data-lang-en="<?= esc($feeLabelEn, 'attr') ?>">
+                                            <?= $feeLabelFr ?>
                                         </span>
                                     </td>
                                     <td>

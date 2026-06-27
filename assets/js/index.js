@@ -247,7 +247,11 @@ function initInscriptionForm() {
     form.querySelectorAll('[data-lang-fr][data-lang-en]').forEach(element => {
       const value = element.dataset[`lang${lang.charAt(0).toUpperCase()}${lang.slice(1)}`];
       if (typeof value !== 'undefined') {
-        element.textContent = value;
+        if (element.hasAttribute('data-lang-rich')) {
+          element.innerHTML = value;
+        } else {
+          element.textContent = value;
+        }
       }
     });
 
@@ -302,6 +306,52 @@ function initInscriptionForm() {
     return allValid;
   };
 
+  const sanitizeFilenamePart = (value) => {
+    return value
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
+  const titleCaseFilenamePart = (value) => {
+    return value
+      .split('-')
+      .filter(Boolean)
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join('-');
+  };
+
+  const buildPrintTitle = (isBlank = false) => {
+    if (isBlank) return 'Demande-adhesion-Meyrin-CTT-vierge';
+
+    const familyName = sanitizeFilenamePart(form.querySelector('[name="family_name"]')?.value || '');
+    const firstName = sanitizeFilenamePart(form.querySelector('[name="first_name"]')?.value || '');
+
+    if (familyName && firstName) {
+      return `${familyName.toUpperCase()}.${titleCaseFilenamePart(firstName)}`;
+    }
+
+    if (familyName) return familyName.toUpperCase();
+    if (firstName) return titleCaseFilenamePart(firstName);
+    return 'Demande-adhesion-Meyrin-CTT';
+  };
+
+  const printWithSuggestedTitle = (title) => {
+    const previousTitle = document.title;
+
+    const restoreTitle = () => {
+      document.title = previousTitle;
+      window.removeEventListener('afterprint', restoreTitle);
+    };
+
+    document.title = title;
+    window.addEventListener('afterprint', restoreTitle);
+    window.setTimeout(restoreTitle, 1000);
+    window.print();
+  };
+
   langButtons.forEach(button => {
     button.addEventListener('click', () => {
       setLanguage(button.dataset.inscriptionLang || 'fr');
@@ -321,7 +371,7 @@ function initInscriptionForm() {
       }
 
       form.dataset.printLang = currentLang;
-      window.print();
+      printWithSuggestedTitle(buildPrintTitle());
     });
   });
 
@@ -361,7 +411,7 @@ function initInscriptionForm() {
       window.addEventListener('afterprint', restoreValues);
       window.setTimeout(restoreValues, 1000);
       form.dataset.printLang = currentLang;
-      window.print();
+      printWithSuggestedTitle(buildPrintTitle(true));
     });
   });
 
