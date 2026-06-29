@@ -172,6 +172,28 @@ Committee-members:
 
 ----
 
+Technical-advisors-title: Rôle consultatif
+
+----
+
+Technical-advisors-intro: 
+
+----
+
+Technical-advisors:
+
+- 
+  photo:
+    - file://dhhhxpnvqxgahvd9
+  role: Conseiller technique
+  name: Rigoletti gianluca
+  email: ""
+  description: |
+    Conseiller techniques,
+    formations des equipes pour la competition
+
+----
+
 Honorary-president-title: Présidente d'Honneur
 
 ----

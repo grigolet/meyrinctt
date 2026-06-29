@@ -237,6 +237,65 @@ snippet('hero');
         </div>
         <?php endif ?>
 
+        <!-- Technical Advisors Section -->
+        <?php if ($page->technical_advisors()->isNotEmpty()): ?>
+        <div class="mb-16 text-center">
+            <h2 class="text-3xl font-black uppercase mb-6 text-center pb-4 border-b-4 border-primary inline-block"><?= $page->technical_advisors_title()->or('Conseiller technique')->esc() ?></h2>
+
+            <?php if ($page->technical_advisors_intro()->isNotEmpty()): ?>
+            <div class="formatted-text max-w-[760px] mx-auto mb-8 text-gray-700">
+                <?= $page->technical_advisors_intro()->kt() ?>
+            </div>
+            <?php endif ?>
+
+            <div class="max-w-[900px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <?php foreach ($page->technical_advisors()->toStructure() as $advisor): ?>
+                    <div class="bg-surface border-2 border-border rounded-xl p-6 shadow-soft text-left">
+                        <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                            <?php if ($advisor->photo()->toFile()): ?>
+                            <?php $photo = $advisor->photo()->toFile(); ?>
+                            <?php $focusPosition = meyrinctt_focus_position($photo); ?>
+                            <picture class="flex-shrink-0">
+                                <source srcset="<?= $photo->srcset('avatar') ?>" type="image/webp">
+                                <img
+                                    src="<?= $photo->crop(120, 120)->url() ?>"
+                                    alt="<?= $advisor->name()->esc() ?>"
+                                    class="w-24 h-24 rounded-full object-cover border-4 border-primary"
+                                    width="120"
+                                    height="120"
+                                    <?php if ($focusPosition): ?>style="object-position: <?= esc($focusPosition, 'attr') ?>"<?php endif ?>
+                                    loading="lazy"
+                                >
+                            </picture>
+                            <?php else:
+                                $initials = strtoupper(substr($advisor->name()->or('C')->value(), 0, 1));
+                            ?>
+                                <div class="flex-shrink-0 w-24 h-24 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-black border-4 border-primary">
+                                    <?= $initials ?>
+                                </div>
+                            <?php endif ?>
+
+                            <div class="text-center sm:text-left">
+                                <div class="text-sm font-bold text-primary uppercase mb-1"><?= $advisor->role()->or('Conseiller technique')->esc() ?></div>
+                                <div class="text-lg font-bold mb-2"><?= $advisor->name()->esc() ?></div>
+                                <?php if ($advisor->description()->isNotEmpty()): ?>
+                                <div class="formatted-text text-sm text-gray-700 mb-3">
+                                    <?= $advisor->description()->kt() ?>
+                                </div>
+                                <?php endif ?>
+                                <?php if ($advisor->email()->isNotEmpty()): ?>
+                                <a href="mailto:<?= $advisor->email()->esc() ?>" class="text-sm text-gray-600 hover:text-primary transition-colors"><?= $advisor->email()->esc() ?></a>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
         <!-- Honorary President Section -->
         <?php if ($page->honorary_president_name()->isNotEmpty() || $page->honorary_president_photo()->isNotEmpty() || $page->honorary_president_description()->isNotEmpty()): ?>
         <?php $honoraryPresidentPhoto = $page->honorary_president_photo()->toFile(); ?>

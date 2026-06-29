@@ -259,6 +259,52 @@ tabs:
             label: Email
             width: 1/2
 
+      technical_advisors_title:
+        type: text
+        label: Titre section conseillers
+        default: "Conseiller technique"
+
+      technical_advisors_intro:
+        type: textarea
+        label: Introduction conseillers
+        default: "Participe aux séances du comité à titre consultatif, sans être membre statutaire du comité."
+        buttons:
+          - bold
+          - italic
+          - link
+
+      technical_advisors:
+        type: structure
+        label: Conseillers techniques
+        fields:
+          photo:
+            type: files
+            label: Photo de profil
+            max: 1
+            layout: cards
+            query: page.images
+            width: 1/2
+          role:
+            type: text
+            label: Rôle
+            default: "Conseiller technique"
+            width: 1/2
+          name:
+            type: text
+            label: Nom
+            width: 1/2
+          email:
+            type: email
+            label: Email
+            width: 1/2
+          description:
+            type: textarea
+            label: Description courte
+            buttons:
+              - bold
+              - italic
+              - link
+
   honorary_president:
     label: Présidente d'honneur
     icon: user
