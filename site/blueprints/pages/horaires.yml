@@ -1,6 +1,6 @@
 # Horaires page blueprint
 title: Horaires
-icon: 📅
+icon: calendar
 
 tabs:
   content:
@@ -16,29 +16,94 @@ tabs:
                 type: text
                 label: Titre de la page
                 default: "Horaires"
-                
+
               hero_subtitle:
                 type: text
                 label: Sous-titre
-                default: "Entraînements et Compétitions."
-                
+                default: "Entraînements et compétitions."
+
           schedule:
             type: fields
             fields:
               schedule_headline:
                 type: headline
                 label: Planning des cours
-                
+
               schedule_title:
                 type: text
                 label: Titre du planning
-                default: "PLANNING des cours 2025/2026"
-                
+                default: "Planning des cours"
+
               schedule_notice:
                 type: text
                 label: Notice importante
-                default: "Les cours de tennis de table débute le 25 AOÛT 2025"
-                
+
+              schedule_intro:
+                type: textarea
+                label: Introduction du planning
+                help: Ce texte est affiché au-dessus du calendrier.
+                buttons:
+                  - bold
+                  - italic
+                  - link
+
+              season_start:
+                type: date
+                label: Début de la saison
+                width: 1/2
+                required: true
+
+              season_end:
+                type: date
+                label: Fin de la saison
+                width: 1/2
+                required: true
+
+              calendar_min_time:
+                type: time
+                label: Première heure affichée
+                width: 1/3
+                default: "09:00"
+
+              calendar_max_time:
+                type: time
+                label: Dernière heure affichée
+                width: 1/3
+                default: "22:30"
+
+              calendar_slot_duration:
+                type: select
+                label: Pas de la grille
+                width: 1/3
+                default: "00:30:00"
+                options:
+                  "00:15:00": 15 minutes
+                  "00:30:00": 30 minutes
+                  "01:00:00": 60 minutes
+
+              calendar_hide_weekends:
+                type: toggle
+                label: Masquer samedi et dimanche
+                help: Agrandit les colonnes du lundi au vendredi dans la vue semaine.
+                width: 1/2
+                default: true
+                text:
+                  - Non
+                  - Oui
+
+              calendar_slot_min_height:
+                type: range
+                label: Hauteur des lignes horaires
+                help: "Une valeur plus élevée agrandit verticalement les créneaux. Valeur conseillée : 40 px."
+                width: 1/2
+                default: 40
+                min: 24
+                max: 60
+                step: 2
+                tooltip:
+                  before: ""
+                  after: " px"
+
               schedule_pdf:
                 type: files
                 label: PDF du planning
@@ -46,7 +111,7 @@ tabs:
                 query: page.files
                 uploads:
                   template: document
-                
+
       - width: 1/3
         sections:
           hero_image:
@@ -67,60 +132,196 @@ tabs:
             layout: list
 
   courses:
-    label: Cours
+    label: Activités
     icon: list
     fields:
       courses:
         type: structure
-        label: Cours hebdomadaires
-        fields:
-          day:
-            type: select
-            label: Jour
+        label: Activités et leurs créneaux
+        empty: Aucune activité n'est encore configurée.
+        columns:
+          course_description:
+            width: 1/2
+          category:
             width: 1/4
-            options:
-              lundi: Lundi
-              mardi: Mardi
-              mercredi: Mercredi
-              jeudi: Jeudi
-              vendredi: Vendredi
-              samedi: Samedi
-              dimanche: Dimanche
+          color:
+            width: 1/4
+        fields:
           course_description:
             type: text
-            label: Description J+S
-            width: 1/4
-          start_time:
-            type: time
-            label: Début
-            width: 1/6
-          end_time:
-            type: time
-            label: Fin
-            width: 1/6
-          trainer:
+            label: Nom de l'activité
+            width: 1/2
+            required: true
+
+          category:
+            type: select
+            label: Catégorie
+            width: 1/2
+            default: libre
+            options:
+              ecole: École de tennis de table
+              juniors: Juniors
+              adultes: Adultes
+              libre: Entraînement libre
+              competition: Compétition
+              autre: Autre
+
+          default_trainer:
             type: text
-            label: Entraîneur
-            width: 1/4
+            label: Entraîneur par défaut
+            help: Facultatif. Chaque créneau peut utiliser un autre entraîneur.
+            width: 1/2
+
+          details:
+            type: textarea
+            label: Explication
+            help: Texte commun affiché pour tous les créneaux de cette activité.
+            buttons:
+              - bold
+              - italic
+              - link
+              - ul
+
+          color:
+            type: select
+            label: Couleur du créneau
+            width: 1/3
+            default: blue
+            options:
+              blue: Bleu
+              green: Vert
+              orange: Orange
+              yellow: Jaune
+              purple: Violet
+              grey: Gris
+
+          valid_from:
+            type: date
+            label: Activité valable à partir du
+            help: Facultatif. La date de début de saison est utilisée par défaut.
+            width: 1/3
+
+          valid_until:
+            type: date
+            label: Activité valable jusqu'au
+            help: Facultatif. La date de fin de saison est utilisée par défaut.
+            width: 1/3
+
+          slots:
+            type: structure
+            label: Créneaux hebdomadaires
+            help: Ajoutez ici tous les jours et horaires de cette activité.
+            empty: Aucun créneau n'est encore configuré.
+            columns:
+              day:
+                width: 1/4
+              start_time:
+                width: 1/4
+              end_time:
+                width: 1/4
+              trainer:
+                width: 1/4
+            fields:
+              day:
+                type: select
+                label: Jour
+                width: 1/3
+                required: true
+                options:
+                  lundi: Lundi
+                  mardi: Mardi
+                  mercredi: Mercredi
+                  jeudi: Jeudi
+                  vendredi: Vendredi
+                  samedi: Samedi
+                  dimanche: Dimanche
+
+              start_time:
+                type: time
+                label: Début
+                width: 1/3
+                required: true
+
+              end_time:
+                type: time
+                label: Fin
+                width: 1/3
+                required: true
+
+              trainer:
+                type: text
+                label: Entraîneur pour ce créneau
+                help: Laissez vide pour utiliser l'entraîneur par défaut.
+                width: 1/2
+
+              slot_note:
+                type: textarea
+                label: Précision propre à ce créneau
+                help: Facultatif, par exemple une heure de match ou un nombre de tables.
+                width: 1/2
+                buttons: false
+
+              valid_from:
+                type: date
+                label: Créneau valable à partir du
+                width: 1/2
+
+              valid_until:
+                type: date
+                label: Créneau valable jusqu'au
+                width: 1/2
 
   holidays:
-    label: Vacances
+    label: Fermetures
     icon: calendar
     fields:
       holidays_title:
         type: text
-        label: Titre section vacances
-        default: "Sauf Vacances scolaires 2025-2026"
-        
+        label: Titre de la section
+        default: "Vacances scolaires et fermetures"
+
       holidays:
         type: structure
-        label: Dates de vacances
+        label: Vacances et fermetures
+        columns:
+          name:
+            width: 1/3
+          start_date:
+            width: 1/4
+          end_date:
+            width: 1/4
+          exclude_courses:
+            width: 1/6
         fields:
           name:
             type: text
             label: Nom
             width: 1/2
+            required: true
+
           dates:
             type: text
-            label: Dates
+            label: Texte affiché
+            help: Par exemple, « 20 au 24 octobre 2025 ».
             width: 1/2
+
+          start_date:
+            type: date
+            label: Date de début
+            width: 1/3
+            required: true
+
+          end_date:
+            type: date
+            label: Date de fin
+            width: 1/3
+            required: true
+
+          exclude_courses:
+            type: toggle
+            label: Masquer les cours pendant cette période
+            width: 1/3
+            default: true
+            text:
+              - Non
+              - Oui

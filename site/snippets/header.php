@@ -19,6 +19,7 @@ $headingFont = $fontStacks[$headingFontSetting] ?? (in_array($headingFontSetting
 $bodyFont = $fontStacks[$bodyFontSetting] ?? (in_array($bodyFontSetting, $fontStacks, true) ? $bodyFontSetting : $fontStacks['dm-sans']);
 $themeAccent = $site->color_accent()->or($isModernSkin ? '#6ee7b7' : '#d32f2f');
 $isArticlePage = $page->intendedTemplate()->name() === 'article';
+$isSchedulePage = $page->intendedTemplate()->name() === 'horaires';
 $metaTitle = $isArticlePage ? $page->title()->value() : $page->title()->value() . ' | ' . $site->title()->value();
 $metaDescription = $isArticlePage
     ? $page->excerpt()->or($page->metaDescription())->or($site->site_description())->value()
@@ -79,6 +80,12 @@ $metaImageUrl = $metaImage
     <!-- Swiper.js for carousel -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <?php if ($isSchedulePage): ?>
+    <!-- FullCalendar is loaded only on the schedule page. -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.19/locales-all.global.min.js" defer></script>
+    <?php endif ?>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= url('assets/css/index.css') ?><?= $cssVersion ? '?v=' . $cssVersion : '' ?>">

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initLazyLoad();
   initInscriptionForm();
+  initScheduleCalendar();
 });
 
 /**
@@ -381,11 +382,17 @@ function initInscriptionForm() {
       const previousValues = controls.map(control => ({
         control,
         checked: control.checked,
+        placeholder: control.getAttribute('placeholder'),
         selectedIndex: control.selectedIndex,
         value: control.value
       }));
 
       controls.forEach(control => {
+        // Some mobile print engines render placeholder text even when
+        // ::placeholder is transparent. Removing the attribute makes the
+        // blank print state independent of that browser-specific behavior.
+        control.removeAttribute('placeholder');
+
         if (control.type === 'radio' || control.type === 'checkbox') {
           control.checked = false;
         } else if (control.tagName === 'SELECT') {
@@ -396,8 +403,13 @@ function initInscriptionForm() {
       });
 
       const restoreValues = () => {
-        previousValues.forEach(({ control, checked, selectedIndex, value }) => {
+        previousValues.forEach(({ control, checked, placeholder, selectedIndex, value }) => {
           control.checked = checked;
+          if (placeholder === null) {
+            control.removeAttribute('placeholder');
+          } else {
+            control.setAttribute('placeholder', placeholder);
+          }
           if (control.tagName === 'SELECT') {
             control.selectedIndex = selectedIndex;
           }
@@ -409,7 +421,6 @@ function initInscriptionForm() {
 
       form.classList.add('is-printing-blank');
       window.addEventListener('afterprint', restoreValues);
-      window.setTimeout(restoreValues, 1000);
       form.dataset.printLang = currentLang;
       printWithSuggestedTitle(buildPrintTitle(true));
     });
@@ -434,6 +445,215 @@ function initInscriptionForm() {
   });
 
   setLanguage(currentLang);
+}
+
+/**
+ * Build the responsive weekly schedule and its accessible event dialog.
+ */
+function initScheduleCalendar() {
+  const calendarElement = document.querySelector('[data-schedule-calendar]');
+  if (!calendarElement) return;
+
+  const statusElement = document.querySelector('[data-schedule-status]');
+  const dialog = document.querySelector('[data-schedule-dialog]');
+  const mobileQuery = window.matchMedia('(max-width: 767px)');
+  const hideWeekends = calendarElement.dataset.hideWeekends === 'true';
+  const configuredSlotMinHeight = Number.parseInt(calendarElement.dataset.slotMinHeight, 10);
+  const slotMinHeight = Number.isFinite(configuredSlotMinHeight)
+    ? Math.min(60, Math.max(24, configuredSlotMinHeight))
+    : 40;
+
+  if (typeof FullCalendar === 'undefined') {
+    if (statusElement) {
+      statusElement.textContent = 'Le calendrier ne peut pas être chargé pour le moment. Les détails des créneaux sont disponibles ci-dessous.';
+      statusElement.classList.add('is-error');
+    }
+    return;
+  }
+
+  const setDialogText = (selector, value, hideWhenEmpty = false) => {
+    if (!dialog) return;
+    const element = dialog.querySelector(selector);
+    if (!element) return;
+
+    element.textContent = value || '';
+    element.hidden = hideWhenEmpty && !value;
+  };
+
+  const setDialogHtml = (selector, html, fallbackText = '') => {
+    if (!dialog) return;
+    const element = dialog.querySelector(selector);
+    if (!element) return;
+
+    if (html) {
+      element.innerHTML = html;
+    } else {
+      element.textContent = fallbackText || '';
+    }
+
+    element.hidden = !html && !fallbackText;
+  };
+
+  const formatEventRange = event => {
+    if (!event.start) return '';
+
+    const date = new Intl.DateTimeFormat('fr-CH', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long'
+    }).format(event.start);
+    const timeFormatter = new Intl.DateTimeFormat('fr-CH', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    const startTime = timeFormatter.format(event.start).replace(':', 'h');
+    const endTime = event.end ? timeFormatter.format(event.end).replace(':', 'h') : '';
+
+    return `${date.charAt(0).toUpperCase()}${date.slice(1)} · ${startTime}${endTime ? `–${endTime}` : ''}`;
+  };
+
+  const openEventDialog = event => {
+    if (!dialog) return;
+
+    setDialogText('[data-schedule-dialog-category]', event.extendedProps.category, true);
+    setDialogText('[data-schedule-dialog-title]', event.title);
+    setDialogText('[data-schedule-dialog-time]', formatEventRange(event));
+    setDialogText(
+      '[data-schedule-dialog-trainer]',
+      event.extendedProps.trainer ? `Entraîneur·e : ${event.extendedProps.trainer}` : '',
+      true
+    );
+    setDialogHtml(
+      '[data-schedule-dialog-description]',
+      event.extendedProps.descriptionHtml,
+      event.extendedProps.description
+    );
+
+    dialog.dataset.color = event.extendedProps.color || 'blue';
+    if (typeof dialog.showModal === 'function') {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute('open', '');
+    }
+  };
+
+  const calendar = new FullCalendar.Calendar(calendarElement, {
+    locale: 'fr',
+    firstDay: 1,
+    weekends: !hideWeekends,
+    initialDate: calendarElement.dataset.initialDate,
+    initialView: mobileQuery.matches ? 'listWeek' : 'timeGridWeek',
+    events: {
+      url: calendarElement.dataset.eventsUrl,
+      failure: () => {
+        if (statusElement) {
+          statusElement.textContent = 'Impossible de charger les créneaux. Vous pouvez consulter leur détail ci-dessous.';
+          statusElement.classList.add('is-error');
+          statusElement.hidden = false;
+        }
+      }
+    },
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'timeGridWeek,timeGridDay,listWeek'
+    },
+    buttonText: {
+      today: "Aujourd'hui",
+      week: 'Semaine',
+      day: 'Jour',
+      list: 'Liste'
+    },
+    views: {
+      timeGridWeek: { buttonText: 'Semaine' },
+      timeGridDay: { buttonText: 'Jour' },
+      listWeek: { buttonText: 'Liste' }
+    },
+    allDaySlot: false,
+    slotMinTime: calendarElement.dataset.slotMin || '09:00:00',
+    slotMaxTime: calendarElement.dataset.slotMax || '22:30:00',
+    slotDuration: calendarElement.dataset.slotDuration || '00:30:00',
+    slotMinHeight,
+    slotLabelInterval: '01:00:00',
+    slotLabelFormat: {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    },
+    eventTimeFormat: {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    },
+    dayHeaderFormat: {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'numeric'
+    },
+    nowIndicator: true,
+    navLinks: true,
+    navLinkDayClick: 'timeGridDay',
+    expandRows: true,
+    height: 'auto',
+    eventMinHeight: 44,
+    eventShortHeight: 44,
+    slotEventOverlap: false,
+    loading: isLoading => {
+      calendarElement.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+      if (!statusElement || statusElement.classList.contains('is-error')) return;
+      statusElement.textContent = isLoading ? 'Chargement du planning…' : 'Planning chargé.';
+      statusElement.hidden = !isLoading;
+    },
+    eventDidMount: info => {
+      const label = `${info.event.title}, ${formatEventRange(info.event)}. Sélectionner pour plus d'informations.`;
+      info.el.setAttribute('aria-label', label);
+      info.el.setAttribute('title', label);
+      info.el.setAttribute('tabindex', '0');
+      info.el.setAttribute('role', 'button');
+      info.el.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openEventDialog(info.event);
+      });
+    },
+    eventClick: info => {
+      info.jsEvent.preventDefault();
+      openEventDialog(info.event);
+    }
+  });
+
+  calendar.render();
+
+  let wasMobile = mobileQuery.matches;
+  const syncResponsiveView = () => {
+    const isMobile = mobileQuery.matches;
+    if (isMobile === wasMobile) return;
+
+    const currentView = calendar.view.type;
+    if (isMobile && currentView === 'timeGridWeek') {
+      calendar.changeView('listWeek');
+    } else if (!isMobile && currentView === 'listWeek') {
+      calendar.changeView('timeGridWeek');
+    }
+
+    wasMobile = isMobile;
+    calendar.updateSize();
+  };
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(debounce(syncResponsiveView, 100));
+    resizeObserver.observe(calendarElement.parentElement || calendarElement);
+  } else {
+    window.addEventListener('resize', debounce(syncResponsiveView, 100));
+  }
+
+  if (dialog) {
+    dialog.querySelector('[data-schedule-dialog-close]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) dialog.close();
+    });
+  }
 }
 
 /**

@@ -6,93 +6,505 @@ Hero-title: Horaires
 
 ----
 
-Hero-subtitle: Entraînements et Compétitions.
+Hero-subtitle: Entraînements et compétitions.
 
 ----
 
-Schedule-title: PLANNING des cours 2025/2026
+Schedule-title: PLANNING des cours 2026/2027
 
 ----
 
-Schedule-notice: Les cours de tennis de table débute le 25 AOÛT 2025
+Schedule-notice: Les cours de tennis de table débutent le 24 AOÛT 2026
 
 ----
 
-Schedule-pdf: https://www.meyrinctt.ch/docs/PLANNING%20des%20cours%202025-2026.pdf
+Schedule-intro: Retrouvez tous les entraînements hebdomadaires et les occupations de la salle. Sélectionnez un créneau pour afficher ses informations détaillées. Pour les championnats, le nombre de tables indiqué correspond au maximum utilisé si toutes les équipes jouent à domicile.
+
+----
+
+Season-start: 2026-08-24
+
+----
+
+Season-end: 2027-07-13
+
+----
+
+Calendar-min-time: 08:00:00
+
+----
+
+Calendar-max-time: 22:30:00
+
+----
+
+Calendar-slot-duration: 00:30:00
+
+----
+
+Calendar-hide-weekends: true
+
+----
+
+Calendar-slot-min-height: 40
+
+----
+
+Schedule-pdf: 
+
+----
+
+Hero-image: 
 
 ----
 
 Courses:
 
 - 
-  day: lundi
-  course_description: Adultes
-  start_time: 20:00:00
-  end_time: 22:00:00
-  trainer: Giacomo
+  course_description: École de Livron
+  category: ""
+  default_trainer: ""
+  details: >
+    Le local de tennis de table est
+    réservé aux élèves de l’École
+    publique de Livron durant ce créneau.
+    Cette activité scolaire n’est pas
+    ouverte aux membres du club ni au
+    public.
+  color: orange
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: lundi
+      start_time: 08:00:00
+      end_time: 11:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: mardi
+      start_time: 10:00:00
+      end_time: 11:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: jeudi
+      start_time: 08:00:00
+      end_time: 11:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: vendredi
+      start_time: 08:00:00
+      end_time: 11:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
 - 
-  day: mardi
-  course_description: Juniors J+S
-  start_time: 18:00:00
-  end_time: 20:00:00
-  trainer: Nenad
+  course_description: ETT débutants et GIAP
+  category: ecole
+  default_trainer: ""
+  details: 'École de Tennis de Table : cours destiné aux jeunes débutants de 10 à 17 ans qui souhaitent découvrir le tennis de table et progresser à leur rythme.'
+  color: yellow
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: lundi
+      start_time: 16:30:00
+      end_time: 18:00:00
+      trainer: 'Giacomo & Sacha'
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: vendredi
+      start_time: 16:30:00
+      end_time: 18:00:00
+      trainer: 'Wilfried & Giacomo'
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
 - 
-  day: mercredi
-  course_description: Baby Ping
-  start_time: 14:00:00
-  end_time: 15:30:00
-  trainer: Nenad
+  course_description: Tennis de table adultes
+  category: adultes
+  default_trainer: 'Nenad & Sacha'
+  details: >
+    Créneau pour les adultes dès 18 ans,
+    avec ou sans licence, souhaitant
+    pratiquer dans une ambiance sportive et
+    conviviale.
+  color: yellow
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: lundi
+      start_time: 18:00:00
+      end_time: 19:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
 - 
-  day: mercredi
-  course_description: Juniors J+S
-  start_time: 15:30:00
-  end_time: 17:30:00
-  trainer: Joan
+  course_description: Championnats AGTT
+  category: competition
+  default_trainer: ""
+  details: >
+    Matchs officiels à domicile des
+    équipes du CTT Meyrin en championnat
+    AGTT. Les dates et horaires sont
+    publiés selon le calendrier des
+    compétitions.
+  color: purple
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: lundi
+      start_time: 19:30:00
+      end_time: 22:00:00
+      trainer: ""
+      slot_note: >
+        2 tables reservées à partir de 19h30.
+        Début des matches à 20h00.
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: mardi
+      start_time: 19:15:00
+      end_time: 22:00:00
+      trainer: ""
+      slot_note: >
+        4 tables réservées à partir de 19h15.
+        Début des matches à 19h45.
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: mercredi
+      start_time: 19:15:00
+      end_time: 22:00:00
+      trainer: ""
+      slot_note: >
+        4 tables réservées à partir de 19h15.
+        Début des matches à 19h45.
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: jeudi
+      start_time: 19:15:00
+      end_time: 22:00:00
+      trainer: ""
+      slot_note: "6 tables sont réservées pour ce créneau. L'accès aux autres tables dépend de leur occupation. Début des matches à 19h45."
+      valid_from: ""
+      valid_until: ""
 - 
-  day: jeudi
-  course_description: Adultes
-  start_time: 20:00:00
-  end_time: 22:00:00
-  trainer: Alain
+  course_description: Ménage
+  category: autre
+  default_trainer: ""
+  details: "La salle est réservée pour le ménage et n'est pas disponible pour l'entraînement."
+  color: grey
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: mardi
+      start_time: 08:00:00
+      end_time: 10:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
 - 
-  day: samedi
-  course_description: Libre
-  start_time: 10:00:00
-  end_time: 12:00:00
-  trainer: ""
+  course_description: Entraînement jeunes licenciés
+  category: juniors
+  default_trainer: ""
+  details: >
+    Entraînement pour les jeunes de 11 à
+    18 ans titulaires d’une licence. Une
+    séance encadrée pour développer la
+    technique, le jeu et le plaisir de
+    jouer.
+  color: yellow
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: mardi
+      start_time: 17:30:00
+      end_time: 19:00:00
+      trainer: 'Giacomo & Sacha'
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: mercredi
+      start_time: 14:00:00
+      end_time: 15:30:00
+      trainer: Giacomo
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: jeudi
+      start_time: 17:30:00
+      end_time: 19:00:00
+      trainer: Nenad
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: vendredi
+      start_time: 18:00:00
+      end_time: 19:30:00
+      trainer: Giacomo
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: Entraînement LNC
+  category: competition
+  default_trainer: ""
+  details: "Entraînement de l'équipe de Ligue Nationale C. 2 tables sont réservées."
+  color: grey
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: mardi
+      start_time: 19:00:00
+      end_time: 21:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: jeudi
+      start_time: 19:00:00
+      end_time: 21:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: École 5-10 ans
+  category: ecole
+  default_trainer: Nenad
+  details: >
+    Initiation au tennis de table pour les
+    enfants de 5 à 10 ans.
+  color: blue
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: mercredi
+      start_time: 10:00:00
+      end_time: 11:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: Entraînement libre
+  category: libre
+  default_trainer: ""
+  details: "Créneau libre pour les membres qui souhaitent s'entraîner de manière autonome."
+  color: green
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: lundi
+      start_time: 12:00:00
+      end_time: 16:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: mardi
+      start_time: 12:00:00
+      end_time: 17:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: mercredi
+      start_time: 12:00:00
+      end_time: 14:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+    - 
+      day: jeudi
+      start_time: 12:00:00
+      end_time: 14:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: GE Découvre + Sport pour Tous
+  category: autre
+  default_trainer: Wilfried
+  details: |
+    Dans le cadre du programme (link: https://www.ge.ch/dossier/geneve-soutient-sport-athletes/acces-formation/ge-decouvre-initiation-au-sport text: GE Découvre), les jeunes découvrent le tennis de table au travers d’activités extrascolaires encadrées.
+    Sport pour tous : eue occasion de découvrir le tennis de table dans le cadre du programme(link: https://meyrin.ch/fr/ski text:  Sport pour tous) de la Commune de Meyrin.
+  color: yellow
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: mercredi
+      start_time: 16:00:00
+      end_time: 17:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: Adultes loisirs et non-licenciés
+  category: adultes
+  default_trainer: Wilfried
+  details: >
+    Une séance pensée pour les adultes
+    débutants qui ne possèdent pas encore
+    de licence et souhaitent découvrir ou
+    reprendre le tennis de table.
+  color: yellow
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: mercredi
+      start_time: 17:30:00
+      end_time: 19:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: Club des Aînés de Meyrin
+  category: adultes
+  default_trainer: 1 volontaire
+  details: 'Activité proposée en collaboration avec le Club des Aînés de Meyrin. Elle s’adresse aux participantes et participants de cette association. (link: https://www.clubainesmeyrin.ch/ text: En savoir plus sur le Club des Aînés)'
+  color: blue
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: jeudi
+      start_time: 14:00:00
+      end_time: 16:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: Training CERN
+  category: autre
+  default_trainer: Giacomo
+  details: Entraînement réservé au groupe CERN.
+  color: grey
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: vendredi
+      start_time: 12:00:00
+      end_time: 13:30:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
+- 
+  course_description: Free training CERN
+  category: libre
+  default_trainer: ""
+  details: >
+    Créneau de jeu libre avec priorité aux
+    membres du CERN. Les autres membres du
+    club peuvent participer selon la
+    disponibilité des tables.
+  color: grey
+  valid_from: ""
+  valid_until: ""
+  slots:
+    - 
+      day: vendredi
+      start_time: 19:30:00
+      end_time: 22:00:00
+      trainer: ""
+      slot_note: ""
+      valid_from: ""
+      valid_until: ""
 
 ----
 
-Holidays-title: Sauf Vacances scolaires 2025-2026
+Holidays-title: Vacances scolaires et fermetures 2025-2026
 
 ----
 
 Holidays:
 
 - 
-  name: Jeune genevois
+  name: Jeûne genevois
   dates: 11 septembre 2025
+  start_date: 2025-09-11
+  end_date: 2025-09-11
+  exclude_courses: 'true'
 - 
   name: Automne
   dates: 20 au 24 octobre 2025
+  start_date: 2025-10-20
+  end_date: 2025-10-24
+  exclude_courses: 'true'
 - 
   name: Noël
-  dates: 22 décembre au 2 janvier 2026
+  dates: 22 décembre 2025 au 2 janvier 2026
+  start_date: 2025-12-22
+  end_date: 2026-01-02
+  exclude_courses: 'true'
 - 
   name: Février
   dates: 23 au 27 février 2026
+  start_date: 2026-02-23
+  end_date: 2026-02-27
+  exclude_courses: 'true'
 - 
   name: Pâques
   dates: 3 au 17 avril 2026
+  start_date: 2026-04-03
+  end_date: 2026-04-17
+  exclude_courses: 'true'
 - 
   name: Fête du travail
   dates: 1er mai 2026
+  start_date: 2026-05-01
+  end_date: 2026-05-01
+  exclude_courses: 'true'
 - 
   name: Ascension
   dates: 14 et 15 mai 2026
+  start_date: 2026-05-14
+  end_date: 2026-05-15
+  exclude_courses: 'true'
 - 
   name: Pentecôte
   dates: 25 mai 2026
+  start_date: 2026-05-25
+  end_date: 2026-05-25
+  exclude_courses: 'true'
 
 ----
 
